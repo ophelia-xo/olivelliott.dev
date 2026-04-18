@@ -153,13 +153,66 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated by roadmapper) | — | Pending |
+| FND-01 | Phase 1 — Foundation | Pending |
+| FND-02 | Phase 1 — Foundation | Pending |
+| FND-03 | Phase 1 — Foundation | Pending |
+| FND-04 | Phase 1 — Foundation | Pending |
+| FND-05 | Phase 1 — Foundation | Pending |
+| FND-06 | Phase 1 — Foundation | Pending |
+| FND-07 | Phase 1 — Foundation | Pending |
+| FND-08 | Phase 1 — Foundation | Pending |
+| CNT-01 | Phase 2 — Content Pipeline | Pending |
+| CNT-02 | Phase 2 — Content Pipeline | Pending |
+| CNT-03 | Phase 2 — Content Pipeline | Pending |
+| CNT-04 | Phase 2 — Content Pipeline | Pending |
+| CNT-05 | Phase 2 — Content Pipeline | Pending |
+| CNT-06 | Phase 2 — Content Pipeline | Pending |
+| PRJ-01 | Phase 3 — Project Detail Template | Pending |
+| PRJ-02 | Phase 3 — Project Detail Template | Pending |
+| PRJ-03 | Phase 3 — Project Detail Template | Pending |
+| PRJ-04 | Phase 3 — Project Detail Template | Pending |
+| PRJ-05 | Phase 3 — Project Detail Template | Pending |
+| PRJ-06 | Phase 3 — Project Detail Template | Pending |
+| PRJ-07 | Phase 3 — Project Detail Template | Pending |
+| HOM-01 | Phase 4 — Home + Projects Index | Pending |
+| HOM-02 | Phase 4 — Home + Projects Index | Pending |
+| HOM-03 | Phase 4 — Home + Projects Index | Pending |
+| HOM-04 | Phase 4 — Home + Projects Index | Pending |
+| HOM-05 | Phase 4 — Home + Projects Index | Pending |
+| PIX-01 | Phase 4 — Home + Projects Index | Pending |
+| PIX-02 | Phase 4 — Home + Projects Index | Pending |
+| PIX-03 | Phase 4 — Home + Projects Index | Pending |
+| PIX-04 | Phase 4 — Home + Projects Index | Pending |
+| ABT-01 | Phase 5 — About + Resume + Contact | Pending |
+| ABT-02 | Phase 5 — About + Resume + Contact | Pending |
+| ABT-03 | Phase 5 — About + Resume + Contact | Pending |
+| RES-01 | Phase 5 — About + Resume + Contact | Pending |
+| RES-02 | Phase 5 — About + Resume + Contact | Pending |
+| RES-03 | Phase 5 — About + Resume + Contact | Pending |
+| RES-04 | Phase 5 — About + Resume + Contact | Pending |
+| RES-05 | Phase 5 — About + Resume + Contact | Pending |
+| RES-06 | Phase 5 — About + Resume + Contact | Pending |
+| CTC-01 | Phase 5 — About + Resume + Contact | Pending |
+| CTC-02 | Phase 5 — About + Resume + Contact | Pending |
+| CTC-03 | Phase 5 — About + Resume + Contact | Pending |
+| MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| MTA-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-05 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| DPL-01 | Phase 1 — Foundation | Pending |
+| DPL-02 | Phase 7 — Content Pass + Launch | Pending |
+| DPL-03 | Phase 7 — Content Pass + Launch | Pending |
 
 **Coverage:**
-- v1 requirements: 51 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 51 (pending roadmap)
+- v1 requirements: 54 total
+- Mapped to phases: 54
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-18*
-*Last updated: 2026-04-18 after initial definition*
+*Last updated: 2026-04-18 after roadmap creation (traceability populated)*
