@@ -31,7 +31,15 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
   3. A visitor with `prefers-reduced-motion: reduce` sees no decorative motion; a visitor without it sees the motion-system hook working on a trivial test element.
   4. Every color pair on screen passes WCAG AA contrast when checked with axe or a contrast tool.
   5. Pushing a commit to `main` produces a new Vercel deployment within minutes; Biome lint/format passes cleanly on the codebase.
-**Plans**: TBD
+**Plans**: 7 plans across 4 waves
+Plans:
+- [ ] 01-00-PLAN.md — Wave 0: scaffold Next.js 16.2 + locked deps, Biome, Vitest harness + 8 test spec files
+- [ ] 01-01-PLAN.md — Wave 1: tokens.css @theme block + globals.css + cn() helper
+- [ ] 01-02-PLAN.md — Wave 1: root layout + next-themes Providers + (site) layout skeleton
+- [ ] 01-03-PLAN.md — Wave 2: MotionProvider (LazyMotion strict + reducedMotion=user) + opacity-only FadeIn
+- [ ] 01-04-PLAN.md — Wave 2: SkipLink + WordMark + NavLink + Nav + Footer + full (site) shell
+- [ ] 01-05-PLAN.md — Wave 3: home placeholder + custom 404 + local verification checkpoint
+- [ ] 01-06-PLAN.md — Wave 3: Vercel link + deploy main + production verification checkpoint
 **UI hint**: yes
 
 ### Phase 2: Content Pipeline
@@ -116,7 +124,7 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/0 | Not started | - |
+| 1. Foundation | 0/7 | Planned | - |
 | 2. Content Pipeline | 0/0 | Not started | - |
 | 3. Project Detail Template | 0/0 | Not started | - |
 | 4. Home + Projects Index | 0/0 | Not started | - |
