@@ -1,0 +1,50 @@
+---
+slug: myco
+title: Myco
+tagline: A persistent cognitive layer for Claude Code — local-first knowledge graph with Ollama embeddings and human-in-the-loop approvals.
+year: 2025
+tier: hero
+order: 10
+status: active
+visibility: public
+tags: [local-first, autonomous, open-source, ai, agents, typescript]
+stack: [TypeScript, SQLite, Ollama, Node.js]
+links:
+  repo: https://github.com/olivelliott/myco
+hero:
+  src: /images/projects/myco/hero-placeholder.png
+  alt: Myco knowledge graph visualization (placeholder — real image lands in Phase 7)
+outcomes:
+  - Apache 2.0 public release
+  - Local-first stack — SQLite + sqlite-vec + Ollama, no cloud dependency
+  - Knowledge graph with human-in-the-loop approval queue
+  - MCP tools for persistent memory across Claude Code sessions
+  - Self-enhancing graph via name-mention scanning, semantic similarity, and back-linking
+description: A local-first MCP server giving Claude Code agents durable episodic memory and an open-schema knowledge graph with nightly consolidation.
+---
+
+## Problem
+
+Claude Code agents are brilliant inside a single session and forgetful across them. The moment a session ends, every preference the user stated, every architectural decision the agent and user reached together, every subtle project convention discovered mid-task — all of it evaporates. The next session starts from zero. For a developer working across several long-lived projects, this isn't a curiosity. It's a tax paid on every new conversation: re-establishing context, restating the same preferences, re-discovering the same patterns the agent had previously internalized.
+
+The conventional workarounds don't solve the problem so much as move it. Handwritten `CLAUDE.md` files capture the deliberate stuff but can't keep up with the organic, session-by-session accretion of context — the small observations that are easy to notice but tedious to file. Cloud-hosted memory services solve the persistence problem, but at a cost the autonomy-thesis work rejects on principle: private codebases, client details, and half-formed notions get streamed to a third party, indexed on their hardware, and become a permanent part of someone else's infrastructure. For engineers who care about local-first systems, that trade is a non-starter.
+
+The deeper issue is that memory isn't a single primitive. It's at least three things layered together. There's the raw stream of what happened — episode logs, individual remember calls, atomic observations. There's the structured knowledge that emerges when those raw episodes get digested — entities, types, relationships, confidences. And there's the query surface that makes any of it useful — semantic recall, entity lookup, filtered search. A memory system that solves one layer and hand-waves the others ends up as a better notepad, not durable cognition. Myco exists because an agent that remembers across sessions without ever leaving the user's machine unlocks a different kind of working relationship — one where context compounds instead of resetting.
+
+## Approach
+
+Myco is an MCP server. Everything Claude Code needs — remember, recall, query, log_episode, consolidate, and forget — surfaces through the standard MCP tool interface, so any Claude Code session on the machine can speak to it over stdio without app-level integration.
+
+Underneath, the design is deliberately unglamorous. Storage is SQLite via `better-sqlite3` plus `sqlite-vec` for vector search. One file on disk, at `~/.local/share/myco/myco.db`. No daemon tier, no container, no hosted index. Embeddings come from Ollama running locally (`nomic-embed-text`, 768 dimensions), so the embedding model itself lives on the same machine that stores the data. The consolidation pipeline, which periodically extracts structured facts from raw episodes, uses a local Ollama LLM as well (`llama3.2` by default). The whole data path — write, embed, store, recall, consolidate — never leaves the host.
+
+The knowledge graph has three primitives: entities, observations, and relationships. Writes go through an approval queue when the system is uncertain — when a new fact contradicts an existing one, when an entity's type is ambiguous, when confidence falls below a threshold. That queue is the human-in-the-loop seam: Claude surfaces pending items, and the user approves, edits, or rejects. The seam matters because it's what lets the agent be productive about writing to memory without quietly corrupting it. Autonomy without a correction channel is just deferred bugs.
+
+The graph also enhances itself. Every `remember()` call triggers passive scanning: name mentions become candidate relationships, semantic similarity suggests back-links to related entities, and new observations get connected into existing structure rather than piling up in isolation. A separate nightly consolidation cron (at 2am by default) batches raw episode logs into durable entities and observations. Recall supports filters — entity type, minimum confidence, project namespace — so that a specific project's context doesn't bleed into unrelated work. There's a small Hono API server and a React 19 dashboard for inspection and approval review, but the MCP tools work headlessly — the UI is for exploration, not the critical path.
+
+## Outcome
+
+Myco ships as an Apache 2.0 open-source repository with four packages: the shared SQLite core, the MCP server, a Hono REST API, and the React dashboard. It runs end-to-end on a developer's machine with Node.js 22 and a local Ollama install; adding it to Claude Code is a single `claude mcp add` invocation against the built server entry point. Once wired in, every subsequent session has the same set of MCP tools available — remember, recall, query, log_episode, consolidate, list_pending_approvals, resolve_approval, forget — and every call against them accretes to the same local graph.
+
+What this enables is the thing I couldn't get any other way. Context compounds across sessions without leaking off the machine. Preferences stated once persist. Architectural decisions reached in one project stay scoped to that project by namespace and don't contaminate unrelated work. The approval queue keeps the graph honest when the model is unsure, and the consolidation cycle keeps raw episode logs from turning into landfill. The dashboard — bioluminescent graph visualization with hover illumination, path tracing, and a timeline slider — is the human-facing surface for inspecting what's been remembered, but it's optional. The MCP tools are the contract; the dashboard is the operator's console.
+
+Myco is still young and actively evolving. The Apache 2.0 license and public repository make it available for anyone working on Claude Code to try, fork, or run against their own stack. It's the first piece of a broader thesis about building agent infrastructure that respects locality — durable cognition shouldn't require giving up your data, and the system that remembers for you shouldn't be one you can't control.
