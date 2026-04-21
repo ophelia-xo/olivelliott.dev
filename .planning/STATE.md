@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: executing
-last_updated: "2026-04-21T21:11:10.559Z"
+last_updated: "2026-04-21T21:21:30.829Z"
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 12
-  completed_plans: 9
-  percent: 75
+  completed_plans: 10
+  percent: 83
 ---
 
 # Project State: olivelliott.dev
@@ -25,13 +25,13 @@ progress:
 ## Current Position
 
 Phase: 02 (content-pipeline) — EXECUTING
-Current Plan: 3
+Current Plan: 4
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 2
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [████████░░] 75%
+**Progress:** [████████░░] 83%
 
 ```
 [███████░░░] 67%
@@ -48,6 +48,7 @@ Total Plans in Phase: 5
 | Current phase | 2 (Content Pipeline) |
 | Phase 02 P00 | 2 min, 3 tasks, 5 files |
 | Phase 02-content-pipeline P01 | 3 min | 2 tasks | 7 files |
+| Phase 02-content-pipeline P02 | 6 min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,9 @@ From `research/SUMMARY.md`:
 - [Phase 02-content-pipeline]: [Phase 02]: Privacy rules enforced via Zod .transform() (not .refine()) so the inferred output type reflects the post-strip shape — consumers cannot see the raw pre-transform object
 - [Phase 02-content-pipeline]: [Phase 02]: Private-project test fixture lives under tests/fixtures/projects/ (not content/projects/) — keeps real content Myco-only for Wave 3 and decouples schema tests from authored bodies
 - [Phase 02-content-pipeline]: [Phase 02]: biome.json does not enable lint/suspicious/noConsole — copy-paste of RESEARCH.md biome-ignore comments produces dead suppressions. Future plans should verify biome.json before keeping any biome-ignore line.
+- [Phase 02-content-pipeline]: Plan 02-02: Installed server-only as runtime dep AND aliased it in vitest.config.ts to a tests/stubs/ empty module — Next resolves the real package in prod builds, Vitest loads the no-op stub. Required because pnpm strict mode hides transitive deps (blocks resolution) AND the real package throws at require-time (blocks Vitest load).
+- [Phase 02-content-pipeline]: Plan 02-02: lib/content.ts uses _loadForTests(dir) as an @internal test seam (Option A from RESEARCH.md) — tests point the loader at fs.mkdtempSync temp dirs populated from tests/fixtures/projects/, no node:fs mocking needed. lib/projects.ts uses vi.mock('@/lib/content') + top-level await import for query-helper isolation from the real content directory.
+- [Phase 02-content-pipeline]: Plan 02-02: getProject(slug) reads allProjects directly (not getAll()) so archived slugs remain resolvable — consumer pages call notFound() on undefined, not on status==='archived'. Collection-level views (getAll, getAllTags, getProjectsByTag) correctly exclude archived.
 
 ### Open Decisions (flagged in research)
 
@@ -109,7 +113,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-04-21T21:11:10.555Z
+**Last session:** 2026-04-21T21:21:30.826Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
