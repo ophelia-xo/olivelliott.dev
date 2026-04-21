@@ -50,7 +50,8 @@ export const ProjectFrontmatterSchema = ProjectFrontmatterRawSchema.transform(
     // Privacy transform — CNT-03
     if (doc.visibility === 'private') {
       if (doc.links.repo && process.env.NODE_ENV === 'development') {
-        // biome-ignore lint/suspicious/noConsole: author-facing warning
+        // Author-facing warning: private projects should not expose a repo URL.
+        // (biome.json does not enable noConsole; no suppression needed.)
         console.warn(
           `[content] Stripping links.repo from private project "${doc.slug}". ` +
             `Private projects should not expose a repo URL.`,
