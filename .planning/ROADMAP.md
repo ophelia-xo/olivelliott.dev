@@ -52,7 +52,13 @@ Plans:
   3. A project marked `privacy: private` automatically carries a `code-private` tag and has its `links.repo` stripped — verified against at least one fixture.
   4. Code consumers can query "all projects tagged `local-first`" or "all hero-tier projects" via a typed helper, not ad-hoc filtering.
   5. The Myco MDX file is authored from the existing README and passes the schema — proving the model on real content before any page template is built.
-**Plans**: TBD
+**Plans**: 5 plans across 4 waves
+Plans:
+- [x] 02-00-PLAN.md — Wave 0: install gray-matter + remark-frontmatter, wire next.config.ts, mdx-components.tsx stub
+- [ ] 02-01-PLAN.md — Wave 1: lib/tags.ts + lib/schemas.ts (Zod + privacy transform) + schema/privacy-transform tests + fixtures
+- [ ] 02-02-PLAN.md — Wave 2: lib/content.ts (fs+gray-matter loader) + lib/projects.ts query helpers + content-load + tag-index tests
+- [ ] 02-03-PLAN.md — Wave 3: author content/projects/myco.mdx from README + extend content-load.test.ts + human-verify editorial quality
+- [ ] 02-04-PLAN.md — Wave 3: tests/fixtures/banned-terms.ts + tests/content/redaction.test.ts + 02-REDACTION-REVIEW.md checklist
 **UI hint**: no
 
 ### Phase 3: Project Detail Template

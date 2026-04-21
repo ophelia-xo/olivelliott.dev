@@ -20,7 +20,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content pipeline
 
-- [ ] **CNT-01**: Content Collections is configured to compile MDX files under `content/projects/`
+- [x] **CNT-01**: Content Collections is configured to compile MDX files under `content/projects/`
 - [ ] **CNT-02**: Projects have a Zod-validated frontmatter schema (slug, title, year, tags[], tier: hero|secondary, privacy: public|private, hero image, summary, links, outcomes)
 - [ ] **CNT-03**: The schema transform auto-adds a `code-private` tag for privacy:private projects and strips any `links.repo` field
 - [ ] **CNT-04**: A derived tag index and query helpers are exposed for consumers (home, projects page)
@@ -161,7 +161,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | FND-06 | Phase 1 — Foundation | Pending |
 | FND-07 | Phase 1 — Foundation | Pending |
 | FND-08 | Phase 1 — Foundation | Pending |
-| CNT-01 | Phase 2 — Content Pipeline | Pending |
+| CNT-01 | Phase 2 — Content Pipeline | Complete |
 | CNT-02 | Phase 2 — Content Pipeline | Pending |
 | CNT-03 | Phase 2 — Content Pipeline | Pending |
 | CNT-04 | Phase 2 — Content Pipeline | Pending |

@@ -2,13 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-last_updated: "2026-04-21T20:09:40.169Z"
+current_plan: 2
+status: executing
+last_updated: "2026-04-21T21:03:30.057Z"
 progress:
   total_phases: 7
   completed_phases: 1
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 12
+  completed_plans: 8
+  percent: 67
 ---
 
 # Project State: olivelliott.dev
@@ -18,31 +20,33 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 01 — foundation
+**Current Focus:** Phase 02 — content-pipeline
 
 ## Current Position
 
-Phase: 01 (foundation) — EXECUTING
-Plan: 1 of 7
+Phase: 02 (content-pipeline) — EXECUTING
+Current Plan: 2
+Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 2
-**Plan:** Not started
-**Status:** Ready to plan
-**Progress:** 0/7 phases complete
+**Plan:** 02-00 complete → next is 02-01
+**Status:** Ready to execute
+**Progress:** [███████░░░] 67%
 
 ```
-[░░░░░░░░░░░░░░░░░░░░] 0%
+[███████░░░] 67%
 ```
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Phases complete | 0/7 |
+| Phases complete | 1/7 |
 | v1 requirements mapped | 54/54 |
-| v1 requirements validated | 0/54 |
-| Plans executed | 0 |
-| Current phase | 1 (Foundation) |
+| v1 requirements validated | 1/54 |
+| Plans executed | 8/12 |
+| Current phase | 2 (Content Pipeline) |
+| Phase 02 P00 | 2 min, 3 tasks, 5 files |
 
 ## Accumulated Context
 
@@ -66,6 +70,9 @@ From `research/SUMMARY.md`:
 - Stack locked: Next.js 16.2 / React 19.2 / Tailwind v4.1 / Motion 12 / Geist / Content Collections / `@next/mdx` / pnpm / Biome / Vercel
 - Explicit rejects: Contentlayer (abandoned), `next-mdx-remote` (archived), R3F, Aceternity-style template libs, Lottie, `@react-pdf/renderer`
 - Architecture: Content Collections + Zod as SSoT; single `<MotionProvider>` boundary with `LazyMotion` + `reducedMotion="user"`; print-CSS-primary resume with Puppeteer build step
+- [Phase 02]: Install remark-frontmatter in Wave 0 (not deferred to Phase 3) so pnpm build smoke-gates MDX infrastructure before schema/loader/content code lands
+- [Phase 02]: Register remark-frontmatter via string form 'remark-frontmatter' not function reference — required for Turbopack in Next 16 (GitHub issues #84258, #76739)
+- [Phase 02]: gray-matter + remark-frontmatter added as runtime dependencies (not devDependencies) — Next.js resolves them from dependencies during next build
 
 ### Open Decisions (flagged in research)
 
@@ -97,9 +104,9 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-04-20T18:15:48.892Z
+**Last session:** 2026-04-21T21:03:00.777Z
 
-**Next action:** Run `/gsd:plan-phase 1` to decompose Phase 1 (Foundation) into executable plans.
+**Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
 **Files to consult when resuming:**
 
