@@ -6,7 +6,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { _loadForTests } from '@/lib/content'
+import { _loadForTests, allProjects } from '@/lib/content'
 
 const FIXTURES = path.resolve(__dirname, '../fixtures/projects')
 
@@ -76,5 +76,49 @@ describe('lib/content loader — fixture directory', () => {
     const nonexistent = path.join(os.tmpdir(), `does-not-exist-${Date.now()}`)
     const projects = _loadForTests(nonexistent)
     expect(projects).toEqual([])
+  })
+})
+
+describe('content/projects/ — real content integration (CNT-05)', () => {
+  it('loads at least one project (Myco)', () => {
+    expect(allProjects.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('includes myco project with locked frontmatter values', () => {
+    const myco = allProjects.find((p) => p.slug === 'myco')
+    expect(myco).toBeDefined()
+    expect(myco?.tier).toBe('hero')
+    expect(myco?.visibility).toBe('public')
+    expect(myco?.status).toBe('active')
+    expect(myco?.year).toBe(2025)
+    expect(myco?.order).toBe(10)
+  })
+
+  it('myco tags include local-first, open-source, ai', () => {
+    const myco = allProjects.find((p) => p.slug === 'myco')
+    expect(myco?.tags).toEqual(
+      expect.arrayContaining(['local-first', 'open-source', 'ai']),
+    )
+  })
+
+  it('myco body contains Problem, Approach, Outcome H2 headings', () => {
+    const myco = allProjects.find((p) => p.slug === 'myco')
+    expect(myco?.body).toMatch(/^## Problem$/m)
+    expect(myco?.body).toMatch(/^## Approach$/m)
+    expect(myco?.body).toMatch(/^## Outcome$/m)
+  })
+
+  it('myco body is within 800–1200 word budget', () => {
+    const myco = allProjects.find((p) => p.slug === 'myco')
+    expect(myco).toBeDefined()
+    const wordCount = (myco?.body ?? '').trim().split(/\s+/).length
+    expect(wordCount).toBeGreaterThanOrEqual(800)
+    expect(wordCount).toBeLessThanOrEqual(1200)
+  })
+
+  it('myco hero is a placeholder path (real image deferred to Phase 7)', () => {
+    const myco = allProjects.find((p) => p.slug === 'myco')
+    expect(myco?.hero.src).toContain('myco')
+    expect(myco?.hero.alt).toContain('placeholder')
   })
 })
