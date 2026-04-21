@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-04-21T21:03:30.057Z"
+last_updated: "2026-04-21T21:11:10.559Z"
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 12
-  completed_plans: 8
-  percent: 67
+  completed_plans: 9
+  percent: 75
 ---
 
 # Project State: olivelliott.dev
@@ -25,13 +25,13 @@ progress:
 ## Current Position
 
 Phase: 02 (content-pipeline) — EXECUTING
-Current Plan: 2
+Current Plan: 3
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 2
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [███████░░░] 67%
+**Progress:** [████████░░] 75%
 
 ```
 [███████░░░] 67%
@@ -47,6 +47,7 @@ Total Plans in Phase: 5
 | Plans executed | 8/12 |
 | Current phase | 2 (Content Pipeline) |
 | Phase 02 P00 | 2 min, 3 tasks, 5 files |
+| Phase 02-content-pipeline P01 | 3 min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,10 @@ From `research/SUMMARY.md`:
 - [Phase 02]: Install remark-frontmatter in Wave 0 (not deferred to Phase 3) so pnpm build smoke-gates MDX infrastructure before schema/loader/content code lands
 - [Phase 02]: Register remark-frontmatter via string form 'remark-frontmatter' not function reference — required for Turbopack in Next 16 (GitHub issues #84258, #76739)
 - [Phase 02]: gray-matter + remark-frontmatter added as runtime dependencies (not devDependencies) — Next.js resolves them from dependencies during next build
+- [Phase 02-content-pipeline]: [Phase 02]: lib/schemas.ts kept separate from lib/content.ts — schema module stays fs-free, allowing type-only imports from any boundary (tests, RSC, transitively client)
+- [Phase 02-content-pipeline]: [Phase 02]: Privacy rules enforced via Zod .transform() (not .refine()) so the inferred output type reflects the post-strip shape — consumers cannot see the raw pre-transform object
+- [Phase 02-content-pipeline]: [Phase 02]: Private-project test fixture lives under tests/fixtures/projects/ (not content/projects/) — keeps real content Myco-only for Wave 3 and decouples schema tests from authored bodies
+- [Phase 02-content-pipeline]: [Phase 02]: biome.json does not enable lint/suspicious/noConsole — copy-paste of RESEARCH.md biome-ignore comments produces dead suppressions. Future plans should verify biome.json before keeping any biome-ignore line.
 
 ### Open Decisions (flagged in research)
 
@@ -104,7 +109,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-04-21T21:03:00.777Z
+**Last session:** 2026-04-21T21:11:10.555Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
