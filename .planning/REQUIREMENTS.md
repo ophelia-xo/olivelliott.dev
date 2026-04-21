@@ -25,7 +25,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CNT-03**: The schema transform auto-adds a `code-private` tag for privacy:private projects and strips any `links.repo` field
 - [x] **CNT-04**: A derived tag index and query helpers are exposed for consumers (home, projects page)
 - [ ] **CNT-05**: One hero project MDX (Myco) is authored from the existing README as the first real content file
-- [ ] **CNT-06**: Private-project content passes a redaction review — no internal details, no proprietary claims, no unreleased-feature references
+- [x] **CNT-06**: Private-project content passes a redaction review — no internal details, no proprietary claims, no unreleased-feature references
 
 ### Project detail template
 
@@ -166,7 +166,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | CNT-03 | Phase 2 — Content Pipeline | Complete |
 | CNT-04 | Phase 2 — Content Pipeline | Complete |
 | CNT-05 | Phase 2 — Content Pipeline | Pending |
-| CNT-06 | Phase 2 — Content Pipeline | Pending |
+| CNT-06 | Phase 2 — Content Pipeline | Complete |
 | PRJ-01 | Phase 3 — Project Detail Template | Pending |
 | PRJ-02 | Phase 3 — Project Detail Template | Pending |
 | PRJ-03 | Phase 3 — Project Detail Template | Pending |
