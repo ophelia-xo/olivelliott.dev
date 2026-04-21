@@ -35,7 +35,7 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 Plans:
 - [x] 01-00-PLAN.md — Wave 0: scaffold Next.js 16.2 + locked deps, Biome, Vitest harness + 8 test spec files
 - [x] 01-01-PLAN.md — Wave 1: tokens.css @theme block + globals.css + cn() helper
-- [ ] 01-02-PLAN.md — Wave 1: root layout + next-themes Providers + (site) layout skeleton
+- [x] 01-02-PLAN.md — Wave 1: root layout + next-themes Providers + (site) layout skeleton
 - [ ] 01-03-PLAN.md — Wave 2: MotionProvider (LazyMotion strict + reducedMotion=user) + opacity-only FadeIn
 - [ ] 01-04-PLAN.md — Wave 2: SkipLink + WordMark + NavLink + Nav + Footer + full (site) shell
 - [ ] 01-05-PLAN.md — Wave 3: home placeholder + custom 404 + local verification checkpoint
