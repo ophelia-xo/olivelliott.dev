@@ -1,0 +1,56 @@
+/* styles/tokens.css
+ * Design tokens — Phase 1 Foundation
+ * Source of truth: .planning/phases/01-foundation/01-UI-SPEC.md
+ * Every value here is UI-SPEC-locked. Do not edit without a UI-SPEC revision.
+ */
+
+@theme {
+  /* Fonts — injected by next/font (geist package) via --font-geist-sans / --font-geist-mono on <html> */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Type scale — 3 sizes, 2 weights (UI-SPEC Typography) */
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.4;
+  --text-display: clamp(2rem, 5vw, 3rem);
+  --text-display--line-height: 1.15;
+
+  /* Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.02em;
+
+  /* Spacing base — 4pt grid */
+  --spacing: 0.25rem;
+
+  /* Colors — dark theme only (UI-SPEC Color) */
+  --color-bg: #0a0a0a;
+  --color-surface-1: #0a0a0a;
+  --color-surface-2: #141414;          /* reserved — Phase 3+ */
+  --color-hairline: #1f1f1f;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a3a3a3;
+  --color-text-tertiary: #737373;
+  --color-text-on-accent: #0a0a0a;
+  --color-accent: #fbbf24;
+  --color-accent-hover: #f59e0b;
+  --color-danger: #f87171;             /* reserved — unused in v1 */
+
+  /* Motion (UI-SPEC Motion tokens) */
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 220ms;
+  --motion-duration-slow: 420ms;       /* reserved — Phase 4 hero moment only */
+  --motion-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Radii — Phase 1 renders zero rounded chrome (--radius-none) */
+  --radius-none: 0;
+  --radius-sm: 2px;                    /* reserved */
+  --radius-md: 6px;                    /* reserved */
+  --radius-lg: 12px;                   /* reserved */
+}
