@@ -1,10 +1,14 @@
+import { MotionProvider } from '@/components/motion/motion-provider'
+import { Footer } from '@/components/site/footer'
+import { Nav } from '@/components/site/nav'
+import { SkipLink } from '@/components/site/skip-link'
+
 /**
- * (site) route-group layout — Phase 1 Foundation.
+ * (site) route-group layout — Phase 1 full shell.
  *
- * Minimal scaffold: <main id="main"> exists so the skip-link (added in Plan 04)
- * has a valid target, and so the home placeholder (Plan 05) renders inside
- * the correct container. Plan 04 replaces this file with the full shell
- * (MotionProvider + SkipLink + Nav + main + Footer).
+ * Renders SkipLink → Nav → <main id="main"> → Footer inside a single
+ * MotionProvider subtree. /resume (Phase 5) lives OUTSIDE this group so it
+ * can opt out of motion chrome for print friendliness.
  */
 export default function SiteLayout({
   children,
@@ -12,11 +16,16 @@ export default function SiteLayout({
   children: React.ReactNode
 }) {
   return (
-    <main
-      id="main"
-      className="mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-8 md:pt-16 pb-16 md:pb-24"
-    >
-      {children}
-    </main>
+    <MotionProvider>
+      <SkipLink />
+      <Nav />
+      <main
+        id="main"
+        className="mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-8 md:pt-16 pb-16 md:pb-24"
+      >
+        {children}
+      </main>
+      <Footer />
+    </MotionProvider>
   )
 }
