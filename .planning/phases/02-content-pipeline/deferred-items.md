@@ -41,3 +41,12 @@ Full `pnpm lint` currently fails with 1 error + 23 warnings, all in Phase 1 file
   3. Ignore the `useSortedClasses` nursery rule if Olive prefers hand-sorted classes.
 
 **Impact on Phase 2:** None on Plan 02-00's success criteria (`pnpm build` passes, typecheck passes, files from this plan are lint-clean, all 74 Phase 1 tests still pass). Subsequent Phase 2 plans may need to address lint before the phase-end verifier passes.
+# Deferred items (Phase 02 content pipeline)
+
+## From Plan 02-04 (redaction scanner) execution — 2026-04-21
+
+- **tests/content/content-load.test.ts FAIL — out of scope for 02-04**
+  - Root cause: `lib/content.ts:44` `ProjectFrontmatterSchema.parse(data)` rejects `description` > 160 characters in `content/projects/myco.mdx`.
+  - Owner: Plan 02-03 (Myco MDX authoring, currently running in parallel).
+  - 02-04 scope boundary: must not touch `content/projects/` or `tests/content/content-load.test.ts` per executor prompt.
+  - Expected resolution: 02-03 executor fixes Myco frontmatter (shortens description or schema relaxation) OR Plan 02-03 post-merge validation will handle it. No action required from 02-04.
