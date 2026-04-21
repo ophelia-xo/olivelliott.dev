@@ -39,7 +39,7 @@ Plans:
 - [x] 01-03-PLAN.md — Wave 2: MotionProvider (LazyMotion strict + reducedMotion=user) + opacity-only FadeIn
 - [x] 01-04-PLAN.md — Wave 2: SkipLink + WordMark + NavLink + Nav + Footer + full (site) shell
 - [x] 01-05-PLAN.md — Wave 3: home placeholder + custom 404 + local verification checkpoint
-- [ ] 01-06-PLAN.md — Wave 3: Vercel link + deploy main + production verification checkpoint
+- [x] 01-06-PLAN.md — Wave 3: Vercel link + deploy main + production verification checkpoint
 **UI hint**: yes
 
 ### Phase 2: Content Pipeline
