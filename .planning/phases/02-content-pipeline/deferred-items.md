@@ -50,3 +50,8 @@ Full `pnpm lint` currently fails with 1 error + 23 warnings, all in Phase 1 file
   - Owner: Plan 02-03 (Myco MDX authoring, currently running in parallel).
   - 02-04 scope boundary: must not touch `content/projects/` or `tests/content/content-load.test.ts` per executor prompt.
   - Expected resolution: 02-03 executor fixes Myco frontmatter (shortens description or schema relaxation) OR Plan 02-03 post-merge validation will handle it. No action required from 02-04.
+
+- **`pnpm lint` pre-existing warnings — out of scope for 02-04**
+  - Phase 1 files emit lint/nursery/useSortedClasses (Tailwind class order) and lint/complexity/noImportantStyles warnings, and styles/tokens.css has a parse error.
+  - My 02-04 files (`tests/fixtures/banned-terms.ts`, `tests/content/redaction.test.ts`) lint clean (verified via `pnpm exec biome lint <paths>`).
+  - Owner: Phase 1 (P00 layout/foundation) or a cross-phase hygiene sweep.

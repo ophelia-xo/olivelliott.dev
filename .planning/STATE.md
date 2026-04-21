@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 current_plan: 5
-status: executing
-last_updated: "2026-04-21T21:29:16.521Z"
+status: verifying
+last_updated: "2026-04-21T22:21:04.070Z"
 progress:
   total_phases: 7
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 12
-  completed_plans: 11
-  percent: 92
+  completed_plans: 12
+  percent: 100
 ---
 
 # Project State: olivelliott.dev
@@ -30,8 +30,8 @@ Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 2
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to execute
-**Progress:** [█████████░] 92%
+**Status:** Phase complete — ready for verification
+**Progress:** [██████████] 100%
 
 ```
 [███████░░░] 67%
@@ -50,6 +50,7 @@ Total Plans in Phase: 5
 | Phase 02-content-pipeline P01 | 3 min | 2 tasks | 7 files |
 | Phase 02-content-pipeline P02 | 6 min | 2 tasks | 5 files |
 | Phase 02-content-pipeline P04 | 4min | 2 tasks | 4 files |
+| Phase 02-content-pipeline P03 | 1min | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -86,6 +87,8 @@ From `research/SUMMARY.md`:
 - [Phase 02-content-pipeline]: Plan 02-04: Redaction scanner walks filesystem directly (fs.readdirSync + gray-matter), not through lib/content.ts — scanner must survive schema bugs and stay independent of the pipeline it audits. Dynamic describe block gives vacuous pass in Phase 2 (no private projects yet) and auto-converts to per-file assertions when private MDX lands in Phase 7.
 - [Phase 02-content-pipeline]: Plan 02-04: Self-test describe block (5 assertions) is the insurance layer — exercises positive detection, case-insensitivity, whole-word boundaries (voyages ≠ voya), isolated tmp-fixture scan, and confirms frontmatter values are NOT scanned. Prevents silent drift where the scanner stops firing without anyone noticing.
 - [Phase 02-content-pipeline]: Plan 02-04: BANNED_TERMS source-of-truth split — literal list in tests/fixtures/banned-terms.ts (Object.freeze'd), per-term rationale + review process in .planning/phases/02-content-pipeline/02-REDACTION-REVIEW.md. Checklist doc references the code file path; no duplication, single update path.
+- [Phase 02-content-pipeline]: Plan 02-03: Myco repo URL canonicalized to github.com/olivelliott/myco (not olive-elliott/myco) — confirmed at human-verify checkpoint. PLAN.md body used olive-elliott/ as a placeholder; the authored MDX used the correct handle from the start, so no correction was needed on resume.
+- [Phase 02-content-pipeline]: Plan 02-03: Hero-tier case-study template locked — Problem → Approach → Outcome H2 anchors (exact strings) with 800–1200 word budget; outcomes bullets descriptive-only (no fabricated metrics). Myco authored at 902 words as the canonical fixture; Phase 3 detail template may assume these three anchors exist on every hero MDX.
 
 ### Open Decisions (flagged in research)
 
@@ -117,7 +120,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-04-21T21:29:16.518Z
+**Last session:** 2026-04-21T22:21:04.067Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
