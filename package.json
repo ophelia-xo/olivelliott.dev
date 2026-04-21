@@ -38,11 +38,17 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/react": "^16",
+    "@testing-library/user-event": "^14",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.19.39",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vitest/ui": "^3.2.4",
+    "jsdom": "^25",
     "tailwindcss": "^4",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^3"
   }
 }
