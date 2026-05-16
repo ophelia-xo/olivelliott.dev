@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-05-16T17:35:43.686Z"
+last_updated: "2026-05-16T17:43:52.609Z"
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 21
-  completed_plans: 17
-  percent: 81
+  completed_plans: 18
+  percent: 86
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 04 (home-+-projects-index) — EXECUTING
-Plan: 2 of 5
-Current Plan: 2
+Plan: 3 of 5
+Current Plan: 3
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 4
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [████████░░] 81%
+**Progress:** [█████████░] 86%
 
 ```
 [███████░░░] 67%
@@ -57,6 +57,7 @@ Total Plans in Phase: 5
 | Phase 03-project-detail-template P02 | 4 min | 3 tasks | 6 files |
 | Phase 03-project-detail-template P03 | 68 min | 3 tasks | 11 files |
 | Phase 04-home-+-projects-index P00 | 2 min | 2 tasks | 2 files |
+| Phase 04-home-+-projects-index P01 | 3 min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -114,6 +115,10 @@ From `research/SUMMARY.md`:
 - [Phase 04-home-+-projects-index]: ThesisParagraph uses two-stage mounted gate (useState(false) + useEffect setMounted) + explicit useReducedMotion() short-circuit — MotionConfig reducedMotion='user' does NOT cover opacity (only transform/layout), so manual gate is required or reduced-motion users get the per-word fade anyway. Locks the SSR-safe shape from RESEARCH Pattern 4.
 - [Phase 04-home-+-projects-index]: SSR-fallback assertion uses renderToString from react-dom/server, NOT @testing-library/react render(). Under React 19 + jsdom, RTL render() commits mount effects synchronously inside the render() call, so the returned container reflects POST-mount state. renderToString is the only mechanism that captures actual server-pass HTML. Pattern reusable for any future SSR-shape assertions in this codebase.
 - [Phase 04-home-+-projects-index]: Vitest mock for motion/react MUST expose BOTH m AND useReducedMotion in the same module shape — partial mock omitting the hook throws 'useReducedMotion is not a function' at component load (Pitfall 8). Test file uses vi.doMock + vi.resetModules + dynamic await import to swap the hook return per test.
+- [Phase 04-home-+-projects-index]: Plan 04-01: Nested-anchor regression lock pattern — every card test asserts container.querySelectorAll('a').length === 1 (wrapper); CardMeta test asserts === 0. Pattern catches accidental TagChipRow import inside cards AND any future interactive child smuggling in an <a>. Reusable for any wrapping-anchor surface.
+- [Phase 04-home-+-projects-index]: Plan 04-01: CardMeta is a SIBLING of Phase 3's ProjectMeta, not a refactor — ProjectMeta still composes interactive TagChipRow on detail page; CardMeta is card-only variant whose chips are <span>. Two near-identical files cheaper than chipsInteractive: boolean prop which would leak Pitfall 3 trap into API surface.
+- [Phase 04-home-+-projects-index]: Plan 04-01: Hero vs secondary cards split into separate files (not unified behind tier prop) — heading levels differ (H2 vs H3), DOM shapes diverge (no image/outcomes in secondary), prop shapes asymmetric (hero prop only on secondary). Tests stay 1:1, prevents drift, future divergence trivial.
+- [Phase 04-home-+-projects-index]: Plan 04-01: Outcome cap (.slice(0,3)) at component boundary, NOT schema — schema permits 5, UI weight tops at 3. Cap is editorial UI concern, schema flexibility preserved. next/image without priority on cards (RESEARCH Open Q #3 — LCP tuning deferred to Phase 6, framework picks LCP image).
 
 ### Open Decisions (flagged in research)
 
@@ -145,7 +150,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T17:35:43.682Z
+**Last session:** 2026-05-16T17:43:52.606Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 

@@ -40,8 +40,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Home page
 
 - [ ] **HOM-01**: Home page has a hero section with a one-sentence thesis (engineer / autonomous workflows / local-first / freedom for the other things in life)
-- [ ] **HOM-02**: Home page features the hero-tier projects (Myco, Fathom, Agenda Keeper) with larger cards
-- [ ] **HOM-03**: Home page shows secondary-tier projects (Trade Bot, Stemz, Aktiga, plus selected older work) as smaller cards below the hero tier
+- [x] **HOM-02**: Home page features the hero-tier projects (Myco, Fathom, Agenda Keeper) with larger cards
+- [x] **HOM-03**: Home page shows secondary-tier projects (Trade Bot, Stemz, Aktiga, plus selected older work) as smaller cards below the hero tier
 - [ ] **HOM-04**: Home page layout is deliberately not a bento grid and does not use the stagger-on-scroll anti-pattern
 - [x] **HOM-05**: Home page hero has an earned, restrained motion moment (e.g., type-set entrance or cursor-reactive detail) that respects reduced-motion
 
@@ -50,7 +50,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **PIX-01**: `/projects` page lists all projects with a filterable tag chip row
 - [ ] **PIX-02**: Tag filter state is URL-synced (`?tag=local-first`) so filters are shareable and back-button works
 - [ ] **PIX-03**: Tag chips are fully keyboard-navigable with visible focus styles
-- [ ] **PIX-04**: Project cards visually indicate hero vs secondary tier and public vs private
+- [x] **PIX-04**: Project cards visually indicate hero vs secondary tier and public vs private
 
 ### About page
 
@@ -175,14 +175,14 @@ Which phases cover which requirements. Populated during roadmap creation.
 | PRJ-06 | Phase 3 — Project Detail Template | Complete |
 | PRJ-07 | Phase 3 — Project Detail Template | Complete |
 | HOM-01 | Phase 4 — Home + Projects Index | Pending |
-| HOM-02 | Phase 4 — Home + Projects Index | Pending |
-| HOM-03 | Phase 4 — Home + Projects Index | Pending |
+| HOM-02 | Phase 4 — Home + Projects Index | Complete |
+| HOM-03 | Phase 4 — Home + Projects Index | Complete |
 | HOM-04 | Phase 4 — Home + Projects Index | Pending |
 | HOM-05 | Phase 4 — Home + Projects Index | Complete |
 | PIX-01 | Phase 4 — Home + Projects Index | Pending |
 | PIX-02 | Phase 4 — Home + Projects Index | Pending |
 | PIX-03 | Phase 4 — Home + Projects Index | Pending |
-| PIX-04 | Phase 4 — Home + Projects Index | Pending |
+| PIX-04 | Phase 4 — Home + Projects Index | Complete |
 | ABT-01 | Phase 5 — About + Resume + Contact | Pending |
 | ABT-02 | Phase 5 — About + Resume + Contact | Pending |
 | ABT-03 | Phase 5 — About + Resume + Contact | Pending |
