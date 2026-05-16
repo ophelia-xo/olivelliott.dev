@@ -90,7 +90,7 @@ Plans:
   5. Hero-tier cards are visually distinct from secondary-tier cards, and private-project cards are visually distinct from public ones at a glance.
 **Plans**: 5 plans across 3 waves
 Plans:
-- [ ] 04-00-PLAN.md — Wave 0: ThesisParagraph client island (SSR-safe + explicit useReducedMotion gate) — the one earned motion moment
+- [x] 04-00-PLAN.md — Wave 0: ThesisParagraph client island (SSR-safe + explicit useReducedMotion gate) — the one earned motion moment
 - [ ] 04-01-PLAN.md — Wave 1: CardMeta + ProjectCardHero + ProjectCardSecondary (presentational chips, no nested anchors, isPlaceholderHero branching)
 - [ ] 04-02-PLAN.md — Wave 2: HomeHero + HomeProjectGrid + replace app/(site)/page.tsx (Phase 1 placeholder fully removed; per-route metadata)
 - [ ] 04-03-PLAN.md — Wave 1: TagFilterRow + EmptyFilterState + TierSeparator (RSC primitives — URL-synced filter, locked empty-state copy, aria-labelledby id pass-through)

@@ -43,7 +43,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **HOM-02**: Home page features the hero-tier projects (Myco, Fathom, Agenda Keeper) with larger cards
 - [ ] **HOM-03**: Home page shows secondary-tier projects (Trade Bot, Stemz, Aktiga, plus selected older work) as smaller cards below the hero tier
 - [ ] **HOM-04**: Home page layout is deliberately not a bento grid and does not use the stagger-on-scroll anti-pattern
-- [ ] **HOM-05**: Home page hero has an earned, restrained motion moment (e.g., type-set entrance or cursor-reactive detail) that respects reduced-motion
+- [x] **HOM-05**: Home page hero has an earned, restrained motion moment (e.g., type-set entrance or cursor-reactive detail) that respects reduced-motion
 
 ### Projects index
 
@@ -178,7 +178,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | HOM-02 | Phase 4 — Home + Projects Index | Pending |
 | HOM-03 | Phase 4 — Home + Projects Index | Pending |
 | HOM-04 | Phase 4 — Home + Projects Index | Pending |
-| HOM-05 | Phase 4 — Home + Projects Index | Pending |
+| HOM-05 | Phase 4 — Home + Projects Index | Complete |
 | PIX-01 | Phase 4 — Home + Projects Index | Pending |
 | PIX-02 | Phase 4 — Home + Projects Index | Pending |
 | PIX-03 | Phase 4 — Home + Projects Index | Pending |

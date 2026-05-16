@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: planning
-last_updated: "2026-05-16T02:21:29.441Z"
+current_plan: 2
+status: executing
+last_updated: "2026-05-16T17:35:43.686Z"
 progress:
   total_phases: 7
   completed_phases: 3
-  total_plans: 16
-  completed_plans: 16
-  percent: 100
+  total_plans: 21
+  completed_plans: 17
+  percent: 81
 ---
 
 # Project State: olivelliott.dev
@@ -20,19 +20,19 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 03 — project-detail-template
+**Current Focus:** Phase 04 — home-+-projects-index
 
 ## Current Position
 
-Phase: 03 (project-detail-template) — EXECUTING
-Plan: 4 of 4
-Current Plan: Not started
-Total Plans in Phase: 4
+Phase: 04 (home-+-projects-index) — EXECUTING
+Plan: 2 of 5
+Current Plan: 2
+Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 4
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to plan
-**Progress:** [██████████] 100%
+**Status:** Ready to execute
+**Progress:** [████████░░] 81%
 
 ```
 [███████░░░] 67%
@@ -56,6 +56,7 @@ Total Plans in Phase: 4
 | Phase 03-project-detail-template P01 | 3min | 3 tasks | 8 files |
 | Phase 03-project-detail-template P02 | 4 min | 3 tasks | 6 files |
 | Phase 03-project-detail-template P03 | 68 min | 3 tasks | 11 files |
+| Phase 04-home-+-projects-index P00 | 2 min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -110,6 +111,9 @@ From `research/SUMMARY.md`:
 - [Phase 03-project-detail-template]: Plan 03-03: Vitest .mdx interception via Vite transform-hook plugin (NOT alias regex). Plan documented Pitfall 12 as alias-to-stub; the alias-regex form mangled the dynamic-import template literal. The transform-hook plugin returns a no-op default for any .mdx id. Per-test vi.doMock can still override the default for targeted MDX assertions. Single edit point in vitest.config.ts.
 - [Phase 03-project-detail-template]: Plan 03-03: Tests mock motion/react via Proxy (NOT MotionConfig wrapper). Plan said 'try without provider first; wrap in MotionConfig if it errors' — in jsdom, LazyMotion strict HANGS instead of erroring when m.* is rendered without provider. Proxy that strips motion-only props (whileHover, transition, etc.) and forwards children to the underlying tag is cleaner than mounting a tiny provider in every test, and reusable across tests/projects/next-project-block.test.tsx + tests/projects/page.test.tsx. Motion behavior verified by source-grep + visual sanity pass.
 - [Phase 03-project-detail-template]: Plan 03-03: PRJ-06 integration test routes through slug='myco' (only physical .mdx in /content/projects/), not slug='valid-private'. Vite's dynamic-import-helper validates the slug against on-disk files at runtime — fixture-only slugs fail with 'Unknown variable dynamic import'. Test mocks getProject to return private-fixture-shaped project. The privacy contract (zero anchors with repo URL, 'code private' label, code-private chip) is what's asserted; the MDX body is irrelevant and stubbed via mdxShimPlugin.
+- [Phase 04-home-+-projects-index]: ThesisParagraph uses two-stage mounted gate (useState(false) + useEffect setMounted) + explicit useReducedMotion() short-circuit — MotionConfig reducedMotion='user' does NOT cover opacity (only transform/layout), so manual gate is required or reduced-motion users get the per-word fade anyway. Locks the SSR-safe shape from RESEARCH Pattern 4.
+- [Phase 04-home-+-projects-index]: SSR-fallback assertion uses renderToString from react-dom/server, NOT @testing-library/react render(). Under React 19 + jsdom, RTL render() commits mount effects synchronously inside the render() call, so the returned container reflects POST-mount state. renderToString is the only mechanism that captures actual server-pass HTML. Pattern reusable for any future SSR-shape assertions in this codebase.
+- [Phase 04-home-+-projects-index]: Vitest mock for motion/react MUST expose BOTH m AND useReducedMotion in the same module shape — partial mock omitting the hook throws 'useReducedMotion is not a function' at component load (Pitfall 8). Test file uses vi.doMock + vi.resetModules + dynamic await import to swap the hook return per test.
 
 ### Open Decisions (flagged in research)
 
@@ -141,7 +145,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T02:05:57.359Z
+**Last session:** 2026-05-16T17:35:43.682Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
