@@ -202,9 +202,16 @@ describe('app/(site)/page.tsx — Home route', () => {
     )
     expect(src).not.toContain("from '@/components/motion/fade-in'")
     expect(src).not.toContain('from "@/components/motion/fade-in"')
-    // Defensive: no `FadeIn` identifier at all (the placeholder is the only
-    // legitimate consumer, and it's being removed).
-    expect(/\bFadeIn\b/.test(src)).toBe(false)
+    // Defensive: no `FadeIn` identifier in actual code (block/line comments
+    // legitimately reference the historical placeholder via JSDoc — Cleanup
+    // Checklist preserves that breadcrumb). Strip comments before identifier
+    // grep, same pattern as Test 9 / Plan 04-03 source-grep precedent.
+    const code = src
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .split('\n')
+      .map((line) => line.replace(/\/\/.*$/, ''))
+      .join('\n')
+    expect(/\bFadeIn\b/.test(code)).toBe(false)
   })
 
   it('Test 9 — HOM-04 source-grep invariants: no whileInView / IntersectionObserver / grid-cols-12 / col-span-2 in page source', () => {
@@ -212,9 +219,13 @@ describe('app/(site)/page.tsx — Home route', () => {
       path.resolve(process.cwd(), 'app/(site)/page.tsx'),
       'utf8',
     )
-    // Strip line comments before grepping so doc-comments naming bans don't
-    // false-positive (Plan 04-03 source-grep precedent).
+    // Strip BOTH block and line comments before grepping. RSC-contract source
+    // intentionally names absent APIs in doc-comments (e.g. JSDoc "no
+    // whileInView") and a naive grep false-positives on the docstring. Block
+    // comments stripped first (greedy /* ... */ across newlines), then line
+    // comments. Mirrors Plan 04-03's forbidden-client-API source-grep.
     const code = src
+      .replace(/\/\*[\s\S]*?\*\//g, '')
       .split('\n')
       .map((line) => line.replace(/\/\/.*$/, ''))
       .join('\n')
