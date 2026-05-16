@@ -1,7 +1,45 @@
 // tests/projects/next-project-block.test.tsx
 // Refs: 03-UI-SPEC § Component Inventory #9 (NextProjectBlock) + § Copywriting Contract.
+//
+// Mocks motion/react: LazyMotion strict (Phase 1's MotionProvider) requires the
+// provider in the React tree before <m.*> can resolve features. In jsdom without
+// the provider mount, rendering <m.h2> hangs (no error, no resolve). The test
+// scope here is the RSC composition + props contract, not the motion behavior;
+// the motion island's wiring is verified by source-assertion in plan 03-03 and
+// the visual sanity pass on /projects/myco. So we mock motion/react to expose
+// `m` as a plain HTML proxy that strips motion-only props (whileHover, transition).
 import { render, within } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import React from 'react'
+import { describe, expect, it, vi } from 'vitest'
+
+vi.mock('motion/react', () => {
+  const proxy = new Proxy(
+    {},
+    {
+      get: (_target, tag: string) => {
+        const Comp = ({
+          children,
+          // strip motion-only props before forwarding to the host element
+          whileHover: _wh,
+          whileFocus: _wf,
+          whileTap: _wt,
+          whileInView: _wv,
+          initial: _i,
+          animate: _a,
+          exit: _e,
+          transition: _t,
+          variants: _v,
+          ...rest
+        }: Record<string, unknown> & { children?: React.ReactNode }) =>
+          React.createElement(tag, rest, children)
+        Comp.displayName = `m.${tag}`
+        return Comp
+      },
+    },
+  )
+  return { m: proxy }
+})
+
 import { NextProjectBlock } from '@/components/projects/next-project-block'
 
 describe('<NextProjectBlock>', () => {
