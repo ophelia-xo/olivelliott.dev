@@ -12,14 +12,14 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] **Project detail template at `/projects/[slug]`** — Validated in Phase 3: Myco case study renders end-to-end as Problem → Approach → Outcome with hero, MDX components, and next-project navigation. PRJ-01..PRJ-07 satisfied; 207/207 tests green.
+- [x] **Private project handling** — Validated in Phase 3 (component contract) via redaction-fixture path; visible `code private` label replaces repo link, schema strips `links.repo`. Live private content lands in Phase 7.
 
 ### Active
 
 - [ ] Home page with hero, thesis/positioning, and hero-project grid
-- [ ] Hero case studies: Myco, Fathom, Agenda Keeper (full project detail pages)
+- [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX)
 - [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work
-- [ ] Private project handling: case studies with "code private" tag, no repo link
 - [ ] Project tagging system (local-first, autonomous, open-source, etc.) to surface thesis
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth
@@ -105,4 +105,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-18 after initialization*
+*Last updated: 2026-05-16 after Phase 3 (project-detail-template) completion*
