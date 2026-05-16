@@ -170,12 +170,20 @@ describe('<TagFilterRow>', () => {
     }
   })
 
-  it('source contains no client directives (no `use client`, useSearchParams, useRouter, next/link)', () => {
-    const src = fs.readFileSync(
+  it('source contains no client directives (no `use client` directive, useSearchParams, useRouter, next/link)', () => {
+    const raw = fs.readFileSync(
       path.resolve(__dirname, '../../components/projects/tag-filter-row.tsx'),
       'utf8',
     )
-    expect(src).not.toMatch(/['"]use client['"]/)
+    // Strip line + block comments so the source-grep targets actual code, not
+    // documentation strings that reference the forbidden APIs (the header
+    // comment intentionally explains why these are absent).
+    const src = raw
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/^\s*\/\/.*$/gm, '')
+    // `'use client'` directive — top-of-file statement.
+    expect(src).not.toMatch(/^\s*['"]use client['"];?\s*$/m)
+    // Identifiers / module specifiers in actual code.
     expect(src).not.toMatch(/useSearchParams/)
     expect(src).not.toMatch(/useRouter/)
     expect(src).not.toMatch(/from\s+['"]next\/link['"]/)
