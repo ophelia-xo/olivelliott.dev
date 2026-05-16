@@ -19,6 +19,7 @@ import { act, render } from '@testing-library/react'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import React from 'react'
+import { renderToString } from 'react-dom/server'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 /**
@@ -68,22 +69,22 @@ beforeEach(() => {
 })
 
 describe('<ThesisParagraph>', () => {
-  it('SSR fallback / pre-hydration: renders the full text as a single <p> with no segmented spans', async () => {
+  it('SSR fallback / pre-hydration: server-rendered HTML is a single <p> with no segmented spans', async () => {
     // Default: useReducedMotion returns null (no matchMedia available — SSR shape).
-    // The first client render must match the SSR render (Pitfall 5): mounted=false
-    // gates the segmented form, so the initial render is the plain shell regardless
-    // of the hook return.
+    // The two-stage mounted gate (Pitfall 5) means the very first render — the
+    // one the server produces and the client hydrates against — MUST be the
+    // plain shell. Use renderToString to assert the actual server-output HTML;
+    // @testing-library/react's render() flushes the mount effect synchronously
+    // under React 19, so it cannot capture the pre-hydration shape.
     mockMotion(null)
     const { ThesisParagraph } = await import('@/components/home/thesis-paragraph')
-    const { container } = render(
+    const html = renderToString(
       <ThesisParagraph text="I work on Myco." className="x" />,
     )
-    // Read IMMEDIATELY, before any act() flushes the mount effect — this is the
-    // pre-hydration / SSR-equivalent paint.
-    const p = container.querySelector('p.x')
-    expect(p).not.toBeNull()
-    expect(p?.textContent).toBe('I work on Myco.')
-    expect(p?.querySelectorAll('span').length).toBe(0)
+    // Plain <p class="x">I work on Myco.</p> — no spans, full text visible.
+    expect(html).toContain('<p class="x"')
+    expect(html).toContain('I work on Myco.')
+    expect(html).not.toContain('<span')
   })
 
   it('reduced-motion: stays as plain <p> after hydration (no segmented spans EVER mount)', async () => {
