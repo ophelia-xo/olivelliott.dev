@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: executing
-last_updated: "2026-05-16T17:43:52.609Z"
+last_updated: "2026-05-16T17:52:08.323Z"
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 21
-  completed_plans: 18
-  percent: 86
+  completed_plans: 19
+  percent: 90
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 04 (home-+-projects-index) — EXECUTING
-Plan: 3 of 5
-Current Plan: 3
+Plan: 4 of 5
+Current Plan: 4
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 4
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 86%
+**Progress:** [█████████░] 90%
 
 ```
 [███████░░░] 67%
@@ -58,6 +58,7 @@ Total Plans in Phase: 5
 | Phase 03-project-detail-template P03 | 68 min | 3 tasks | 11 files |
 | Phase 04-home-+-projects-index P00 | 2 min | 2 tasks | 2 files |
 | Phase 04-home-+-projects-index P01 | 3 min | 3 tasks | 6 files |
+| Phase 04-home-+-projects-index P03 | 5min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -119,6 +120,9 @@ From `research/SUMMARY.md`:
 - [Phase 04-home-+-projects-index]: Plan 04-01: CardMeta is a SIBLING of Phase 3's ProjectMeta, not a refactor — ProjectMeta still composes interactive TagChipRow on detail page; CardMeta is card-only variant whose chips are <span>. Two near-identical files cheaper than chipsInteractive: boolean prop which would leak Pitfall 3 trap into API surface.
 - [Phase 04-home-+-projects-index]: Plan 04-01: Hero vs secondary cards split into separate files (not unified behind tier prop) — heading levels differ (H2 vs H3), DOM shapes diverge (no image/outcomes in secondary), prop shapes asymmetric (hero prop only on secondary). Tests stay 1:1, prevents drift, future divergence trivial.
 - [Phase 04-home-+-projects-index]: Plan 04-01: Outcome cap (.slice(0,3)) at component boundary, NOT schema — schema permits 5, UI weight tops at 3. Cap is editorial UI concern, schema flexibility preserved. next/image without priority on cards (RESEARCH Open Q #3 — LCP tuning deferred to Phase 6, framework picks LCP image).
+- [Phase 04-home-+-projects-index]: Plan 04-03: ARIA dual-attribute on active filter chip — aria-pressed='true' (UI-SPEC toggle semantic) AND aria-current='true' (W3C generic current-in-set). Both, not either, so chips read correctly as toggleable links inside a nav landmark.
+- [Phase 04-home-+-projects-index]: Plan 04-03: Count badge color inheritance via Tailwind text-current (Pitfall 7 lock) — drop explicit color on child spans when the parent color shifts via active/inactive class swap. Otherwise the count is invisible on the amber active chip.
+- [Phase 04-home-+-projects-index]: Plan 04-03: Source-grep test for forbidden client APIs strips line + block comments BEFORE matching. RSC documentation intentionally names absent APIs ('NO useSearchParams') — a naive grep would false-positive on the docstring. Pattern reusable for any RSC-contract source-grep.
 
 ### Open Decisions (flagged in research)
 
@@ -150,7 +154,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T17:43:52.606Z
+**Last session:** 2026-05-16T17:51:51.325Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
