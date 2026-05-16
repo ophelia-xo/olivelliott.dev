@@ -71,7 +71,12 @@ Plans:
   3. At the end of the Myco page, the visitor sees a "next project" link that moves them to another project without a dead-end.
   4. A private-project page (fixture or real) shows a visible "code private" tag in the header metadata and no repo link anywhere on the page.
   5. Viewing the page source shows per-route `<title>`, `<meta description>`, and OG image tags unique to the project.
-**Plans**: TBD
+**Plans**: 4 plans across 3 waves
+Plans:
+- [ ] 03-00-PLAN.md — Wave 0: install deps + extend next.config.ts rehype chain (slug+autolink+pretty-code/Vesper) + .prose CSS + isPlaceholderHero helper + /og-default.png stub + 2 RED tests
+- [ ] 03-01-PLAN.md — Wave 1: MDXProse wrapper + Figure + Gallery + Callout components + mdx-components.tsx registration + 3 test files
+- [ ] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
+- [ ] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
 **UI hint**: yes
 
 ### Phase 4: Home + Projects Index
@@ -132,7 +137,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/7 | Planned | - |
 | 2. Content Pipeline | 0/0 | Not started | - |
-| 3. Project Detail Template | 0/0 | Not started | - |
+| 3. Project Detail Template | 0/4 | Planned | - |
 | 4. Home + Projects Index | 0/0 | Not started | - |
 | 5. About + Resume + Contact | 0/0 | Not started | - |
 | 6. SEO, OG, A11y & Performance Audit | 0/0 | Not started | - |
