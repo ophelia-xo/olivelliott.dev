@@ -77,7 +77,6 @@ Plans:
 - [x] 03-01-PLAN.md — Wave 1: MDXProse wrapper + Figure + Gallery + Callout components + mdx-components.tsx registration + 3 test files
 - [x] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
 - [x] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
-**UI hint**: yes
 
 ### Phase 4: Home + Projects Index
 **Goal**: A first-time visitor lands on the home page, instantly understands Olive's thesis, sees hero projects rendered with weight, and can drill into `/projects` with a filterable tag chip row that respects URL state.
@@ -89,7 +88,13 @@ Plans:
   3. Visitor clicks a tag chip on `/projects` and the URL updates to `?tag=local-first`; reloading the URL or using the back button restores the exact filter state.
   4. A keyboard user can tab through the tag chip row with visible focus styles and activate filters via Enter/Space without reaching for a mouse.
   5. Hero-tier cards are visually distinct from secondary-tier cards, and private-project cards are visually distinct from public ones at a glance.
-**Plans**: TBD
+**Plans**: 5 plans across 3 waves
+Plans:
+- [ ] 04-00-PLAN.md — Wave 0: ThesisParagraph client island (SSR-safe + explicit useReducedMotion gate) — the one earned motion moment
+- [ ] 04-01-PLAN.md — Wave 1: CardMeta + ProjectCardHero + ProjectCardSecondary (presentational chips, no nested anchors, isPlaceholderHero branching)
+- [ ] 04-02-PLAN.md — Wave 2: HomeHero + HomeProjectGrid + replace app/(site)/page.tsx (Phase 1 placeholder fully removed; per-route metadata)
+- [ ] 04-03-PLAN.md — Wave 1: TagFilterRow + EmptyFilterState + TierSeparator (RSC primitives — URL-synced filter, locked empty-state copy, aria-labelledby id pass-through)
+- [ ] 04-04-PLAN.md — Wave 2: /projects index route (Promise<searchParams> + tag narrowing + tier sections + EmptyFilterState) + anti-pattern source-grep regression net + build smoke
 **UI hint**: yes
 
 ### Phase 5: About + Resume + Contact
@@ -138,7 +143,7 @@ Plans:
 | 1. Foundation | 0/7 | Planned | - |
 | 2. Content Pipeline | 0/0 | Not started | - |
 | 3. Project Detail Template | 4/4 | Complete   | 2026-05-16 |
-| 4. Home + Projects Index | 0/0 | Not started | - |
+| 4. Home + Projects Index | 0/5 | Planned | - |
 | 5. About + Resume + Contact | 0/0 | Not started | - |
 | 6. SEO, OG, A11y & Performance Audit | 0/0 | Not started | - |
 | 7. Content Pass + Launch | 0/0 | Not started | - |
@@ -179,4 +184,4 @@ Phase 5 is independent of Phases 2–4 and can run in parallel after Phase 1 com
 
 ---
 *Roadmap created: 2026-04-18*
-*Last updated: 2026-04-18 after initial creation*
+*Last updated: 2026-05-16 after Phase 4 planning*
