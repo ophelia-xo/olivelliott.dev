@@ -116,15 +116,23 @@ describe('app/(site)/projects/[slug]/page.tsx — render', () => {
   })
 
   it('PRJ-06 integration: private project renders "code private" + zero anchors with the would-be repo URL', async () => {
+    // The page route does `await import(\`@/content/projects/${slug}.mdx\`)`,
+    // and Vite's dynamic-import-helper only resolves slugs that physically
+    // exist on disk. valid-private.mdx is a *fixture* under tests/fixtures/,
+    // not a real /content/projects/ entry. So we route through slug='myco'
+    // (the only physical .mdx in /content/projects/) but mock getProject to
+    // return the private-fixture-shaped project. What the test actually
+    // verifies is the privacy rendering contract (ProjectMeta + TagChipRow
+    // composition through the page) — the MDX body content is stubbed via
+    // the vitest mdxShimPlugin and irrelevant here.
     vi.resetModules()
     vi.doMock('@/lib/projects', () => ({
       getAll: () => [privateFixture],
       getProject: () => privateFixture,
     }))
     vi.doMock('@/lib/next-project', () => ({ getNextProject: () => null }))
-    vi.doMock('@/content/projects/valid-private.mdx', () => ({ default: StubMDX }))
     const { default: Page } = await import('@/app/(site)/projects/[slug]/page')
-    const ui = await Page({ params: Promise.resolve({ slug: 'valid-private' }) })
+    const ui = await Page({ params: Promise.resolve({ slug: 'myco' }) })
     const { container } = render(ui)
     // Literal "code private" present
     expect(container.textContent).toContain('code private')
