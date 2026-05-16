@@ -13,7 +13,7 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 
 - [ ] **Phase 1: Foundation** — Scaffold Next.js 16 + Tailwind v4 `@theme` tokens + Geist + Motion provider + dark theme + Vercel deploy pipeline
 - [ ] **Phase 2: Content Pipeline** — Content Collections + Zod project schema + privacy transform + one real MDX (Myco) validating the model
-- [ ] **Phase 3: Project Detail Template** — `/projects/[slug]` static rendering with MDX components, hero treatment, next-project nav, Myco case study live
+- [x] **Phase 3: Project Detail Template** — `/projects/[slug]` static rendering with MDX components, hero treatment, next-project nav, Myco case study live (completed 2026-05-16)
 - [ ] **Phase 4: Home + Projects Index** — Landing page with hero/thesis/tiered grid plus `/projects` with URL-synced tag filter
 - [ ] **Phase 5: About + Resume + Contact** — `/about`, `/resume` (HTML + PDF from one React tree), footer contact links
 - [ ] **Phase 6: SEO, OG, A11y & Performance Audit** — Metadata, sitemap, robots, OG images, Lighthouse ≥ 90, axe clean, anti-features gate
@@ -76,7 +76,7 @@ Plans:
 - [x] 03-00-PLAN.md — Wave 0: install deps + extend next.config.ts rehype chain (slug+autolink+pretty-code/Vesper) + .prose CSS + isPlaceholderHero helper + /og-default.png stub + 2 RED tests
 - [x] 03-01-PLAN.md — Wave 1: MDXProse wrapper + Figure + Gallery + Callout components + mdx-components.tsx registration + 3 test files
 - [x] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
-- [ ] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
+- [x] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
 **UI hint**: yes
 
 ### Phase 4: Home + Projects Index
@@ -137,7 +137,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/7 | Planned | - |
 | 2. Content Pipeline | 0/0 | Not started | - |
-| 3. Project Detail Template | 0/4 | Planned | - |
+| 3. Project Detail Template | 4/4 | Complete   | 2026-05-16 |
 | 4. Home + Projects Index | 0/0 | Not started | - |
 | 5. About + Resume + Contact | 0/0 | Not started | - |
 | 6. SEO, OG, A11y & Performance Audit | 0/0 | Not started | - |
