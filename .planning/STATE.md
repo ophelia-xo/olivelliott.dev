@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 4
+current_plan: 5
 status: executing
-last_updated: "2026-05-16T17:52:08.323Z"
+last_updated: "2026-05-16T18:02:19.118Z"
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 21
-  completed_plans: 19
-  percent: 90
+  completed_plans: 20
+  percent: 95
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 04 (home-+-projects-index) — EXECUTING
-Plan: 4 of 5
-Current Plan: 4
+Plan: 5 of 5
+Current Plan: 5
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 4
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 90%
+**Progress:** [██████████] 95%
 
 ```
 [███████░░░] 67%
@@ -59,6 +59,7 @@ Total Plans in Phase: 5
 | Phase 04-home-+-projects-index P00 | 2 min | 2 tasks | 2 files |
 | Phase 04-home-+-projects-index P01 | 3 min | 3 tasks | 6 files |
 | Phase 04-home-+-projects-index P03 | 5min | 2 tasks | 6 files |
+| Phase 04-home-+-projects-index P02 | 5 min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -123,6 +124,10 @@ From `research/SUMMARY.md`:
 - [Phase 04-home-+-projects-index]: Plan 04-03: ARIA dual-attribute on active filter chip — aria-pressed='true' (UI-SPEC toggle semantic) AND aria-current='true' (W3C generic current-in-set). Both, not either, so chips read correctly as toggleable links inside a nav landmark.
 - [Phase 04-home-+-projects-index]: Plan 04-03: Count badge color inheritance via Tailwind text-current (Pitfall 7 lock) — drop explicit color on child spans when the parent color shifts via active/inactive class swap. Otherwise the count is invisible on the amber active chip.
 - [Phase 04-home-+-projects-index]: Plan 04-03: Source-grep test for forbidden client APIs strips line + block comments BEFORE matching. RSC documentation intentionally names absent APIs ('NO useSearchParams') — a naive grep would false-positive on the docstring. Pattern reusable for any RSC-contract source-grep.
+- [Phase 04-home-+-projects-index]: Plan 04-02: Source-grep tests for RSC anti-patterns must strip BOTH /* block */ AND // line comments before identifier match. RSC documentation intentionally names absent APIs in JSDoc (HOM-04 'no whileInView' breadcrumbs, FadeIn historical reference). Naive line-only stripping false-positives. Pattern: src.replace(/\/\*[\s\S]*?\*\//g,'').split('\n').map(l => l.replace(/\/\/.*$/,'')).join('\n'). Reusable across codebase.
+- [Phase 04-home-+-projects-index]: Plan 04-02: Per-route metadata pattern locked — home OMITS metadata.title so root layout title.default ('olivelliott.dev') flows through. Declaring title would invoke titleTemplate '%s · olivelliott.dev' and emit 'olivelliott.dev · olivelliott.dev'. Conversely, openGraph.images MUST be declared per-route — root layout omits them, so omitting on page yields no OG image emit. Mirror this on /projects (Plan 04-04) + Phase 5 routes.
+- [Phase 04-home-+-projects-index]: Plan 04-02: Typography flows DOWN from composer to slot. HomeHero owns the body/Geist Sans/400/leading-1.6/secondary color/max-w-[55ch] class string and passes via className prop. ThesisParagraph owns ONLY segmentation+motion. Locks role frame + thesis visually to same type stack without import coupling. Reusable pattern for any client-island leaf composed inside an RSC parent.
+- [Phase 04-home-+-projects-index]: Plan 04-02: Phase 1 FadeIn placeholder import REMOVED from app/(site)/page.tsx; FadeIn component file NOT deleted (Phase 5 may compose it). JSDoc breadcrumb retained ('Replaces the Phase 1 placeholder (a single FadeIn-wrapped tagline)') — Cleanup Checklist requires the historical context for future readers; source-grep tests strip comments so breadcrumb doesn't false-positive.
 
 ### Open Decisions (flagged in research)
 
@@ -154,7 +159,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T17:51:51.325Z
+**Last session:** 2026-05-16T18:02:19.115Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
