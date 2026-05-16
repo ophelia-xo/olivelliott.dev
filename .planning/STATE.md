@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-05-16T00:30:10.865Z"
+last_updated: "2026-05-16T00:37:14.340Z"
 progress:
   total_phases: 7
   completed_phases: 2
   total_plans: 16
-  completed_plans: 13
-  percent: 81
+  completed_plans: 14
+  percent: 88
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 03 (project-detail-template) — EXECUTING
-Plan: 2 of 4
-Current Plan: 2
+Plan: 3 of 4
+Current Plan: 3
 Total Plans in Phase: 4
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 3
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [████████░░] 81%
+**Progress:** [█████████░] 88%
 
 ```
 [███████░░░] 67%
@@ -53,6 +53,7 @@ Total Plans in Phase: 4
 | Phase 02-content-pipeline P04 | 4min | 2 tasks | 4 files |
 | Phase 02-content-pipeline P03 | 1min | 3 tasks | 2 files |
 | Phase 03-project-detail-template P00 | 11 min | 4 tasks | 9 files |
+| Phase 03-project-detail-template P01 | 3min | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,10 @@ From `research/SUMMARY.md`:
 - [Phase 03-project-detail-template]: Hand-authored .prose CSS instead of @tailwindcss/typography — typography plugin overrides letter-spacing, weight, and color tokens. Token system is the design contract.
 - [Phase 03-project-detail-template]: OG-default PNG generated via SVG-piped-to-sharp (sharp already a runtime dep) — avoided pulling @vercel/og just for a one-shot script. Generation script + meta sidecar deleted post-run; only PNG ships.
 - [Phase 03-project-detail-template]: Reduced-motion .prose .anchor opacity:1 always (instead of preserving hover-reveal at 0ms) — preserves the affordance for users who can't trigger hover with a pointer.
+- [Phase 03-project-detail-template]: Plan 03-01: Tailwind v4 token references use arbitrary form bg-[color:var(--color-...)] not short-name aliases — tokens.css declares raw CSS custom properties under @theme without registering Tailwind color short-names. Tests assert the arbitrary form. Aligns with Wave 0 hand-authored .prose decision.
+- [Phase 03-project-detail-template]: Plan 03-01: Components under components/mdx/ are separate files with named exports only — matches existing components/site/ + components/motion/ conventions. mdx-components.tsx registration is 3 named imports + a 3-key MDXComponents map.
+- [Phase 03-project-detail-template]: Plan 03-01: WIDE_BLEED const duplicated across figure/gallery/callout instead of extracted to lib/mdx/bleed.ts — one line, three sites, zero shared module to maintain. Each MDX component file is fully self-contained.
+- [Phase 03-project-detail-template]: Plan 03-01: Source-assertion + runtime-equality dual lock for the @next/mdx registration channel — regex catches import deletion or path-rename; runtime expect(components.X).toBe(X) catches stale bindings or aliasing. Pattern reusable for any future MDX-callable additions.
 
 ### Open Decisions (flagged in research)
 
@@ -127,7 +132,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T00:30:10.862Z
+**Last session:** 2026-05-16T00:36:58.142Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
