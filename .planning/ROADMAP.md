@@ -75,7 +75,7 @@ Plans:
 Plans:
 - [x] 03-00-PLAN.md — Wave 0: install deps + extend next.config.ts rehype chain (slug+autolink+pretty-code/Vesper) + .prose CSS + isPlaceholderHero helper + /og-default.png stub + 2 RED tests
 - [x] 03-01-PLAN.md — Wave 1: MDXProse wrapper + Figure + Gallery + Callout components + mdx-components.tsx registration + 3 test files
-- [ ] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
+- [x] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
 - [ ] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
 **UI hint**: yes
 

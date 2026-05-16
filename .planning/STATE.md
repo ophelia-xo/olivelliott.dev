@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: executing
-last_updated: "2026-05-16T00:37:14.340Z"
+last_updated: "2026-05-16T00:46:25.107Z"
 progress:
   total_phases: 7
   completed_phases: 2
   total_plans: 16
-  completed_plans: 14
-  percent: 88
+  completed_plans: 15
+  percent: 94
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 03 (project-detail-template) — EXECUTING
-Plan: 3 of 4
-Current Plan: 3
+Plan: 4 of 4
+Current Plan: 4
 Total Plans in Phase: 4
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 3
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 88%
+**Progress:** [█████████░] 94%
 
 ```
 [███████░░░] 67%
@@ -54,6 +54,7 @@ Total Plans in Phase: 4
 | Phase 02-content-pipeline P03 | 1min | 3 tasks | 2 files |
 | Phase 03-project-detail-template P00 | 11 min | 4 tasks | 9 files |
 | Phase 03-project-detail-template P01 | 3min | 3 tasks | 8 files |
+| Phase 03-project-detail-template P02 | 4 min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -101,6 +102,10 @@ From `research/SUMMARY.md`:
 - [Phase 03-project-detail-template]: Plan 03-01: Components under components/mdx/ are separate files with named exports only — matches existing components/site/ + components/motion/ conventions. mdx-components.tsx registration is 3 named imports + a 3-key MDXComponents map.
 - [Phase 03-project-detail-template]: Plan 03-01: WIDE_BLEED const duplicated across figure/gallery/callout instead of extracted to lib/mdx/bleed.ts — one line, three sites, zero shared module to maintain. Each MDX component file is fully self-contained.
 - [Phase 03-project-detail-template]: Plan 03-01: Source-assertion + runtime-equality dual lock for the @next/mdx registration channel — regex catches import deletion or path-rename; runtime expect(components.X).toBe(X) catches stale bindings or aliasing. Pattern reusable for any future MDX-callable additions.
+- [Phase 03-project-detail-template]: Plan 03-02: Privacy gate on visibility === 'private', NOT on repoUrl === undefined — schema strips repo before consumers see it, but ProjectMeta is a leaf component that may receive props from non-schema sources (mocks, Storybook, Phase 4 search results). Visibility is the authoritative intent field. Test 6 in project-meta.test.tsx is the regression lock — passes both visibility='private' AND a stale repoUrl, asserts no anchor with that URL renders.
+- [Phase 03-project-detail-template]: Plan 03-02: Tag chip text uses Tag value verbatim (lowercase), NOT TAG_LABELS — UI-SPEC explicitly specifies {tag} as chip text. TAG_LABELS reserved for Phase 4 filter chips needing human-facing capitalization. Locked in tests to prevent drift toward the labels map.
+- [Phase 03-project-detail-template]: Plan 03-02: TagChipRow returns React fragment (not wrapping div) — chips become direct children of ProjectMeta's flex container so gap-3 applies uniformly across year ↔ chip-1 ↔ ... ↔ repo-link. Wrapping div would create nested flex item disrupting the row rhythm. Test 6 in tag-chip-row.test.tsx locks this.
+- [Phase 03-project-detail-template]: Plan 03-02: Privacy rendering has two independent visible signals when private — (1) literal 'code private' label in meta row (--color-text-tertiary, non-interactive), (2) 'code-private' tag chip rendered identically to other chips via TagChipRow. Both must be present; one is the canonical label, the other is the auto-tag flowing through standard chip pipeline. UI-SPEC § Privacy Rendering Contract verification clauses 2 + 3.
 
 ### Open Decisions (flagged in research)
 
@@ -132,7 +137,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T00:36:58.142Z
+**Last session:** 2026-05-16T00:46:25.103Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
