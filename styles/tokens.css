@@ -53,4 +53,13 @@
   --radius-sm: 2px;                    /* reserved */
   --radius-md: 6px;                    /* reserved */
   --radius-lg: 12px;                   /* reserved */
+
+  /* Phase 3 additions — Type ramp H2 / H3 + semibold weight.
+   * Pre-authorized by Phase 1 UI-SPEC: "Phase 3 MAY introduce 600 for MDX H2/H3 headings".
+   * Source: .planning/phases/03-project-detail-template/03-UI-SPEC.md § Typography. */
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.3;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.4;
+  --font-weight-semibold: 600;
 }

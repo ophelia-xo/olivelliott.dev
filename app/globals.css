@@ -53,3 +53,126 @@ pre {
 :where(a, button):focus:not(:focus-visible) {
   outline: none;
 }
+
+/* === Phase 3: Project detail prose styling ===
+ * Hand-authored .prose class — UI-SPEC § Page Composition + § Heading anchor + § Code Block Contract.
+ * Do NOT install @tailwindcss/typography — its defaults override the token discipline.
+ */
+
+.prose h2 {
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.015em;
+  color: var(--color-text-primary);
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .prose h2 {
+    font-size: 1.75rem;
+    margin-top: 4rem;
+  }
+}
+
+.prose h3 {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-top: 2rem;
+}
+
+.prose p { margin-top: 1rem; line-height: 1.6; color: var(--color-text-primary); }
+.prose p:first-child { margin-top: 0; }
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: text-decoration-color var(--motion-duration-fast) linear,
+              text-underline-offset var(--motion-duration-fast) ease-out;
+}
+.prose a:hover { color: var(--color-accent-hover); text-underline-offset: 3px; }
+
+/* Inline code (NOT inside <pre>) — surface-2 pill */
+.prose code:not(pre code) {
+  background-color: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.375rem;
+  margin: 0 0.125rem;
+  font-family: var(--font-mono);
+  font-size: 0.9375em;
+  color: var(--color-text-primary);
+}
+
+/* Code block (<pre>) — surface-2 fill, hairline border, 6px radius */
+.prose pre {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  line-height: 1.625;
+}
+
+/* rehype-pretty-code emits these data-attributes — style line + filename label */
+.prose pre [data-line] { display: block; padding: 0 1rem; }
+.prose pre [data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid var(--color-accent);
+  padding-left: calc(1rem - 2px);
+}
+.prose figure[data-rehype-pretty-code-figure] { margin: 2rem 0; }
+.prose [data-rehype-pretty-code-title] {
+  display: block;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-hairline);
+  border-bottom: none;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--color-text-secondary);
+  margin-bottom: -1px;
+}
+.prose [data-rehype-pretty-code-title] + pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Heading anchor — invisible at rest, visible on heading hover/focus */
+.prose .anchor {
+  margin-left: 0.5rem;
+  display: inline-block;
+  opacity: 0;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  text-decoration: none;
+  transition: opacity var(--motion-duration-base) var(--motion-ease-standard),
+              color var(--motion-duration-fast) linear;
+}
+.prose h2:hover .anchor,
+.prose h3:hover .anchor,
+.prose .anchor:focus-visible {
+  opacity: 1;
+}
+.prose .anchor:hover,
+.prose .anchor:focus-visible {
+  color: var(--color-accent);
+}
+
+/* Reduced-motion: anchors permanently visible (preserves affordance without hover) */
+@media (prefers-reduced-motion: reduce) {
+  .prose .anchor { opacity: 1; }
+}
+
+/* Lists — ordered + unordered */
+.prose ul, .prose ol { margin-top: 1rem; padding-left: 1.5rem; }
+.prose li { margin-top: 0.5rem; line-height: 1.6; color: var(--color-text-primary); }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
