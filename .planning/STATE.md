@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: planning
-last_updated: "2026-04-21T22:25:20.225Z"
+current_plan: 2
+status: executing
+last_updated: "2026-05-16T00:30:10.865Z"
 progress:
   total_phases: 7
   completed_phases: 2
-  total_plans: 12
-  completed_plans: 12
-  percent: 100
+  total_plans: 16
+  completed_plans: 13
+  percent: 81
 ---
 
 # Project State: olivelliott.dev
@@ -20,18 +20,19 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 02 — content-pipeline
+**Current Focus:** Phase 03 — project-detail-template
 
 ## Current Position
 
-Phase: 02 (content-pipeline) — EXECUTING
-Current Plan: Not started
-Total Plans in Phase: 5
+Phase: 03 (project-detail-template) — EXECUTING
+Plan: 2 of 4
+Current Plan: 2
+Total Plans in Phase: 4
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 3
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to plan
-**Progress:** [██████████] 100%
+**Status:** Ready to execute
+**Progress:** [████████░░] 81%
 
 ```
 [███████░░░] 67%
@@ -51,6 +52,7 @@ Total Plans in Phase: 5
 | Phase 02-content-pipeline P02 | 6 min | 2 tasks | 5 files |
 | Phase 02-content-pipeline P04 | 4min | 2 tasks | 4 files |
 | Phase 02-content-pipeline P03 | 1min | 3 tasks | 2 files |
+| Phase 03-project-detail-template P00 | 11 min | 4 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -89,6 +91,11 @@ From `research/SUMMARY.md`:
 - [Phase 02-content-pipeline]: Plan 02-04: BANNED_TERMS source-of-truth split — literal list in tests/fixtures/banned-terms.ts (Object.freeze'd), per-term rationale + review process in .planning/phases/02-content-pipeline/02-REDACTION-REVIEW.md. Checklist doc references the code file path; no duplication, single update path.
 - [Phase 02-content-pipeline]: Plan 02-03: Myco repo URL canonicalized to github.com/olivelliott/myco (not olive-elliott/myco) — confirmed at human-verify checkpoint. PLAN.md body used olive-elliott/ as a placeholder; the authored MDX used the correct handle from the start, so no correction was needed on resume.
 - [Phase 02-content-pipeline]: Plan 02-03: Hero-tier case-study template locked — Problem → Approach → Outcome H2 anchors (exact strings) with 800–1200 word budget; outcomes bullets descriptive-only (no fabricated metrics). Myco authored at 902 words as the canonical fixture; Phase 3 detail template may assume these three anchors exist on every hero MDX.
+- [Phase 03-project-detail-template]: Pinned shiki to ^3.23.0 instead of ^4.x — rehype-pretty-code accepts both, Vesper bundled in both, but 3.x has 6+ months ecosystem soak. Lower drift risk.
+- [Phase 03-project-detail-template]: Filename labels in code blocks via title= metastring → [data-rehype-pretty-code-title] CSS selector — corrected the original UI-SPEC reference to {filename=}. RESEARCH Pitfall 1.
+- [Phase 03-project-detail-template]: Hand-authored .prose CSS instead of @tailwindcss/typography — typography plugin overrides letter-spacing, weight, and color tokens. Token system is the design contract.
+- [Phase 03-project-detail-template]: OG-default PNG generated via SVG-piped-to-sharp (sharp already a runtime dep) — avoided pulling @vercel/og just for a one-shot script. Generation script + meta sidecar deleted post-run; only PNG ships.
+- [Phase 03-project-detail-template]: Reduced-motion .prose .anchor opacity:1 always (instead of preserving hover-reveal at 0ms) — preserves the affordance for users who can't trigger hover with a pointer.
 
 ### Open Decisions (flagged in research)
 
@@ -120,7 +127,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-04-21T22:21:04.067Z
+**Last session:** 2026-05-16T00:30:10.862Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 

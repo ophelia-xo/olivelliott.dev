@@ -30,12 +30,12 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Project detail template
 
 - [ ] **PRJ-01**: `/projects/[slug]` renders statically via `generateStaticParams` with `dynamicParams = false`
-- [ ] **PRJ-02**: MDX renders with custom components for gallery, figure, callout, and code block (Shiki syntax highlighting)
+- [x] **PRJ-02**: MDX renders with custom components for gallery, figure, callout, and code block (Shiki syntax highlighting)
 - [ ] **PRJ-03**: Each project page follows a Problem → Approach → Outcome structure for hero-tier projects (800–1500 words)
-- [ ] **PRJ-04**: Each project page has a hero treatment (title, year, tags, hero image or deliberate text-only treatment)
+- [x] **PRJ-04**: Each project page has a hero treatment (title, year, tags, hero image or deliberate text-only treatment)
 - [ ] **PRJ-05**: Each project page ends with a "next project" navigation link to keep visitors moving
 - [ ] **PRJ-06**: Private projects display a visible "code private" tag in place of any repo link
-- [ ] **PRJ-07**: Each project page has per-route metadata (title, description) and an OG image (static per-project image acceptable for v1)
+- [x] **PRJ-07**: Each project page has per-route metadata (title, description) and an OG image (static per-project image acceptable for v1)
 
 ### Home page
 
@@ -168,12 +168,12 @@ Which phases cover which requirements. Populated during roadmap creation.
 | CNT-05 | Phase 2 — Content Pipeline | Complete |
 | CNT-06 | Phase 2 — Content Pipeline | Complete |
 | PRJ-01 | Phase 3 — Project Detail Template | Pending |
-| PRJ-02 | Phase 3 — Project Detail Template | Pending |
+| PRJ-02 | Phase 3 — Project Detail Template | Complete |
 | PRJ-03 | Phase 3 — Project Detail Template | Pending |
-| PRJ-04 | Phase 3 — Project Detail Template | Pending |
+| PRJ-04 | Phase 3 — Project Detail Template | Complete |
 | PRJ-05 | Phase 3 — Project Detail Template | Pending |
 | PRJ-06 | Phase 3 — Project Detail Template | Pending |
-| PRJ-07 | Phase 3 — Project Detail Template | Pending |
+| PRJ-07 | Phase 3 — Project Detail Template | Complete |
 | HOM-01 | Phase 4 — Home + Projects Index | Pending |
 | HOM-02 | Phase 4 — Home + Projects Index | Pending |
 | HOM-03 | Phase 4 — Home + Projects Index | Pending |

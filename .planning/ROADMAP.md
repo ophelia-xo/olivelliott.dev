@@ -73,7 +73,7 @@ Plans:
   5. Viewing the page source shows per-route `<title>`, `<meta description>`, and OG image tags unique to the project.
 **Plans**: 4 plans across 3 waves
 Plans:
-- [ ] 03-00-PLAN.md — Wave 0: install deps + extend next.config.ts rehype chain (slug+autolink+pretty-code/Vesper) + .prose CSS + isPlaceholderHero helper + /og-default.png stub + 2 RED tests
+- [x] 03-00-PLAN.md — Wave 0: install deps + extend next.config.ts rehype chain (slug+autolink+pretty-code/Vesper) + .prose CSS + isPlaceholderHero helper + /og-default.png stub + 2 RED tests
 - [ ] 03-01-PLAN.md — Wave 1: MDXProse wrapper + Figure + Gallery + Callout components + mdx-components.tsx registration + 3 test files
 - [ ] 03-02-PLAN.md — Wave 2 lane A: ProjectHero (image-vs-text branching) + ProjectMeta (privacy contract) + TagChipRow + 3 test files
 - [ ] 03-03-PLAN.md — Wave 2 lane B + integration: getNextProject helper + NextProjectBlock (with motion island) + page route (generateStaticParams + generateMetadata + dynamic MDX import) + 5 test files
