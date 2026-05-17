@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 4
+current_plan: 5
 status: executing
-last_updated: "2026-05-17T17:12:38.396Z"
+last_updated: "2026-05-17T17:29:09.122Z"
 progress:
   total_phases: 7
   completed_phases: 5
   total_plans: 33
-  completed_plans: 30
-  percent: 91
+  completed_plans: 31
+  percent: 94
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 06 (seo,-og,-a11y-&-performance-audit) — EXECUTING
-Plan: 4 of 6
-Current Plan: 4
+Plan: 5 of 6
+Current Plan: 5
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 6
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 91%
+**Progress:** [█████████░] 94%
 
 ```
 [███████░░░] 67%
@@ -70,6 +70,7 @@ Total Plans in Phase: 6
 | Phase 06-seo,-og,-a11y-&-performance-audit P00 | 3 min | 3 tasks | 19 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P01 | 2 min | 3 tasks | 4 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P02 | 6 min | 4 tasks | 23 files |
+| Phase 06-seo,-og,-a11y-&-performance-audit P03 | 11 min | 3 tasks | 19 files |
 
 ## Accumulated Context
 
@@ -170,6 +171,9 @@ From `research/SUMMARY.md`:
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Favicon ICO: manual Node Buffer byte-assembly (ICONDIR + ICONDIRENTRY + sharp-produced PNG buffers) instead of to-ico / sharp-ico dep — zero new packages, 1.5KB output
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-02: per-route default-OG siblings (NOT a single root) — 4 sibling files + 1 root + 1 dynamic [slug] + 1 shared lib/og-template.tsx renderer; Node.js runtime everywhere; Pitfall 4 cleanup landed in same plan with absence-lock tests.
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-02: source-grep tests strip line + block comments before applying anti-pattern regexes (codebase intentionally names forbidden patterns in comments).
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-03: vitest-axe gap-closure fixed 3 real production a11y bugs inline (aria-pressed removal, role=list→ul/li, h2 promotion) rather than deferring — all 5 routes now axe-clean under WCAG 2.1 AA.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-03: TagFilterRow chips use aria-current='true' as sole selection-state attribute (aria-pressed removed — button-only WAI-ARIA 1.2 attribute, forbidden on <a>).
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-03: CardMeta/ProjectMeta wrappers are <ul role='list'> with <li role='listitem'> children — satisfies axe aria-required-children while preserving existing [role='list'][aria-label='Project metadata'] querySelector contracts.
 
 ### Open Decisions (flagged in research)
 
@@ -201,7 +205,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T17:12:38.393Z
+**Last session:** 2026-05-17T17:29:09.118Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
