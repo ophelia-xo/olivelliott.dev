@@ -69,9 +69,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Metadata + SEO + OG
 
-- [ ] **MTA-01**: Every route has `generateMetadata` producing a unique title and description
-- [ ] **MTA-02**: Every route has an OG image (Twitter card + Open Graph) — static per-route for v1, dynamic later
-- [ ] **MTA-03**: A valid `sitemap.xml` is generated and a `robots.txt` is present
+- [x] **MTA-01**: Every route has `generateMetadata` producing a unique title and description
+- [x] **MTA-02**: Every route has an OG image (Twitter card + Open Graph) — static per-route for v1, dynamic later
+- [x] **MTA-03**: A valid `sitemap.xml` is generated and a `robots.txt` is present
 - [x] **MTA-04**: Favicon set is in place (SVG + ICO + apple-touch)
 
 ### Contact + socials
@@ -195,9 +195,9 @@ Which phases cover which requirements. Populated during roadmap creation.
 | CTC-01 | Phase 5 — About + Resume + Contact | Complete |
 | CTC-02 | Phase 5 — About + Resume + Contact | Complete |
 | CTC-03 | Phase 5 — About + Resume + Contact | Complete |
-| MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
-| MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
-| MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
+| MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
+| MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | MTA-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | QAL-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | QAL-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
