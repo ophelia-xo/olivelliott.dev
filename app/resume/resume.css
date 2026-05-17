@@ -1,0 +1,244 @@
+/* app/resume/resume.css
+ * Phase 5 — print stylesheet + screen-mode overrides for /resume.
+ * Loaded by app/resume/layout.tsx as a side-effect import. Single
+ * @media print block contains the paper contract that Wave 4's Puppeteer
+ * pipeline renders against (emulateMediaType('print') on the same DOM).
+ *
+ * Pitfall 8 lock: every screen-mode selector starts with a class
+ * (.resume, .resume-header, .resume-h2, .contact-line, .resume-skills,
+ *  .download-pdf-link). NO bare html or body rules outside @media print.
+ *
+ * Pitfall 3 lock: @page { size: A4; margin: 0.5in; } lives HERE, not in
+ * the Puppeteer script (Wave 4 sets preferCSSPageSize: true and omits
+ * its own margin).
+ *
+ * Pitfall 2 lock: print-color-adjust: exact (+ -webkit prefix) honors
+ * the deliberate tonal contrast against printer-driver defaults.
+ *
+ * Source: .planning/phases/05-about-+-resume-+-contact/05-UI-SPEC.md
+ *         § Print Stylesheet Contract.
+ */
+
+/* ── Screen-mode rules (outside @media print) ──
+ * Every selector below MUST start with a class — see Pitfall 8 lock above.
+ */
+
+.resume {
+  max-width: 48rem;                  /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1.5rem;              /* py-8 px-6 */
+}
+
+@media (min-width: 768px) {
+  .resume {
+    padding: 3rem 2rem;
+  }
+}
+
+.resume-header {
+  position: relative;                 /* anchors <DownloadPdfLink> top-right */
+}
+
+.resume-header .download-pdf-link {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .resume-header .download-pdf-link {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+.resume hr.hairline {
+  border: none;
+  border-top: 1px solid var(--color-hairline);
+  margin: 1.5rem 0;
+}
+
+/* Resume H2 — composes existing H2 size with mono label tracking */
+.resume-h2 {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  line-height: var(--text-h2--line-height);
+  text-transform: lowercase;
+  color: var(--color-text-tertiary);
+  margin: 1.5rem 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .resume-h2 {
+    font-size: 1.75rem;               /* matches Phase 3 H2 md+ */
+    margin: 2rem 0 1rem;
+  }
+}
+
+/* Contact line on resume header — three inline mono links separated by · */
+.contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;                /* 8px row gap, 12px column gap */
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+}
+
+.contact-line li:not(:last-child)::after {
+  content: " · ";
+  color: var(--color-text-tertiary);
+  margin-left: 0.5rem;
+}
+
+/* Resume skills definition list — two-column on md+ */
+.resume-skills {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+
+.resume-skills dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  color: var(--color-text-tertiary);
+  text-transform: lowercase;
+}
+
+.resume-skills dd {
+  color: var(--color-text-secondary);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+/* ── Print rules — single @media print block ── */
+
+@media print {
+  /* Page setup — A4 with 0.5in margins (≈ 12.7mm; conventional CV measure) */
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+
+  /* Black on white — bounded raw-color exception. The html/body selectors
+   * here are PERMITTED because they live INSIDE @media print (Pitfall 8
+   * scopes the cross-route leakage guard to screen-mode rules only).
+   */
+  html, body, .resume {
+    background: #fff !important;
+    color: #000 !important;
+    print-color-adjust: exact;        /* honor the deliberate tonal contrast */
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Drop screen container max-width — let the resume use the @page area */
+  .resume {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Body type drops to 10pt; line-height tightens to 1.35 for paper density */
+  .resume,
+  .resume p,
+  .resume li {
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+
+  /* H1 (display) — keep prominent but rein in for paper */
+  .resume h1 {
+    font-size: 20pt;
+    line-height: 1.15;
+    margin-bottom: 4pt;
+  }
+
+  /* Role line + location/phone — small caps register */
+  .resume header p {
+    font-size: 9pt;
+    color: #444 !important;
+    line-height: 1.3;
+  }
+
+  /* Resume H2 (section labels) — 12pt mono uppercase for paper */
+  .resume-h2 {
+    font-size: 12pt;
+    margin: 12pt 0 4pt;
+    color: #000 !important;
+    text-transform: uppercase;        /* paper register flips lowercase → uppercase for scannability */
+    letter-spacing: 0.04em;            /* uppercase needs more tracking */
+    border-bottom: 0.5pt solid #999;   /* hairline under each H2 on paper */
+    padding-bottom: 2pt;
+  }
+
+  /* Entry title — body-medium reads on paper at 10.5pt @ 600 */
+  .resume-entry .entry-title {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #000 !important;
+  }
+
+  /* Entry meta — 9pt #666 (paper equivalent of --color-text-tertiary) */
+  .resume-entry .entry-meta {
+    font-size: 9pt;
+    color: #666 !important;
+  }
+
+  /* Entry bullets — slightly tighter indent for paper */
+  .resume-entry .entry-bullets {
+    padding-left: 12pt;
+    margin-top: 4pt;
+  }
+
+  .resume-entry .entry-bullets li {
+    margin-top: 2pt;
+    color: #000 !important;
+  }
+
+  /* Skills dl — tighten the grid */
+  .resume-skills {
+    gap: 4pt 12pt;
+  }
+
+  /* Links — color: inherit + simple underline; URLs print literally */
+  .resume a {
+    color: inherit !important;
+    text-decoration: underline;
+    text-underline-offset: 2pt;
+  }
+
+  /* Strip on-screen hairlines; let H2 borders + page rhythm do the work */
+  .resume hr.hairline {
+    display: none;
+  }
+
+  /* Hide chrome that doesn't belong on paper */
+  .download-pdf-link,
+  .skip-link,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  /* Page-break rules — keep sections intact when possible */
+  .resume section {
+    page-break-inside: avoid;
+  }
+
+  .resume-entry {
+    page-break-inside: avoid;
+  }
+
+  .resume h1,
+  .resume-h2 {
+    page-break-after: avoid;          /* don't orphan a heading at page end */
+  }
+}
