@@ -1,10 +1,11 @@
 ---
 phase: 4
 slug: home-projects-index
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-05-16
+completed: 2026-05-17
 ---
 
 # Phase 4 — Validation Strategy

@@ -47,7 +47,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Projects index
 
-- [ ] **PIX-01**: `/projects` page lists all projects with a filterable tag chip row
+- [x] **PIX-01**: `/projects` page lists all projects with a filterable tag chip row
 - [x] **PIX-02**: Tag filter state is URL-synced (`?tag=local-first`) so filters are shareable and back-button works
 - [x] **PIX-03**: Tag chips are fully keyboard-navigable with visible focus styles
 - [x] **PIX-04**: Project cards visually indicate hero vs secondary tier and public vs private
@@ -179,7 +179,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | HOM-03 | Phase 4 — Home + Projects Index | Complete |
 | HOM-04 | Phase 4 — Home + Projects Index | Complete |
 | HOM-05 | Phase 4 — Home + Projects Index | Complete |
-| PIX-01 | Phase 4 — Home + Projects Index | Pending |
+| PIX-01 | Phase 4 — Home + Projects Index | Complete |
 | PIX-02 | Phase 4 — Home + Projects Index | Complete |
 | PIX-03 | Phase 4 — Home + Projects Index | Complete |
 | PIX-04 | Phase 4 — Home + Projects Index | Complete |

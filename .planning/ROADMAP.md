@@ -94,7 +94,7 @@ Plans:
 - [x] 04-01-PLAN.md — Wave 1: CardMeta + ProjectCardHero + ProjectCardSecondary (presentational chips, no nested anchors, isPlaceholderHero branching)
 - [x] 04-02-PLAN.md — Wave 2: HomeHero + HomeProjectGrid + replace app/(site)/page.tsx (Phase 1 placeholder fully removed; per-route metadata)
 - [x] 04-03-PLAN.md — Wave 1: TagFilterRow + EmptyFilterState + TierSeparator (RSC primitives — URL-synced filter, locked empty-state copy, aria-labelledby id pass-through)
-- [ ] 04-04-PLAN.md — Wave 2: /projects index route (Promise<searchParams> + tag narrowing + tier sections + EmptyFilterState) + anti-pattern source-grep regression net + build smoke
+- [x] 04-04-PLAN.md — Wave 2: /projects index route (Promise<searchParams> + tag narrowing + tier sections + EmptyFilterState) + anti-pattern source-grep regression net + build smoke
 **UI hint**: yes
 
 ### Phase 5: About + Resume + Contact

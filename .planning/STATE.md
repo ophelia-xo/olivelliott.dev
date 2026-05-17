@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 current_plan: 5
-status: executing
-last_updated: "2026-05-16T18:02:19.118Z"
+status: verifying
+last_updated: "2026-05-17T01:45:00.031Z"
 progress:
   total_phases: 7
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 21
-  completed_plans: 20
-  percent: 95
+  completed_plans: 21
+  percent: 100
 ---
 
 # Project State: olivelliott.dev
@@ -31,8 +31,8 @@ Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 4
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to execute
-**Progress:** [██████████] 95%
+**Status:** Phase complete — ready for verification
+**Progress:** [██████████] 100%
 
 ```
 [███████░░░] 67%
@@ -60,6 +60,7 @@ Total Plans in Phase: 5
 | Phase 04-home-+-projects-index P01 | 3 min | 3 tasks | 6 files |
 | Phase 04-home-+-projects-index P03 | 5min | 2 tasks | 6 files |
 | Phase 04-home-+-projects-index P02 | 5 min | 2 tasks | 6 files |
+| Phase 04-home-+-projects-index P04 | 85min | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -128,6 +129,9 @@ From `research/SUMMARY.md`:
 - [Phase 04-home-+-projects-index]: Plan 04-02: Per-route metadata pattern locked — home OMITS metadata.title so root layout title.default ('olivelliott.dev') flows through. Declaring title would invoke titleTemplate '%s · olivelliott.dev' and emit 'olivelliott.dev · olivelliott.dev'. Conversely, openGraph.images MUST be declared per-route — root layout omits them, so omitting on page yields no OG image emit. Mirror this on /projects (Plan 04-04) + Phase 5 routes.
 - [Phase 04-home-+-projects-index]: Plan 04-02: Typography flows DOWN from composer to slot. HomeHero owns the body/Geist Sans/400/leading-1.6/secondary color/max-w-[55ch] class string and passes via className prop. ThesisParagraph owns ONLY segmentation+motion. Locks role frame + thesis visually to same type stack without import coupling. Reusable pattern for any client-island leaf composed inside an RSC parent.
 - [Phase 04-home-+-projects-index]: Plan 04-02: Phase 1 FadeIn placeholder import REMOVED from app/(site)/page.tsx; FadeIn component file NOT deleted (Phase 5 may compose it). JSDoc breadcrumb retained ('Replaces the Phase 1 placeholder (a single FadeIn-wrapped tagline)') — Cleanup Checklist requires the historical context for future readers; source-grep tests strip comments so breadcrumb doesn't false-positive.
+- [Phase 04-home-+-projects-index]: Plan 04-04: Next 16 Promise<searchParams> contract honored on /projects route — async page + await + Array.isArray normalization + TAGS.includes narrowing with  cast. Invalid tag values degrade silently (NO notFound, NO redirect) per UI-SPEC's shareable-URL emphasis. Tier-section conditional locks orphan-separator prevention.
+- [Phase 04-home-+-projects-index]: Plan 04-04: Cross-cutting source-grep regression net pattern formalized — single tests/home/anti-patterns.test.ts reads ALL Phase 4 sources via node:fs.readFileSync and asserts 8 invariants (HOM-04 + single-client-island + URL-state-server-side + LazyMotion + banned-words + no-icons + no-TagChipRow-in-cards). Comment-stripping before identifier grep (strip /* */ then //) so RSC docstrings can intentionally name absent APIs without false-positives. Reusable: future phases get tests/phase-N/anti-patterns.test.ts by swapping the manifest.
+- [Phase 04-home-+-projects-index]: Plan 04-04: ProjectCardSecondary used for ALL projects on /projects index (not ProjectCardHero for hero-tier). Hero distinction via position + 'hero' mono prefix label (hero=true prop). Card weight reserved for the home page; the index trades weight for scanability per UI-SPEC § Page Composition Case A.
 
 ### Open Decisions (flagged in research)
 
@@ -159,7 +163,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-16T18:02:19.115Z
+**Last session:** 2026-05-17T01:45:00.026Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
