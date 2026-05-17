@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: executing
-last_updated: "2026-05-17T14:34:26.296Z"
+last_updated: "2026-05-17T14:45:35.474Z"
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 27
-  completed_plans: 23
-  percent: 85
+  completed_plans: 24
+  percent: 89
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 05 (about-+-resume-+-contact) — EXECUTING
-Plan: 3 of 6
-Current Plan: 3
+Plan: 4 of 6
+Current Plan: 4
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 85%
+**Progress:** [█████████░] 89%
 
 ```
 [███████░░░] 67%
@@ -63,6 +63,7 @@ Total Plans in Phase: 6
 | Phase 04-home-+-projects-index P04 | 85min | 3 tasks | 4 files |
 | Phase 05-about-+-resume-+-contact P00 | 4min | 4 tasks | 18 files |
 | Phase 05 P01 | 4min | 2 tasks | 5 files |
+| Phase 05-about-+-resume-+-contact P02 | 7min | 3 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -140,6 +141,10 @@ From `research/SUMMARY.md`:
 - [Phase 05]: Plan 05-01: ResumeSchema lives in lib/schemas.ts alongside ProjectFrontmatterSchema (no separate file) — single Zod module, both schemas co-located, type-only imports stay fs-free.
 - [Phase 05]: Plan 05-01: content/resume.ts uses Pitfall-12 dual-gate (satisfies Resume + ResumeSchema.parse(data)) — compile-time shape check + module-load runtime check. Build/import fails loudly if either contract drifts.
 - [Phase 05]: Plan 05-01: Banned-words contract trumps verbatim source. Myco bullet 'ecosystem' rewritten to 'community' (joins documented 'Passionate' → 'Active in' rewrite). UI-SPEC § Banned-words list is the authority; verbatim RESEARCH data yields when the two conflict.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-02: /resume opts out of (site)/ route group via app/resume/ — layout returns <>{children}</>, side-effect imports resume.css. Chromeless route confirmed by absence of nav.border-b/footer/a[href='#main'] in rendered output.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-02: Pitfall 8 lock — every screen-mode CSS rule in resume.css starts with a class; html/body selectors live ONLY inside @media print. Enforced by print-css.test.ts Test 8 which splits source on @media print and asserts no bare html/body rule in the pre-block region.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-02: Mailto subject 'hi%20from%20olivelliott.dev' (Pitfall 5: %20 not +) is hardcoded inside ResumeHeader, not in content/resume.ts. Same literal will be reused in /about ContactStack (Plan 05-03) and footer (Plan 05-04) — single cross-surface copywriting decision.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-02: DownloadPdfLink takes optional className and merges via cn(). /resume usage is plain <DownloadPdfLink /> (default positioning via .resume-header CSS rule absolute top-right). Plan 05-04 will pass footer layout classes for the second instance.
 
 ### Open Decisions (flagged in research)
 
@@ -171,7 +176,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T14:34:26.293Z
+**Last session:** 2026-05-17T14:45:35.471Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
