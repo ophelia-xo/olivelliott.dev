@@ -171,14 +171,18 @@ describe('app/(site)/page.tsx — Home route', () => {
     expect(mod.metadata?.title).toBeUndefined()
   })
 
-  it('Test 6 — OG image declared: openGraph.images[0].url is "/og-default.png"', async () => {
+  it('Test 6 — Pitfall 4 lock: openGraph.images is undefined (sibling app/opengraph-image.tsx owns the image)', async () => {
+    // Plan 06-02 Task 2 — manual openGraph.images was DELETED. Next 16's
+    // sibling opengraph-image.tsx is now the source of truth. A re-introduced
+    // manual array would shadow it and trip this assertion.
     mockMotion()
     mockProjects('heroOnly')
     const mod = await import('@/app/(site)/page')
-    const images = mod.metadata?.openGraph?.images as
-      | Array<{ url: string }>
-      | undefined
-    expect(images?.[0]?.url).toBe('/og-default.png')
+    const images = (mod.metadata?.openGraph as { images?: unknown })?.images
+    expect(
+      images,
+      '/ must NOT declare openGraph.images — sibling app/opengraph-image.tsx wins (Phase 6 Pitfall 4 cleanup).',
+    ).toBeUndefined()
   })
 
   it('Test 7 — placeholder marker: source file contains a "PLACEHOLDER: Phase 7" comment above the THESIS const', () => {

@@ -109,16 +109,15 @@ describe('/about route', () => {
     expect(metadata.title).toBe('about')
   })
 
-  it('metadata.openGraph.images is declared per-route (Phase 4 STATE.md note)', () => {
+  it('metadata.openGraph.images is undefined — sibling app/(site)/about/opengraph-image.tsx owns it (Phase 6 Pitfall 4 cleanup)', () => {
+    // Plan 06-02 Task 2 — manual openGraph.images was DELETED. The
+    // sibling opengraph-image.tsx is now the source of truth in Next 16.
     expect(metadata.openGraph).toBeDefined()
     const images = (metadata.openGraph as { images?: unknown })?.images
-    expect(images).toBeDefined()
-    // Either array or single object — both are valid Next shapes; assert truthy + non-empty.
-    if (Array.isArray(images)) {
-      expect(images.length).toBeGreaterThan(0)
-    } else {
-      expect(images).toBeTruthy()
-    }
+    expect(
+      images,
+      '/about must NOT declare openGraph.images — sibling opengraph-image.tsx wins.',
+    ).toBeUndefined()
   })
 
   it("metadata.description contains 'Aktiga' AND ('autonomous workflows' OR 'autonomous-workflows')", () => {

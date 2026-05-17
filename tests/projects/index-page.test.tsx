@@ -358,13 +358,16 @@ describe('/projects index page', () => {
     expect(mod.metadata.alternates?.canonical).toBe('/projects')
   })
 
-  it('Test 12 — metadata OG image: openGraph.images[0].url === "/og-default.png"', async () => {
+  it('Test 12 — Pitfall 4 lock: openGraph.images undefined (sibling app/(site)/projects/opengraph-image.tsx owns it)', async () => {
+    // Plan 06-02 Task 2 — manual openGraph.images was DELETED. Next 16's
+    // sibling opengraph-image.tsx is now the source of truth.
     mockProjects()
     const mod = await loadPage()
-    const images = mod.metadata.openGraph?.images as
-      | Array<{ url: string }>
-      | undefined
-    expect(images?.[0]?.url).toBe('/og-default.png')
+    const images = (mod.metadata.openGraph as { images?: unknown })?.images
+    expect(
+      images,
+      '/projects must NOT declare openGraph.images — sibling opengraph-image.tsx wins.',
+    ).toBeUndefined()
   })
 
   it('Test 13 — metadata twitter card: twitter.card === "summary_large_image"', async () => {

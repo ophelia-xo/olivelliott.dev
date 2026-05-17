@@ -1,5 +1,11 @@
 // tests/projects/page-metadata.test.ts
-// PRJ-07: per-route metadata + OG image fallback chain (5 cases).
+// PRJ-07 + Plan 06-02 Pitfall 4 cleanup: per-route metadata.
+// The original Phase 3 OG precedence chain (project.ogImage → hero.src →
+// /og-default.png embedded in generateMetadata) was REMOVED in Plan 06-02
+// Task 2: the sibling app/(site)/projects/[slug]/opengraph-image.tsx now
+// owns the per-project OG via generateImageMetadata + getProject(slug).
+// What remains: title, description, alternates.canonical, twitter.card, type,
+// and the Pitfall-4 absence locks (no openGraph.images, no twitter.images).
 import { describe, expect, it, vi } from 'vitest'
 
 const baseProject = {
@@ -52,47 +58,41 @@ describe('generateMetadata', () => {
     expect(meta.alternates?.canonical).toBe('/projects/myco')
   })
 
-  it('OG precedence #1: project.ogImage wins when set', async () => {
-    const generateMetadata = await loadGenerateMetadata(() => ({
-      ...baseProject,
-      ogImage: '/images/projects/myco/og-custom.png',
-    }))
-    const meta = await generateMetadata({
-      params: Promise.resolve({ slug: 'myco' }),
-    })
-    const og = meta.openGraph?.images as Array<{ url: string }> | undefined
-    expect(og?.[0]?.url).toBe('/images/projects/myco/og-custom.png')
-  })
-
-  it('OG precedence #2: hero.src wins when ogImage unset AND hero is NOT a placeholder', async () => {
-    const generateMetadata = await loadGenerateMetadata(() => ({
-      ...baseProject,
-      hero: { src: '/images/projects/myco/cover.png', alt: 'cover' },
-    }))
-    const meta = await generateMetadata({
-      params: Promise.resolve({ slug: 'myco' }),
-    })
-    const og = meta.openGraph?.images as Array<{ url: string }> | undefined
-    expect(og?.[0]?.url).toBe('/images/projects/myco/cover.png')
-  })
-
-  it('OG precedence #3: /og-default.png falls back when ogImage unset AND hero is placeholder (Myco today)', async () => {
+  it('Pitfall 4 lock: openGraph.images is undefined (sibling [slug]/opengraph-image.tsx owns it)', async () => {
+    // Plan 06-02 Task 2 deleted the manual openGraph.images array from
+    // generateMetadata. Sibling app/(site)/projects/[slug]/opengraph-image.tsx
+    // emits the per-project OG via generateImageMetadata + getProject(slug).
     const generateMetadata = await loadGenerateMetadata(() => baseProject)
     const meta = await generateMetadata({
       params: Promise.resolve({ slug: 'myco' }),
     })
-    const og = meta.openGraph?.images as Array<{ url: string }> | undefined
-    expect(og?.[0]?.url).toBe('/og-default.png')
+    const og = (meta.openGraph as { images?: unknown })?.images
+    expect(
+      og,
+      '/projects/[slug] must NOT declare openGraph.images — sibling opengraph-image.tsx wins.',
+    ).toBeUndefined()
   })
 
-  it('twitter card is summary_large_image and reuses the OG image', async () => {
+  it('Pitfall 4 lock: twitter.images is undefined (sibling [slug]/opengraph-image.tsx owns it)', async () => {
     const generateMetadata = await loadGenerateMetadata(() => baseProject)
     const meta = await generateMetadata({
       params: Promise.resolve({ slug: 'myco' }),
     })
-    expect(meta.twitter?.card).toBe('summary_large_image')
-    const tw = meta.twitter?.images as string[] | undefined
-    expect(tw?.[0]).toBe('/og-default.png')
+    const tw = (meta.twitter as { images?: unknown })?.images
+    expect(
+      tw,
+      '/projects/[slug] must NOT declare twitter.images — sibling opengraph-image.tsx wins.',
+    ).toBeUndefined()
+  })
+
+  it('twitter.card === summary_large_image (preserved across Pitfall 4 cleanup)', async () => {
+    const generateMetadata = await loadGenerateMetadata(() => baseProject)
+    const meta = await generateMetadata({
+      params: Promise.resolve({ slug: 'myco' }),
+    })
+    expect((meta.twitter as { card?: string })?.card).toBe(
+      'summary_large_image',
+    )
   })
 
   it('returns {} for unknown slug', async () => {
