@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: planning
-last_updated: "2026-05-17T15:15:01.021Z"
+current_plan: 2
+status: executing
+last_updated: "2026-05-17T16:56:46.875Z"
 progress:
   total_phases: 7
   completed_phases: 5
-  total_plans: 27
-  completed_plans: 27
-  percent: 100
+  total_plans: 33
+  completed_plans: 28
+  percent: 85
 ---
 
 # Project State: olivelliott.dev
@@ -20,19 +20,19 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 05 — about-+-resume-+-contact
+**Current Focus:** Phase 06 — seo,-og,-a11y-&-performance-audit
 
 ## Current Position
 
-Phase: 05 (about-+-resume-+-contact) — EXECUTING
-Plan: 6 of 6
-Current Plan: Not started
+Phase: 06 (seo,-og,-a11y-&-performance-audit) — EXECUTING
+Plan: 2 of 6
+Current Plan: 2
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 6
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to plan
-**Progress:** [██████████] 100%
+**Status:** Ready to execute
+**Progress:** [█████████░] 85%
 
 ```
 [███████░░░] 67%
@@ -67,6 +67,7 @@ Total Plans in Phase: 6
 | Phase 05-about-+-resume-+-contact P03 | 5min | 3 tasks | 10 files |
 | Phase 05-about-+-resume-+-contact P04 | 2min | 1 tasks | 2 files |
 | Phase 05 P05 | 8min | 3 tasks | 7 files |
+| Phase 06-seo,-og,-a11y-&-performance-audit P00 | 3 min | 3 tasks | 19 files |
 
 ## Accumulated Context
 
@@ -158,6 +159,11 @@ From `research/SUMMARY.md`:
 - [Phase 05]: USER OVERRIDE held: full puppeteer@^25 (not puppeteer-core + chromium-min). Locked by tests 8+9 in pdf-build.test.ts via absent-string assertions.
 - [Phase 05]: PHASE_SOURCES (was PHASE4_SOURCES): single cross-phase anti-pattern manifest in tests/home/anti-patterns.test.ts. Future phases extend by appending entries; invariants stay constant.
 - [Phase 05]: Fail-fast postbuild hook: tsx scripts/build-resume-pdf.ts runs after every pnpm build; any failure fails the deploy (silent staleness is worse than a failed deploy).
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: vitest-axe@1.0.0-pre.5 (NOT 0.1.0 stale 2022 line) — prerelease line is actively maintained with matcher-import-path split + Vitest 3 types. RESEARCH § Standard Stack.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: @lhci/cli@0.15.1 invoked via pnpm dlx, NOT installed as devDep — lhci is a one-shot Phase 6 deliverable run a handful of times locally, not in CI. Keeps node_modules lean.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: lighthouserc.json uses startServerReadyPattern 'Ready in' (Pitfall 8) — Next 16's actual stdout when start server boots. Wrong pattern → lhci hangs at 30s timeout.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: Module augmentation lives at tests/types/vitest-axe.d.ts — tsconfig excludes tests/ from tsc --noEmit, but Vitest's loader picks it up at test-load time so toHaveNoViolations() typechecks inside test files. Pattern reusable for any future test-only third-party matcher types.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: Wave-0 placeholder convention extends Plan 05-00 verbatim — 1 describe + 1 it.skip per file, plan number encoded in skip message, downstream plans extend in place (no delete + recreate). 12 visible skipped tests = 12 pending plans.
 
 ### Open Decisions (flagged in research)
 
@@ -189,7 +195,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T15:10:27.273Z
+**Last session:** 2026-05-17T16:56:46.871Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
