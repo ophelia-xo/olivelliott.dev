@@ -15,7 +15,6 @@ import { notFound } from 'next/navigation'
 import { MDXProse } from '@/components/mdx/prose'
 import { NextProjectBlock } from '@/components/projects/next-project-block'
 import { ProjectHero } from '@/components/projects/project-hero'
-import { isPlaceholderHero } from '@/lib/hero-fallback'
 import { getNextProject } from '@/lib/next-project'
 import { getAll, getProject } from '@/lib/projects'
 
@@ -36,11 +35,6 @@ export async function generateMetadata({
   const project = getProject(slug)
   if (!project) return {}
 
-  const ogImage =
-    project.ogImage ??
-    (!isPlaceholderHero(project.hero.src)
-      ? project.hero.src
-      : '/og-default.png')
   const description = project.description ?? project.tagline
 
   return {
@@ -51,15 +45,14 @@ export async function generateMetadata({
       description,
       url: `/projects/${project.slug}`,
       type: 'article',
-      images: [
-        { url: ogImage, width: 1200, height: 630, alt: project.hero.alt },
-      ],
+      // images: omitted — auto-wired by app/(site)/projects/[slug]/opengraph-image.tsx
+      // (Phase 6 Pitfall 4 cleanup; sibling OG generated per-slug via generateImageMetadata).
     },
     twitter: {
       card: 'summary_large_image',
       title: project.title,
       description,
-      images: [ogImage],
+      // images: omitted — auto-wired from the same opengraph-image.tsx convention.
     },
     alternates: { canonical: `/projects/${project.slug}` },
   }

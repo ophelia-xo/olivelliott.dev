@@ -43,18 +43,13 @@ export const metadata: Metadata = {
       'Olive Elliott — engineer building tools for autonomy, local-first systems, and open-source communities.',
     url: '/',
     type: 'website',
-    images: [
-      {
-        url: '/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'olivelliott.dev — engineer, autonomy, local-first',
-      },
-    ],
+    // images: omitted — auto-wired by app/opengraph-image.tsx (Phase 6 Pitfall 4 cleanup).
+    // Sibling opengraph-image.tsx is the source of truth; a manual array here would
+    // shadow it on some merge paths and confuses future readers.
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/og-default.png'],
+    // images: omitted — auto-wired from the same opengraph-image.tsx convention.
   },
 }
 

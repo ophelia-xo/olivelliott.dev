@@ -20,16 +20,12 @@ export const metadata: Metadata = {
       'Resume for Olive Elliott — engineer focused on autonomous workflows, local-first systems, and open-source tooling.',
     url: '/resume',
     type: 'profile',
-    images: [
-      {
-        url: '/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'olivelliott.dev — resume',
-      },
-    ],
+    // images: omitted — auto-wired by app/resume/opengraph-image.tsx (Phase 6 Pitfall 4 cleanup).
   },
-  twitter: { card: 'summary_large_image', images: ['/og-default.png'] },
+  twitter: {
+    card: 'summary_large_image',
+    // images: omitted — auto-wired from the same opengraph-image.tsx convention.
+  },
 }
 
 export default function ResumePage() {

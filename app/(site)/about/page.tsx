@@ -27,16 +27,12 @@ export const metadata: Metadata = {
       'Olive Elliott is an engineer focused on autonomous workflows, local-first systems, and tools that support open-source communities. Currently building at Aktiga.',
     url: '/about',
     type: 'website',
-    images: [
-      {
-        url: '/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'olivelliott.dev — engineer, autonomy, local-first',
-      },
-    ],
+    // images: omitted — auto-wired by app/(site)/about/opengraph-image.tsx (Phase 6 Pitfall 4 cleanup).
   },
-  twitter: { card: 'summary_large_image', images: ['/og-default.png'] },
+  twitter: {
+    card: 'summary_large_image',
+    // images: omitted — auto-wired from the same opengraph-image.tsx convention.
+  },
 }
 
 export default function AboutPage() {
