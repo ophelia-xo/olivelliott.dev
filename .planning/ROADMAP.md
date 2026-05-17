@@ -114,7 +114,7 @@ Plans:
 - [x] 05-02-PLAN.md — Wave 2: /resume route — chromeless app/resume/{layout,page}.tsx (route-group opt-out) + DownloadPdfLink + ResumeHeader + ResumeSection + ResumeEntry + resume.css print stylesheet + 6 test files (RES-02, RES-03, RES-05)
 - [x] 05-03-PLAN.md — Wave 2 (parallel lane A): /about route + AboutBio + ProjectPillRow + ContactStack + ValuesList + 5 test files (ABT-01..03, CTC-03)
 - [x] 05-04-PLAN.md — Wave 3: footer update — canonical github handle + CTC-02 mailto subject + DownloadPdfLink + interpunct (CTC-01, CTC-02, RES-05 second surface)
-- [ ] 05-05-PLAN.md — Wave 4: extend anti-pattern manifest (PHASE_SOURCES) + activate Puppeteer postbuild pipeline + pdf-build/pdf-artifact tests + build-smoke + VALIDATION sign-off (RES-04)
+- [x] 05-05-PLAN.md — Wave 4: extend anti-pattern manifest (PHASE_SOURCES) + activate Puppeteer postbuild pipeline + pdf-build/pdf-artifact tests + build-smoke + VALIDATION sign-off (RES-04)
 **UI hint**: yes
 
 ### Phase 6: SEO, OG, A11y & Performance Audit

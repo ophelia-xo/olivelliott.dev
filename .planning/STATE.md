@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 current_plan: 6
-status: executing
-last_updated: "2026-05-17T15:01:26.931Z"
+status: verifying
+last_updated: "2026-05-17T15:10:27.279Z"
 progress:
   total_phases: 7
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 27
-  completed_plans: 26
-  percent: 96
+  completed_plans: 27
+  percent: 100
 ---
 
 # Project State: olivelliott.dev
@@ -31,8 +31,8 @@ Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to execute
-**Progress:** [██████████] 96%
+**Status:** Phase complete — ready for verification
+**Progress:** [██████████] 100%
 
 ```
 [███████░░░] 67%
@@ -66,6 +66,7 @@ Total Plans in Phase: 6
 | Phase 05-about-+-resume-+-contact P02 | 7min | 3 tasks | 13 files |
 | Phase 05-about-+-resume-+-contact P03 | 5min | 3 tasks | 10 files |
 | Phase 05-about-+-resume-+-contact P04 | 2min | 1 tasks | 2 files |
+| Phase 05 P05 | 8min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -154,6 +155,9 @@ From `research/SUMMARY.md`:
 - [Phase 05-about-+-resume-+-contact]: Plan 05-04: Plain <DownloadPdfLink /> in footer — no className override needed. Default class string (p-3, font-mono, inline-flex-friendly) aligns inside the right-slot flex container. The cn()-merge escape hatch on DownloadPdfLink stays reserved for future non-flex placements.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-04: Triple lock on the CTC-02 mailto subject — positive grep (exact %20 literal exists exactly once), negative grep (Phase 1 string 'subject=olivelliott.dev' MUST NOT appear), runtime href assertion. A single mutation fails at least two tests; the three locks catch three distinct failure modes.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-04: Interpunct span sits between DownloadPdfLink and view-source, NOT between icon row and DownloadPdfLink. Icon-row → text-link transition uses existing gap-6 rhythm; text-link → text-link transition needs the · interpunct (both mono-lowercase, same register).
+- [Phase 05]: USER OVERRIDE held: full puppeteer@^25 (not puppeteer-core + chromium-min). Locked by tests 8+9 in pdf-build.test.ts via absent-string assertions.
+- [Phase 05]: PHASE_SOURCES (was PHASE4_SOURCES): single cross-phase anti-pattern manifest in tests/home/anti-patterns.test.ts. Future phases extend by appending entries; invariants stay constant.
+- [Phase 05]: Fail-fast postbuild hook: tsx scripts/build-resume-pdf.ts runs after every pnpm build; any failure fails the deploy (silent staleness is worse than a failed deploy).
 
 ### Open Decisions (flagged in research)
 
@@ -185,7 +189,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T15:01:26.928Z
+**Last session:** 2026-05-17T15:10:27.273Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
