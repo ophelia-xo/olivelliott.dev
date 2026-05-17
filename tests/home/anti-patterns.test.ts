@@ -30,6 +30,7 @@ const ROOT = path.resolve(__dirname, '..', '..')
 //   - 11 Phase 4 entries (home composer surfaces, project cards, filter UI)
 //   - 13 Phase 5 entries (about route + components, resume route + components,
 //     footer (Phase 1 baseline touched by Plan 05-04), resume content module)
+//   -  8 Phase 6 entries (sitemap, robots, og-template + 5 opengraph-image.tsx surfaces)
 const PHASE_SOURCES = [
   // ── Phase 4 ────────────────────────────────────────────────
   'components/home/thesis-paragraph.tsx',
@@ -60,6 +61,15 @@ const PHASE_SOURCES = [
   'components/site/footer.tsx',
   // ── Phase 5: Resume content + schema ───────────────────────
   'content/resume.ts',
+  // ── Phase 6: SEO + OG + A11y audit surfaces ─────────────────
+  'app/sitemap.ts',
+  'app/robots.ts',
+  'lib/og-template.tsx',
+  'app/opengraph-image.tsx',
+  'app/(site)/about/opengraph-image.tsx',
+  'app/(site)/projects/opengraph-image.tsx',
+  'app/resume/opengraph-image.tsx',
+  'app/(site)/projects/[slug]/opengraph-image.tsx',
 ]
 
 interface SourceMap {
@@ -168,6 +178,10 @@ describe('Phase 4 + 5 + 6 anti-pattern source-grep invariants', () => {
     }
   })
 
+  // Test 6 banned-words list stays Phase 4 + 5 scope; the OG-card additions
+  // (introducing, presenting, the all-new, transform your, supercharge,
+  // next-generation, AI-powered, built with love) are codified by
+  // tests/launch-gate/anti-features.test.ts Test #8 to avoid duplication.
   it('Test 6 — banned-word lock across Phase 4 + 5 source (no promo/AI-template language)', () => {
     const { code } = readAll()
     const banned =
