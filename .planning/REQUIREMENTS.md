@@ -86,7 +86,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **QAL-02**: axe-core or equivalent a11y scan is clean on home, one project page, and `/resume`
 - [x] **QAL-03**: All interactions work via keyboard only (nav, tag filters, resume download)
 - [x] **QAL-04**: Reduced-motion OS setting disables decorative motion across the site
-- [ ] **QAL-05**: Launch checklist verifies none of the 19 anti-features from research/FEATURES.md slipped in (skill bars, gradient-on-gradient, stagger-everything, etc.)
+- [x] **QAL-05**: Launch checklist verifies none of the 19 anti-features from research/FEATURES.md slipped in (skill bars, gradient-on-gradient, stagger-everything, etc.)
 
 ### Deploy
 
@@ -199,11 +199,11 @@ Which phases cover which requirements. Populated during roadmap creation.
 | MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | MTA-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
-| QAL-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Deferred to Phase 7 launch-week (Plan 06-04) |
 | QAL-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | QAL-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | QAL-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
-| QAL-05 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| QAL-05 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | DPL-01 | Phase 1 — Foundation | Pending |
 | DPL-02 | Phase 7 — Content Pass + Launch | Pending |
 | DPL-03 | Phase 7 — Content Pass + Launch | Pending |

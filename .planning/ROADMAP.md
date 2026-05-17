@@ -133,7 +133,7 @@ Plans:
 - [x] 06-01-PLAN.md — Wave 1: app/icon.svg (oe monogram, glyph-as-path) + app/apple-icon.png (180×180) + OVERWRITE app/favicon.ico (16/32/48 multi-size) + tests/seo/favicon.test.ts (MTA-04)
 - [x] 06-02-PLAN.md — Wave 2: lib/og-template.tsx + 5 OG surfaces (1 root default + 3 per-route siblings + 1 dynamic [slug]) + app/sitemap.ts + app/robots.ts + Pitfall 4 cleanup (delete openGraph.images from 5 page metadata blocks) + 4 tests/seo/* (MTA-01, MTA-02, MTA-03)
 - [x] 06-03-PLAN.md — Wave 2: 5 vitest-axe route tests + tests/a11y/keyboard.test.tsx + Test 11 in tests/home/anti-patterns.test.ts (QAL-02, QAL-03, QAL-04)
-- [ ] 06-04-PLAN.md — Wave 3: tests/launch-gate/anti-features.test.ts (19 items per RESEARCH Pattern 11) + manual pnpm lhci run + fill lighthouse-report.md (QAL-01, QAL-05)
+- [x] 06-04-PLAN.md — Wave 3: tests/launch-gate/anti-features.test.ts (19 items per RESEARCH Pattern 11) shipped + lighthouse-report.md QAL-01 DEFERRED to Phase 7 launch-week (QAL-05 complete; QAL-01 deferred)
 - [ ] 06-05-PLAN.md — Wave 4: extend PHASE_SOURCES manifest (+8 Phase 6 entries) + delete orphaned public/{file,globe,next,vercel,window}.svg + pnpm build smoke + flip 06-VALIDATION.md to phase-gate sign-off (all 9 requirements)
 **UI hint**: yes
 
@@ -159,7 +159,7 @@ Plans:
 | 3. Project Detail Template | 4/4 | Complete   | 2026-05-16 |
 | 4. Home + Projects Index | 0/5 | Planned | - |
 | 5. About + Resume + Contact | 0/6 | Planned | - |
-| 6. SEO, OG, A11y & Performance Audit | 0/6 | Planned | - |
+| 6. SEO, OG, A11y & Performance Audit | 5/6 | In Progress | - |
 | 7. Content Pass + Launch | 0/0 | Not started | - |
 
 ## Coverage Summary
