@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-05-17T16:56:46.875Z"
+last_updated: "2026-05-17T17:02:04.039Z"
 progress:
   total_phases: 7
   completed_phases: 5
   total_plans: 33
-  completed_plans: 28
-  percent: 85
+  completed_plans: 29
+  percent: 88
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 06 (seo,-og,-a11y-&-performance-audit) — EXECUTING
-Plan: 2 of 6
-Current Plan: 2
+Plan: 3 of 6
+Current Plan: 3
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 6
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 85%
+**Progress:** [█████████░] 88%
 
 ```
 [███████░░░] 67%
@@ -68,6 +68,7 @@ Total Plans in Phase: 6
 | Phase 05-about-+-resume-+-contact P04 | 2min | 1 tasks | 2 files |
 | Phase 05 P05 | 8min | 3 tasks | 7 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P00 | 3 min | 3 tasks | 19 files |
+| Phase 06-seo,-og,-a11y-&-performance-audit P01 | 2 min | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -164,6 +165,8 @@ From `research/SUMMARY.md`:
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: lighthouserc.json uses startServerReadyPattern 'Ready in' (Pitfall 8) — Next 16's actual stdout when start server boots. Wrong pattern → lhci hangs at 30s timeout.
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: Module augmentation lives at tests/types/vitest-axe.d.ts — tsconfig excludes tests/ from tsc --noEmit, but Vitest's loader picks it up at test-load time so toHaveNoViolations() typechecks inside test files. Pattern reusable for any future test-only third-party matcher types.
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-00: Wave-0 placeholder convention extends Plan 05-00 verbatim — 1 describe + 1 it.skip per file, plan number encoded in skip message, downstream plans extend in place (no delete + recreate). 12 visible skipped tests = 12 pending plans.
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Favicon: glyph-as-path (not <text>) — browsers don't load Geist for favicons, so hand-authored <path> approximations of o + e glyphs freeze the exact mark across all browsers
+- [Phase 06-seo,-og,-a11y-&-performance-audit]: Favicon ICO: manual Node Buffer byte-assembly (ICONDIR + ICONDIRENTRY + sharp-produced PNG buffers) instead of to-ico / sharp-ico dep — zero new packages, 1.5KB output
 
 ### Open Decisions (flagged in research)
 
@@ -195,7 +198,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T16:56:46.871Z
+**Last session:** 2026-05-17T17:01:56.974Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 

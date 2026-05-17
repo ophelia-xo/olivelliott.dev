@@ -72,7 +72,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **MTA-01**: Every route has `generateMetadata` producing a unique title and description
 - [ ] **MTA-02**: Every route has an OG image (Twitter card + Open Graph) — static per-route for v1, dynamic later
 - [ ] **MTA-03**: A valid `sitemap.xml` is generated and a `robots.txt` is present
-- [ ] **MTA-04**: Favicon set is in place (SVG + ICO + apple-touch)
+- [x] **MTA-04**: Favicon set is in place (SVG + ICO + apple-touch)
 
 ### Contact + socials
 
@@ -198,7 +198,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
-| MTA-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
+| MTA-04 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | QAL-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | QAL-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | QAL-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
