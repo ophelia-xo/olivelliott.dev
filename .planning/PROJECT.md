@@ -14,13 +14,13 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 
 - [x] **Project detail template at `/projects/[slug]`** — Validated in Phase 3: Myco case study renders end-to-end as Problem → Approach → Outcome with hero, MDX components, and next-project navigation. PRJ-01..PRJ-07 satisfied; 207/207 tests green.
 - [x] **Private project handling** — Validated in Phase 3 (component contract) via redaction-fixture path; visible `code private` label replaces repo link, schema strips `links.repo`. Live private content lands in Phase 7.
+- [x] **Home page with hero, thesis, and project grid (HOM-01..05)** — Validated in Phase 4. Single-H1 wordmark + role frame + type-set `ThesisParagraph` (reduced-motion gated) + hero-tier cards + secondary-tier cards. No bento, no stagger-on-scroll. Thesis copy is a Phase 7 placeholder.
+- [x] **Projects index with URL-synced filter (PIX-01..04)** — Validated in Phase 4. `/projects` renders all projects with server-side `?tag=X` filter, native back-button restoration, keyboard-navigable chips. 301/301 tests green.
 
 ### Active
 
-- [ ] Home page with hero, thesis/positioning, and hero-project grid
-- [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX)
-- [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work
-- [ ] Project tagging system (local-first, autonomous, open-source, etc.) to surface thesis
+- [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX in Phase 7)
+- [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work (Phase 7 content pass)
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth
 - [ ] Contact area with GitHub, email, LinkedIn
@@ -105,4 +105,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-16 after Phase 3 (project-detail-template) completion*
+*Last updated: 2026-05-17 after Phase 4 (home-+-projects-index) completion*
