@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 4
+current_plan: 5
 status: executing
-last_updated: "2026-05-17T14:45:35.474Z"
+last_updated: "2026-05-17T14:55:19.458Z"
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 27
-  completed_plans: 24
-  percent: 89
+  completed_plans: 25
+  percent: 93
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 05 (about-+-resume-+-contact) — EXECUTING
-Plan: 4 of 6
-Current Plan: 4
+Plan: 5 of 6
+Current Plan: 5
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 89%
+**Progress:** [█████████░] 93%
 
 ```
 [███████░░░] 67%
@@ -64,6 +64,7 @@ Total Plans in Phase: 6
 | Phase 05-about-+-resume-+-contact P00 | 4min | 4 tasks | 18 files |
 | Phase 05 P01 | 4min | 2 tasks | 5 files |
 | Phase 05-about-+-resume-+-contact P02 | 7min | 3 tasks | 13 files |
+| Phase 05-about-+-resume-+-contact P03 | 5min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -145,6 +146,10 @@ From `research/SUMMARY.md`:
 - [Phase 05-about-+-resume-+-contact]: Plan 05-02: Pitfall 8 lock — every screen-mode CSS rule in resume.css starts with a class; html/body selectors live ONLY inside @media print. Enforced by print-css.test.ts Test 8 which splits source on @media print and asserts no bare html/body rule in the pre-block region.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-02: Mailto subject 'hi%20from%20olivelliott.dev' (Pitfall 5: %20 not +) is hardcoded inside ResumeHeader, not in content/resume.ts. Same literal will be reused in /about ContactStack (Plan 05-03) and footer (Plan 05-04) — single cross-surface copywriting decision.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-02: DownloadPdfLink takes optional className and merges via cn(). /resume usage is plain <DownloadPdfLink /> (default positioning via .resume-header CSS rule absolute top-right). Plan 05-04 will pass footer layout classes for the second instance.
+- [Phase 05-about-+-resume-+-contact]: ProjectPillRow is its own component (hand-mirrors Phase 3 chip class string) — NOT a refactor of TagChipRow. Source-grep regression test locks the separation. (Plan 05-03)
+- [Phase 05-about-+-resume-+-contact]: Mailto subject locked at hi%20from%20olivelliott.dev (%20 NOT +; RFC 6068). Locked on /about ContactStack; Plan 05-04 must match in footer. (Plan 05-03)
+- [Phase 05-about-+-resume-+-contact]: GitHub URL on /about uses canonical olivelliott handle. Phase 1 footer still uses ophelia-x — Plan 05-04 should standardize. (Plan 05-03)
+- [Phase 05-about-+-resume-+-contact]: LinkedIn handle is a PLACEHOLDER in ContactStack — flagged for Phase 7 confirmation. (Plan 05-03)
 
 ### Open Decisions (flagged in research)
 
@@ -176,7 +181,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T14:45:35.471Z
+**Last session:** 2026-05-17T14:55:00.782Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 

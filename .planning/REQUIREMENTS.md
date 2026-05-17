@@ -54,9 +54,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### About page
 
-- [ ] **ABT-01**: `/about` page contains a real bio (not AI-generated "passionate developer" copy) reflecting the polymath / autonomous-workflows thesis
-- [ ] **ABT-02**: About page anchors the current role at Aktiga
-- [ ] **ABT-03**: About page includes values / interests the thesis rests on (open-source communities, local-first systems, a world we want to live in)
+- [x] **ABT-01**: `/about` page contains a real bio (not AI-generated "passionate developer" copy) reflecting the polymath / autonomous-workflows thesis
+- [x] **ABT-02**: About page anchors the current role at Aktiga
+- [x] **ABT-03**: About page includes values / interests the thesis rests on (open-source communities, local-first systems, a world we want to live in)
 
 ### Resume
 
@@ -78,7 +78,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **CTC-01**: Footer includes working links for GitHub, email, and LinkedIn
 - [ ] **CTC-02**: Email is a `mailto:` link with a pre-filled subject appropriate to a portfolio contact
-- [ ] **CTC-03**: Contact affordances appear in at least two places (About and footer)
+- [x] **CTC-03**: Contact affordances appear in at least two places (About and footer)
 
 ### Performance + a11y gate
 
@@ -183,9 +183,9 @@ Which phases cover which requirements. Populated during roadmap creation.
 | PIX-02 | Phase 4 — Home + Projects Index | Complete |
 | PIX-03 | Phase 4 — Home + Projects Index | Complete |
 | PIX-04 | Phase 4 — Home + Projects Index | Complete |
-| ABT-01 | Phase 5 — About + Resume + Contact | Pending |
-| ABT-02 | Phase 5 — About + Resume + Contact | Pending |
-| ABT-03 | Phase 5 — About + Resume + Contact | Pending |
+| ABT-01 | Phase 5 — About + Resume + Contact | Complete |
+| ABT-02 | Phase 5 — About + Resume + Contact | Complete |
+| ABT-03 | Phase 5 — About + Resume + Contact | Complete |
 | RES-01 | Phase 5 — About + Resume + Contact | Complete |
 | RES-02 | Phase 5 — About + Resume + Contact | Complete |
 | RES-03 | Phase 5 — About + Resume + Contact | Complete |
@@ -194,7 +194,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RES-06 | Phase 5 — About + Resume + Contact | Complete |
 | CTC-01 | Phase 5 — About + Resume + Contact | Pending |
 | CTC-02 | Phase 5 — About + Resume + Contact | Pending |
-| CTC-03 | Phase 5 — About + Resume + Contact | Pending |
+| CTC-03 | Phase 5 — About + Resume + Contact | Complete |
 | MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | MTA-03 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
