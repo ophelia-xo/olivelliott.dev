@@ -50,9 +50,16 @@ describe('<TagChipRow>', () => {
     expect(container.querySelectorAll('a').length).toBe(0)
   })
 
-  it('returns a React fragment — no extra wrapping div around the chips', () => {
+  it('returns a React fragment — no extra wrapping div around the chips; each chip lives in <li role="listitem"> (parent ProjectMeta <ul role="list">)', () => {
+    // Phase 6 Plan 06-03 (QAL-02): each chip is wrapped in <li role="listitem">
+    // so the parent ProjectMeta <ul role="list"> satisfies axe's
+    // `aria-required-children`. There is still no wrapping div — the
+    // top-level returned shape is a fragment of <li> elements.
     const { container } = render(<TagChipRow tags={['typescript']} />)
-    // First element child should be the <a>, not a wrapping div
-    expect(container.firstElementChild?.tagName).toBe('A')
+    // First element child is now the <li> (was the <a> pre-Plan-06-03)
+    expect(container.firstElementChild?.tagName).toBe('LI')
+    expect(container.firstElementChild?.getAttribute('role')).toBe('listitem')
+    // The <a> still exists as the immediate child of the <li>
+    expect(container.firstElementChild?.firstElementChild?.tagName).toBe('A')
   })
 })

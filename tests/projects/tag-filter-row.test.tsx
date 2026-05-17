@@ -3,7 +3,9 @@
 //       § Pattern 3 (ARIA decision), § Pitfalls 7, 9, 11.
 // TagFilterRow is the URL-synced single-tag filter for /projects.
 // - All chips are <a>; the active chip's href clears the filter (`/projects`).
-// - aria-pressed + aria-current="true" both present on active chip.
+// - aria-current="true" on active chip (sole selection-state attribute).
+//   Plan 06-03 (QAL-02) removed aria-pressed because axe's aria-allowed-attr
+//   forbids aria-pressed on <a> (button-only attribute, WAI-ARIA 1.2).
 // - Count badge uses `text-current` so it inherits parent chip color
 //   (Pitfall 7 lock — otherwise the count is invisible on the active chip).
 // - Chip text comes from TAG_LABELS[tag] (human-facing), NOT raw tag value.
@@ -48,43 +50,35 @@ describe('<TagFilterRow>', () => {
     const { container } = render(
       <TagFilterRow tags={FIXTURE} activeTag="local-first" />,
     )
-    const activeChip = container.querySelector('a[aria-pressed="true"]')
+    const activeChip = container.querySelector('a[aria-current="true"]')
     expect(activeChip).not.toBeNull()
     expect(activeChip?.getAttribute('href')).toBe('/projects')
 
-    // Inactive chips still carry ?tag=...
-    const inactive = Array.from(
-      container.querySelectorAll('a[aria-pressed="false"]'),
+    // Inactive chips still carry ?tag=... (selected by absence of aria-current).
+    const allChips = Array.from(
+      container.querySelectorAll('nav[aria-label="Filter projects by tag"] a'),
     )
+    const inactive = allChips.filter((a) => !a.hasAttribute('aria-current'))
     const inactiveHrefs = inactive.map((a) => a.getAttribute('href'))
     expect(inactiveHrefs).toContain('/projects?tag=autonomous')
     expect(inactiveHrefs).toContain('/projects?tag=cli')
   })
 
-  it('aria-pressed: "true" on active chip, "false" on every inactive chip', () => {
+  it('aria-current: "true" on active chip; absent on every inactive chip and on the clear-filter link', () => {
+    // Phase 6 Plan 06-03 (QAL-02): aria-pressed was removed (axe forbids it
+    // on <a>). aria-current is now the sole selection-state attribute.
     const { container } = render(
       <TagFilterRow tags={FIXTURE} activeTag="autonomous" />,
     )
-    const pressedTrue = container.querySelectorAll('a[aria-pressed="true"]')
-    expect(pressedTrue.length).toBe(1)
-    const pressedFalse = container.querySelectorAll('a[aria-pressed="false"]')
-    // 2 chips inactive (clear-filter link has no aria-pressed)
-    expect(pressedFalse.length).toBe(2)
-  })
+    const active = container.querySelectorAll('a[aria-current="true"]')
+    expect(active.length).toBe(1)
+    expect(active[0]?.textContent?.toLowerCase()).toContain('autonomous')
 
-  it('aria-current: "true" on active chip; no aria-current attribute on inactive chips', () => {
-    const { container } = render(
-      <TagFilterRow tags={FIXTURE} activeTag="local-first" />,
-    )
-    const active = container.querySelector('a[aria-pressed="true"]')!
-    expect(active.getAttribute('aria-current')).toBe('true')
-
-    const inactive = Array.from(
-      container.querySelectorAll('a[aria-pressed="false"]'),
-    )
-    for (const a of inactive) {
-      expect(a.hasAttribute('aria-current')).toBe(false)
-    }
+    // Every chip + the clear-filter link; only the active chip has aria-current.
+    const all = Array.from(container.querySelectorAll('a'))
+    const withoutCurrent = all.filter((a) => !a.hasAttribute('aria-current'))
+    // 3 chips total → 1 active + 2 inactive; plus 1 clear-filter link = 3 anchors w/o aria-current.
+    expect(withoutCurrent.length).toBe(3)
   })
 
   it('chip text uses TAG_LABELS[tag] (capitalized) — NOT the raw lowercase tag value', () => {

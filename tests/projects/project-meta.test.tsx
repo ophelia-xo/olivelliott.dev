@@ -97,7 +97,10 @@ describe('<ProjectMeta>', () => {
     expect(labels.length).toBe(1)
   })
 
-  it('composition order: year → tag chips → repo-or-private label', () => {
+  it('composition order: year → tag chips → repo-or-private label (each wrapped in <li role="listitem">)', () => {
+    // Phase 6 Plan 06-03 (QAL-02): wrapper became <ul> with each child wrapped
+    // in <li role="listitem"> (axe `aria-required-children`). The composition
+    // order is unchanged — only the wrapping element changed.
     const { container } = render(
       <ProjectMeta
         year={2025}
@@ -107,12 +110,18 @@ describe('<ProjectMeta>', () => {
       />
     )
     const row = container.firstElementChild as HTMLElement
-    const children = Array.from(row.children)
-    // First child = <time>
-    expect(children[0]?.tagName).toBe('TIME')
-    // Last interactive child = the repo link
-    const last = children[children.length - 1]!
-    expect(last.tagName).toBe('A')
-    expect(last.getAttribute('href')).toBe('https://github.com/x/y')
+    expect(row.tagName).toBe('UL')
+    const items = Array.from(row.children)
+    for (const item of items) {
+      expect(item.tagName).toBe('LI')
+      expect(item.getAttribute('role')).toBe('listitem')
+    }
+    // First item wraps <time>
+    expect(items[0]?.querySelector('time')).not.toBeNull()
+    // Last item wraps the repo <a>
+    const last = items[items.length - 1]!
+    const lastAnchor = last.querySelector('a')
+    expect(lastAnchor).not.toBeNull()
+    expect(lastAnchor?.getAttribute('href')).toBe('https://github.com/x/y')
   })
 })

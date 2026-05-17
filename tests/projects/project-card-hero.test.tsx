@@ -99,23 +99,33 @@ describe('<ProjectCardHero>', () => {
     expect(container.querySelectorAll('img').length).toBe(0)
   })
 
-  it('outcomes cap: with 5 outcomes, renders EXACTLY 3 <li> elements', () => {
+  // Phase 6 Plan 06-03 (QAL-02): CardMeta wrapper became <ul> with each child
+  // wrapped in <li role="listitem"> (axe `aria-required-children`). Outcome
+  // assertions are now scoped to the outcomes-only <ul> (NOT the metadata
+  // <ul>) by selecting `ul:not([role="list"])` — the metadata list carries
+  // the explicit role attribute, the outcomes list does not.
+  it('outcomes cap: with 5 outcomes, the outcomes <ul> contains EXACTLY 3 <li> elements', () => {
     const { container } = render(<ProjectCardHero project={placeholderHeroProject} />)
-    const lis = container.querySelectorAll('li')
+    const outcomeList = container.querySelector('ul:not([role="list"])')
+    expect(outcomeList).not.toBeNull()
+    const lis = outcomeList!.querySelectorAll(':scope > li')
     expect(lis.length).toBe(3)
     expect(lis[0]?.textContent).toContain('outcome one')
     expect(lis[1]?.textContent).toContain('outcome two')
     expect(lis[2]?.textContent).toContain('outcome three')
   })
 
-  it('outcomes empty: renders NO <ul>', () => {
+  it('outcomes empty: renders NO outcomes <ul> (only the CardMeta <ul role="list"> remains)', () => {
     const { container } = render(<ProjectCardHero project={noOutcomesProject} />)
-    expect(container.querySelectorAll('ul').length).toBe(0)
+    // The CardMeta wrapper <ul role="list"> always renders; only the outcomes
+    // <ul> (without role) is conditional. Assert there is no non-role ul.
+    expect(container.querySelectorAll('ul:not([role="list"])').length).toBe(0)
   })
 
-  it('outcome glyph: each <li> contains an aria-hidden="true" span with →', () => {
+  it('outcome glyph: each outcome <li> contains an aria-hidden="true" span with →', () => {
     const { container } = render(<ProjectCardHero project={placeholderHeroProject} />)
-    const lis = Array.from(container.querySelectorAll('li'))
+    const outcomeList = container.querySelector('ul:not([role="list"])')!
+    const lis = Array.from(outcomeList.querySelectorAll(':scope > li'))
     expect(lis.length).toBe(3)
     for (const li of lis) {
       const glyph = li.querySelector('span[aria-hidden="true"]')

@@ -15,38 +15,44 @@ interface ProjectMetaProps {
 export function ProjectMeta({ year, tags, visibility, repoUrl }: ProjectMetaProps) {
   const isPrivate = visibility === 'private'
   return (
-    <div
+    <ul
       role="list"
       aria-label="Project metadata"
-      className="flex flex-wrap items-center gap-3"
+      className="flex flex-wrap items-center gap-3 list-none p-0 m-0"
     >
-      <time
-        dateTime={String(year)}
-        className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] text-[color:var(--color-text-secondary)]"
-      >
-        {year}
-      </time>
+      <li role="listitem">
+        <time
+          dateTime={String(year)}
+          className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] text-[color:var(--color-text-secondary)]"
+        >
+          {year}
+        </time>
+      </li>
       <TagChipRow tags={tags} />
       {isPrivate ? (
-        <span className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-tertiary)]">
-          code private
-        </span>
+        <li role="listitem">
+          <span className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-tertiary)]">
+            code private
+          </span>
+        </li>
       ) : repoUrl ? (
-        <a
-          href={repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase
-            text-[color:var(--color-accent)] hover:text-[color:var(--color-accent-hover)]
-            py-2 -my-2
-            no-underline hover:underline hover:underline-offset-4 hover:decoration-1
-            transition-colors duration-[120ms] ease-linear
-          "
-        >
-          repo <span aria-hidden="true">↗</span>
-        </a>
+        <li role="listitem">
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase
+              text-[color:var(--color-accent)] hover:text-[color:var(--color-accent-hover)]
+              py-2 -my-2
+              no-underline hover:underline hover:underline-offset-4 hover:decoration-1
+              transition-colors duration-[120ms] ease-linear
+            "
+          >
+            repo <span aria-hidden="true">↗</span>
+          </a>
+        </li>
       ) : null}
-    </div>
+    </ul>
   )
 }

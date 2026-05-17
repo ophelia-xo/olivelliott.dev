@@ -150,7 +150,7 @@ describe('/projects index page', () => {
     expect(text).toContain('Fathom')
     expect(text).toContain('Trade Bot')
     // No active chip
-    expect(container.querySelector('a[aria-pressed="true"]')).toBeNull()
+    expect(container.querySelector('a[aria-current="true"]')).toBeNull()
     // No clear-filter link (clear-filter only appears under TagFilterRow when activeTag set)
     const clearLink = Array.from(container.querySelectorAll('a')).find((a) =>
       /clear filter/i.test(a.textContent ?? ''),
@@ -163,8 +163,9 @@ describe('/projects index page', () => {
     const { default: Page } = await loadPage()
     const ui = await Page({ searchParams: Promise.resolve({ tag: 'local-first' }) })
     const { container } = render(ui)
-    // Active chip: aria-pressed=true + href clears to /projects (Pitfall 9)
-    const activeChip = container.querySelector('a[aria-pressed="true"]')
+    // Active chip: aria-current=true + href clears to /projects (Pitfall 9).
+    // Phase 6 Plan 06-03 (QAL-02): aria-pressed was removed (axe forbids on <a>).
+    const activeChip = container.querySelector('a[aria-current="true"]')
     expect(activeChip).not.toBeNull()
     expect(activeChip?.getAttribute('href')).toBe('/projects')
     // Clear-filter link present
@@ -190,7 +191,7 @@ describe('/projects index page', () => {
     })
     const { container } = render(ui)
     // No active chip
-    expect(container.querySelector('a[aria-pressed="true"]')).toBeNull()
+    expect(container.querySelector('a[aria-current="true"]')).toBeNull()
     // No clear-filter link
     const clearLink = Array.from(container.querySelectorAll('a')).find((a) =>
       /clear filter/i.test(a.textContent ?? ''),
@@ -213,7 +214,7 @@ describe('/projects index page', () => {
     })
     const { container } = render(ui)
     // Behaves like ?tag=local-first
-    const activeChip = container.querySelector('a[aria-pressed="true"]')
+    const activeChip = container.querySelector('a[aria-current="true"]')
     expect(activeChip).not.toBeNull()
     expect(activeChip?.getAttribute('href')).toBe('/projects')
     // Active chip text contains the local-first label (TAG_LABELS[local-first])

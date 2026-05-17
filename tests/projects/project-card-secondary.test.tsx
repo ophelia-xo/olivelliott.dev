@@ -52,9 +52,13 @@ describe('<ProjectCardSecondary>', () => {
     expect(container.querySelector('h3')?.textContent).toBe('Trade Bot')
   })
 
-  it('renders NO <ul> (no outcomes) AND NO <img> (no image) regardless of project content', () => {
+  it('renders NO outcomes <ul> AND NO <img> regardless of project content (CardMeta <ul role="list"> is the only ul)', () => {
+    // Phase 6 Plan 06-03 (QAL-02): CardMeta now renders <ul role="list">,
+    // so the secondary card always has exactly one <ul> (the metadata list).
+    // The outcomes <ul> — which is what this test originally guarded — has
+    // NO role attribute, so we assert zero ul:not([role="list"]).
     const { container } = render(<ProjectCardSecondary project={baseProject} />)
-    expect(container.querySelectorAll('ul').length).toBe(0)
+    expect(container.querySelectorAll('ul:not([role="list"])').length).toBe(0)
     expect(container.querySelectorAll('img').length).toBe(0)
   })
 

@@ -6,24 +6,31 @@ import { describe, expect, it } from 'vitest'
 import { CardMeta } from '@/components/projects/card-meta'
 
 describe('<CardMeta>', () => {
-  it('renders <div role="list" aria-label="Project metadata"> with year + chips + (private label) in order', () => {
+  it('renders <ul role="list" aria-label="Project metadata"> with <li> children for year + chips + (private label) in order', () => {
+    // Phase 6 Plan 06-03 (QAL-02): wrapper became <ul> with each child wrapped
+    // in <li role="listitem"> so the list role has the required listitem
+    // descendants (axe `aria-required-children`). Inner element types
+    // (TIME / SPAN) are unchanged inside each <li>.
     const { container } = render(
       <CardMeta year={2025} tags={['typescript', 'local-first']} visibility="public" />,
     )
     const row = container.querySelector('[role="list"][aria-label="Project metadata"]')
     expect(row).not.toBeNull()
+    expect((row as HTMLElement).tagName).toBe('UL')
 
     const wrapper = row as HTMLElement
-    const children = Array.from(wrapper.children)
-    // First child = <time>
-    expect(children[0]?.tagName).toBe('TIME')
-    // Subsequent children include tag spans
-    expect(children[1]?.tagName).toBe('SPAN')
-    expect(children[1]?.textContent).toBe('typescript')
-    expect(children[2]?.tagName).toBe('SPAN')
-    expect(children[2]?.textContent).toBe('local-first')
-    // Public visibility — no `code private` label trailing
-    expect(children.length).toBe(3)
+    const items = Array.from(wrapper.children)
+    // 3 list items: year + 2 tag chips
+    expect(items.length).toBe(3)
+    for (const item of items) {
+      expect(item.tagName).toBe('LI')
+      expect(item.getAttribute('role')).toBe('listitem')
+    }
+    // First item wraps <time>
+    expect(items[0]?.querySelector('time')?.textContent).toBe('2025')
+    // Subsequent items wrap tag spans
+    expect(items[1]?.querySelector('span')?.textContent).toBe('typescript')
+    expect(items[2]?.querySelector('span')?.textContent).toBe('local-first')
   })
 
   it('renders year inside <time dateTime={String(year)}>', () => {

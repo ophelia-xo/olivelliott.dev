@@ -22,30 +22,33 @@ interface CardMetaProps {
 
 export function CardMeta({ year, tags, visibility }: CardMetaProps) {
   return (
-    <div
+    <ul
       role="list"
       aria-label="Project metadata"
-      className="flex flex-wrap items-center gap-3"
+      className="flex flex-wrap items-center gap-3 list-none p-0 m-0"
     >
-      <time
-        dateTime={String(year)}
-        className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] text-[color:var(--color-text-secondary)]"
-      >
-        {year}
-      </time>
-      {tags.map((tag) => (
-        <span
-          key={tag}
-          className="inline-flex items-center px-3 py-2 bg-[color:var(--color-surface-2)] rounded-sm font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-secondary)]"
+      <li role="listitem">
+        <time
+          dateTime={String(year)}
+          className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] text-[color:var(--color-text-secondary)]"
         >
-          {tag}
-        </span>
+          {year}
+        </time>
+      </li>
+      {tags.map((tag) => (
+        <li key={tag} role="listitem">
+          <span className="inline-flex items-center px-3 py-2 bg-[color:var(--color-surface-2)] rounded-sm font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-secondary)]">
+            {tag}
+          </span>
+        </li>
       ))}
       {visibility === 'private' && (
-        <span className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-tertiary)]">
-          code private
-        </span>
+        <li role="listitem">
+          <span className="font-mono text-[var(--text-label)] font-medium tracking-[0.02em] lowercase text-[color:var(--color-text-tertiary)]">
+            code private
+          </span>
+        </li>
       )}
-    </div>
+    </ul>
   )
 }

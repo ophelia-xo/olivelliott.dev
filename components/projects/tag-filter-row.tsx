@@ -5,8 +5,12 @@
 // is the state; back-button + reload restore the exact filter natively. NO
 // useSearchParams, NO 'use client', NO router calls. (RESEARCH § Pattern 2.)
 //
-// ARIA: aria-pressed (toggle-button) + aria-current="true" (generic current
-// in a set). Both attributes co-exist (RESEARCH § Pattern 3 + Open Question #5).
+// ARIA: aria-current="true" is the single source of selection state on the
+// active chip. Plan 06-03 (QAL-02) removed aria-pressed because axe
+// (aria-allowed-attr) forbids aria-pressed on <a> elements — aria-pressed is
+// a button-only toggle attribute (WAI-ARIA 1.2 § aria-pressed). aria-current
+// already conveys "currently selected within a set", which is exactly the
+// semantic the filter chips need.
 //
 // Count badge uses `text-current` so it inherits the chip parent's color across
 // active (--color-text-on-accent) and inactive (--color-text-secondary) states
@@ -48,7 +52,6 @@ export function TagFilterRow({ tags, activeTag }: TagFilterRowProps) {
             <li key={tag}>
               <a
                 href={href}
-                aria-pressed={isActive}
                 aria-current={isActive ? 'true' : undefined}
                 className={isActive ? CHIP_ACTIVE : CHIP_INACTIVE}
               >
