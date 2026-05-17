@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "// postbuild": "tsx scripts/build-resume-pdf.ts (uncomment in Plan 05-05 Wave 4)",
+    "postbuild": "tsx scripts/build-resume-pdf.ts",
     "start": "next start",
     "lint": "biome lint .",
     "format": "biome format --write .",

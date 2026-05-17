@@ -1,10 +1,11 @@
 ---
 phase: 5
 slug: about-resume-contact
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-05-17
+completed: 2026-05-17
 ---
 
 # Phase 5 — Validation Strategy
@@ -92,4 +93,4 @@ created: 2026-05-17
 - [ ] Feedback latency < 35s
 - [ ] `nyquist_compliant: true` set after planner verifies coverage
 
-**Approval:** pending
+**Approval:** signed off (all 17 task verifications green; 16 Wave-0 test placeholders implemented; build-smoke produced real PDF — 240,502 bytes / 3 pages / %PDF-1.4)
