@@ -1,10 +1,11 @@
 ---
 phase: 6
 slug: seo-og-a11y-performance-audit
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-05-17
+completed: 2026-05-17
 ---
 
 # Phase 6 — Validation Strategy
@@ -97,4 +98,10 @@ created: 2026-05-17
 - [ ] Feedback latency < 40s
 - [ ] `nyquist_compliant: true` set after planner verifies coverage
 
-**Approval:** pending
+**Approval:** Phase 6 complete (2026-05-17). 8 of 9 requirements met (MTA-01..04 + QAL-02..05); QAL-01 (Lighthouse ≥ 90) deferred to Phase 7 launch-week per Plan 06-04 user decision (documented in `lighthouse-report.md` with owner + acceptance criteria).
+- Full test suite: 513 passed / 4 skipped (4 pre-existing Phase 2/3 placeholders, zero Phase 6 placeholders) across 66 test files
+- Lighthouse: deferred to Phase 7 launch-week (single interactive run pre-deploy on Olive's local machine; infra fully ready — `lighthouserc.json` + `pnpm lhci` script + Puppeteer Chromium installed)
+- 19-item anti-features launch gate: 19/19 passing (`tests/launch-gate/anti-features.test.ts`)
+- vitest-axe a11y: 0 violations on `/` + `/projects` + `/projects/myco` + `/about` + `/resume` (`tests/a11y/*.test.tsx`)
+- PHASE_SOURCES anti-pattern net: 32 files × 11 invariants (extended +8 Phase 6 entries this plan)
+- `pnpm build` end-to-end: success (Compiled in 2.0s; 5 OG surfaces + sitemap.xml + robots.txt + icon.svg + apple-icon.png in route table; Phase 5 postbuild PDF regenerated 234.9 KB)
