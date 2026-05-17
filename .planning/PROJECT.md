@@ -19,12 +19,14 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 - [x] **About page (ABT-01..03)** — Validated in Phase 5. `/about` with plain-spoken bio, ProjectPillRow auto-pulling from getHeroProjects(), ContactStack, ValuesList.
 - [x] **Resume HTML + PDF from single source of truth (RES-01..06)** — Validated in Phase 5. `content/resume.ts` Zod-typed source. `/resume` chromeless route with print CSS. `/public/resume.pdf` generated at build via Puppeteer postbuild — 240KB, 3 pages. LinkedIn handle / Fathom URL / Stemz URL remain documented PLACEHOLDERs for Phase 7.
 - [x] **Contact in 2+ places (CTC-01..03)** — Validated in Phase 5. Footer + /about both surface GitHub (canonical `olivelliott` handle), mailto with `hi%20from%20olivelliott.dev` subject, LinkedIn (PLACEHOLDER).
+- [x] **SEO / OG / favicon / a11y / anti-features launch gate (MTA-01..04, QAL-02..05)** — Validated in Phase 6. 6 dynamic OG images via `next/og` (Node.js runtime), `app/sitemap.ts` + `app/robots.ts`, full favicon set (icon.svg / apple-icon.png / favicon.ico), `vitest-axe@1.0.0-pre.5` zero-violation tests across 5 routes, keyboard-nav source-grep, reduced-motion lock, 19-item anti-features test. 513 passed / 4 skipped, build clean.
 
 ### Active
 
 - [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX in Phase 7)
 - [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work (Phase 7 content pass)
 - [ ] PLACEHOLDER resolution: LinkedIn handle, Fathom repo URL, Stemz live URL, Aktiga role title (Phase 7)
+- [ ] Lighthouse audit (QAL-01) — deferred from Phase 6 to Phase 7 launch-week (`pnpm lhci` on local Chrome, target ≥ 90 across all 4 categories)
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth
 - [ ] Contact area with GitHub, email, LinkedIn
@@ -109,4 +111,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-17 after Phase 5 (about-+-resume-+-contact) completion*
+*Last updated: 2026-05-17 after Phase 6 (seo-og-a11y-performance-audit) completion*
