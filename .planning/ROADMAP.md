@@ -107,7 +107,14 @@ Plans:
   3. Printing `/resume` from the browser produces a paper-correct layout (print CSS takes over, nav/footer hidden, typography optimized for paper).
   4. Footer links to GitHub, email (`mailto:` with pre-filled subject), and LinkedIn all work from every page; About page also surfaces contact affordances.
   5. Resume content reflects current projects and role — a reviewer comparing resume to About finds no stale or fabricated entries.
-**Plans**: TBD
+**Plans**: 6 plans across 5 waves
+Plans:
+- [ ] 05-00-PLAN.md — Wave 0: install puppeteer@^25 + wait-on + tsx devDeps, 16-byte stub /public/resume.pdf, scripts/build-resume-pdf.ts shell, package.json commented postbuild placeholder, 16 Wave-0 test scaffolds
+- [ ] 05-01-PLAN.md — Wave 1: ResumeSchema (Zod) in lib/schemas.ts + content/resume.ts from pre-extracted .docx data + schema/content tests (RES-01, RES-06)
+- [ ] 05-02-PLAN.md — Wave 2: /resume route — chromeless app/resume/{layout,page}.tsx (route-group opt-out) + DownloadPdfLink + ResumeHeader + ResumeSection + ResumeEntry + resume.css print stylesheet + 6 test files (RES-02, RES-03, RES-05)
+- [ ] 05-03-PLAN.md — Wave 2 (parallel lane A): /about route + AboutBio + ProjectPillRow + ContactStack + ValuesList + 5 test files (ABT-01..03, CTC-03)
+- [ ] 05-04-PLAN.md — Wave 3: footer update — canonical github handle + CTC-02 mailto subject + DownloadPdfLink + interpunct (CTC-01, CTC-02, RES-05 second surface)
+- [ ] 05-05-PLAN.md — Wave 4: extend anti-pattern manifest (PHASE_SOURCES) + activate Puppeteer postbuild pipeline + pdf-build/pdf-artifact tests + build-smoke + VALIDATION sign-off (RES-04)
 **UI hint**: yes
 
 ### Phase 6: SEO, OG, A11y & Performance Audit
@@ -144,7 +151,7 @@ Plans:
 | 2. Content Pipeline | 0/0 | Not started | - |
 | 3. Project Detail Template | 4/4 | Complete   | 2026-05-16 |
 | 4. Home + Projects Index | 0/5 | Planned | - |
-| 5. About + Resume + Contact | 0/0 | Not started | - |
+| 5. About + Resume + Contact | 0/6 | Planned | - |
 | 6. SEO, OG, A11y & Performance Audit | 0/0 | Not started | - |
 | 7. Content Pass + Launch | 0/0 | Not started | - |
 
@@ -184,4 +191,4 @@ Phase 5 is independent of Phases 2–4 and can run in parallel after Phase 1 com
 
 ---
 *Roadmap created: 2026-04-18*
-*Last updated: 2026-05-16 after Phase 4 planning*
+*Last updated: 2026-05-17 after Phase 5 planning*
