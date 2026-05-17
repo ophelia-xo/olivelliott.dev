@@ -72,3 +72,64 @@ export const ProjectFrontmatterSchema = ProjectFrontmatterRawSchema.transform(
 )
 
 export type ProjectFrontmatter = z.infer<typeof ProjectFrontmatterSchema>
+
+// ── Resume schema (RES-01) ─────────────────────────────────────────────
+// Typed source-of-truth for the /resume HTML render (Plan 05-02) AND the
+// Puppeteer PDF pipeline (Plan 05-05). Both consume `RESUME` from
+// `content/resume.ts` through this schema. Build fails loudly if
+// `content/resume.ts` drifts (Pitfall 12: dual-gate `satisfies` + `parse`).
+//
+// No `.transform()` step here — unlike `ProjectFrontmatterSchema`, the
+// resume has no privacy/auto-tag rules. The shape parsed in equals the
+// shape consumed.
+
+const ResumeHeaderSchema = z.object({
+  name: z.string().min(1),
+  role: z.string().min(1),
+  location: z.string().min(1),
+  links: z.object({
+    github: z.string().url(),
+    email: z.string().email(),
+    linkedin: z.string().url(),
+  }),
+})
+
+const ResumeExperienceSchema = z.object({
+  role: z.string().min(1),
+  company: z.string().min(1),
+  location: z.string().optional(),
+  period: z.string().min(1),
+  bullets: z.array(z.string().min(1)).min(1).max(6),
+})
+
+const ResumeProjectSchema = z.object({
+  name: z.string().min(1),
+  tagline: z.string().optional(),
+  link: z.string().url().optional(),
+  period: z.string().min(1),
+  bullets: z.array(z.string().min(1)).min(1).max(6),
+})
+
+const ResumeEducationSchema = z.object({
+  degree: z.string().min(1),
+  institution: z.string().min(1),
+  year: z.string().min(1),
+  location: z.string().optional(),
+  bullets: z.array(z.string()).max(4).default([]),
+})
+
+const ResumeSkillsCategorySchema = z.object({
+  category: z.string().min(1),
+  items: z.array(z.string().min(1)).min(1),
+})
+
+export const ResumeSchema = z.object({
+  header: ResumeHeaderSchema,
+  summary: z.string().min(1),
+  experience: z.array(ResumeExperienceSchema).min(1),
+  projects: z.array(ResumeProjectSchema).min(1),
+  skills: z.array(ResumeSkillsCategorySchema).min(1),
+  education: z.array(ResumeEducationSchema).min(1),
+})
+
+export type Resume = z.infer<typeof ResumeSchema>
