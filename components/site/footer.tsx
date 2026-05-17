@@ -1,4 +1,5 @@
 import { Mail } from 'lucide-react'
+import { DownloadPdfLink } from '@/components/resume/download-pdf-link'
 import { GithubIcon, LinkedinIcon } from './brand-icons'
 
 // TODO: mobile nav menu in Phase 4
@@ -11,14 +12,16 @@ import { GithubIcon, LinkedinIcon } from './brand-icons'
  * Each icon link has a 44x44 hit box via p-3 padding around a 20px glyph.
  * Mobile (< 640px) stacks to two rows.
  *
- * Placeholder handles: GitHub/LinkedIn URLs and view-source repo use the
- * ophelia-x GitHub username per UI-SPEC acknowledged placeholders; confirm
- * actual handles before Phase 7 launch.
+ * GitHub handle + view-source canonicalized to olivelliott (Phase 5; per
+ * STATE.md Myco repo URL decision). LinkedIn handle remains a Phase 1
+ * placeholder pending Olive's confirmation (RESEARCH § Open Q 2). Mailto
+ * subject locked to "hi from olivelliott.dev" per CTC-02 (Pitfall 5 — %20
+ * not +; RFC 6068). DownloadPdfLink + interpunct added per RES-05.
  */
-const GITHUB_URL = 'https://github.com/ophelia-x'
-const EMAIL_URL = 'mailto:olivelliott48@gmail.com?subject=olivelliott.dev'
+const GITHUB_URL = 'https://github.com/olivelliott'
+const EMAIL_URL = 'mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev'
 const LINKEDIN_URL = 'https://linkedin.com/in/olive-elliott'
-const VIEW_SOURCE_URL = 'https://github.com/ophelia-x/portfolio'
+const VIEW_SOURCE_URL = 'https://github.com/olivelliott/portfolio'
 
 export function Footer() {
   return (
@@ -61,6 +64,10 @@ export function Footer() {
               </a>
             </li>
           </ul>
+          <DownloadPdfLink />
+          <span aria-hidden="true" className="text-[color:var(--color-text-tertiary)]">
+            ·
+          </span>
           <a
             href={VIEW_SOURCE_URL}
             target="_blank"
