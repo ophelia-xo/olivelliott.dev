@@ -63,7 +63,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **RES-01**: Resume content is stored in a typed source-of-truth file (TypeScript or MDX) — not duplicated
 - [ ] **RES-02**: `/resume` route renders the resume as an HTML page from the source-of-truth
 - [ ] **RES-03**: `/resume` route has dedicated print CSS (`@media print`) so the same React tree prints correctly
-- [ ] **RES-04**: A build-step using Puppeteer (or equivalent) produces `/public/resume.pdf` from the `/resume` page
+- [x] **RES-04**: A build-step using Puppeteer (or equivalent) produces `/public/resume.pdf` from the `/resume` page
 - [ ] **RES-05**: The resume PDF is linked as a visible download on `/resume` and in the footer
 - [ ] **RES-06**: Resume content reflects current work, current role, real skills — no stale or fabricated entries
 
@@ -189,7 +189,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RES-01 | Phase 5 — About + Resume + Contact | Pending |
 | RES-02 | Phase 5 — About + Resume + Contact | Pending |
 | RES-03 | Phase 5 — About + Resume + Contact | Pending |
-| RES-04 | Phase 5 — About + Resume + Contact | Pending |
+| RES-04 | Phase 5 — About + Resume + Contact | Complete |
 | RES-05 | Phase 5 — About + Resume + Contact | Pending |
 | RES-06 | Phase 5 — About + Resume + Contact | Pending |
 | CTC-01 | Phase 5 — About + Resume + Contact | Pending |

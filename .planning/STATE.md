@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: planning
-last_updated: "2026-05-17T04:16:07.129Z"
+current_plan: 2
+status: executing
+last_updated: "2026-05-17T14:26:44.138Z"
 progress:
   total_phases: 7
   completed_phases: 4
-  total_plans: 21
-  completed_plans: 21
-  percent: 100
+  total_plans: 27
+  completed_plans: 22
+  percent: 81
 ---
 
 # Project State: olivelliott.dev
@@ -20,19 +20,19 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 04 — home-+-projects-index
+**Current Focus:** Phase 05 — about-+-resume-+-contact
 
 ## Current Position
 
-Phase: 04 (home-+-projects-index) — EXECUTING
-Plan: 5 of 5
-Current Plan: Not started
-Total Plans in Phase: 5
+Phase: 05 (about-+-resume-+-contact) — EXECUTING
+Plan: 2 of 6
+Current Plan: 2
+Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to plan
-**Progress:** [██████████] 100%
+**Status:** Ready to execute
+**Progress:** [████████░░] 81%
 
 ```
 [███████░░░] 67%
@@ -61,6 +61,7 @@ Total Plans in Phase: 5
 | Phase 04-home-+-projects-index P03 | 5min | 2 tasks | 6 files |
 | Phase 04-home-+-projects-index P02 | 5 min | 2 tasks | 6 files |
 | Phase 04-home-+-projects-index P04 | 85min | 3 tasks | 4 files |
+| Phase 05-about-+-resume-+-contact P00 | 4min | 4 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -132,6 +133,9 @@ From `research/SUMMARY.md`:
 - [Phase 04-home-+-projects-index]: Plan 04-04: Next 16 Promise<searchParams> contract honored on /projects route — async page + await + Array.isArray normalization + TAGS.includes narrowing with  cast. Invalid tag values degrade silently (NO notFound, NO redirect) per UI-SPEC's shareable-URL emphasis. Tier-section conditional locks orphan-separator prevention.
 - [Phase 04-home-+-projects-index]: Plan 04-04: Cross-cutting source-grep regression net pattern formalized — single tests/home/anti-patterns.test.ts reads ALL Phase 4 sources via node:fs.readFileSync and asserts 8 invariants (HOM-04 + single-client-island + URL-state-server-side + LazyMotion + banned-words + no-icons + no-TagChipRow-in-cards). Comment-stripping before identifier grep (strip /* */ then //) so RSC docstrings can intentionally name absent APIs without false-positives. Reusable: future phases get tests/phase-N/anti-patterns.test.ts by swapping the manifest.
 - [Phase 04-home-+-projects-index]: Plan 04-04: ProjectCardSecondary used for ALL projects on /projects index (not ProjectCardHero for hero-tier). Hero distinction via position + 'hero' mono prefix label (hero=true prop). Card weight reserved for the home page; the index trades weight for scanability per UI-SPEC § Page Composition Case A.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-00: Installed full puppeteer@25.0.2 (NOT puppeteer-core + chromium-min) per user override of CONTEXT.md. PDF is committed to git so production deploys never invoke the script — serverless 250MB Lambda limit doesn't apply. Chrome auto-downloaded to ~/.cache/puppeteer.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-00: Commented postbuild hook pattern — JSON sibling key '// postbuild' with command-string value acts as a self-documenting breadcrumb. Plan 05-05 renames the key to 'postbuild' to activate. Avoids triggering a still-throwing script body during waves 1-4.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-00: Wave-0 test placeholder convention — each downstream-plan test file is created upfront with one describe + one it.skip('placeholder — implemented by Plan {NN}'). Vitest collects 16 skipped tests in suite output; the gap is visible without failing CI. Downstream plans extend each file in place.
 
 ### Open Decisions (flagged in research)
 
@@ -163,7 +167,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T01:45:00.026Z
+**Last session:** 2026-05-17T14:26:44.133Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
