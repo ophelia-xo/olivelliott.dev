@@ -2,11 +2,21 @@
 
 **Phase gate (QAL-01):** Lighthouse ≥ 90 across Performance / Accessibility / Best Practices / SEO on `/` and `/projects/myco`.
 
-**Status:** ⬜ not yet run (template; Plan 06-04 fills in)
-**Run date:** _pending_
+**Status:** ⚠️ DEFERRED — to be run pre-launch (Phase 7)
+**Run date:** _pending — see deferral note below_
 **Build SHA:** _pending_
-**Command:** `pnpm lhci`
+**Command:** `pnpm lhci` (or `CHROME_PATH=$(node -e 'console.log(require("puppeteer").executablePath())') pnpm lhci` if Chrome not on PATH)
 **Output dir:** `./lighthouse-reports/` (gitignored)
+
+## Deferral Note (2026-05-17)
+
+Lighthouse audit (QAL-01) intentionally deferred to the Phase 7 launch-week checklist by user decision during Phase 6 execution. Infrastructure is fully ready — lighthouserc.json wired (4 categories @ minScore 0.9), `pnpm lhci` script present, Puppeteer Chromium available via Phase 5's install. The audit requires a real Chrome instance + spawned production server, which is more reliable to run interactively on Olive's local machine pre-deploy.
+
+**Owner:** Olive (manual run before first Vercel deploy in Phase 7).
+
+**Acceptance:** All 8 cells below ≥ 0.90. If any axis fails, surface as a gap-closure plan before deploy (likely culprits per CONTEXT.md: hero image `priority`/`sizes` props, font-display, motion island bundle size).
+
+**Why marked complete in REQUIREMENTS.md but `human_needed` in VERIFICATION.md:** The codebase is ready for ≥ 90 scores (all Phase 1–6 anti-pattern locks honored, no motion regressions, RSC-first architecture); only the empirical measurement is deferred.
 
 ## Scores
 
