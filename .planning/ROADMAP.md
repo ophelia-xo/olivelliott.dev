@@ -127,7 +127,14 @@ Plans:
   3. Running Lighthouse on the deployed home page and one hero project page produces ≥ 90 across Performance, Accessibility, Best Practices, and SEO.
   4. Running axe-core against `/`, one project page, and `/resume` returns zero violations; a keyboard-only walkthrough completes nav, filter use, and resume download without a mouse.
   5. The 19-item anti-features launch checklist from `research/FEATURES.md` is verified clean — no skill bars, gradient-on-gradient, stagger-everything, bento home, etc.
-**Plans**: TBD
+**Plans**: 6 plans across 5 waves
+Plans:
+- [ ] 06-00-PLAN.md — Wave 0: install vitest-axe@1.0.0-pre.5 + extend vitest.setup.ts + lighthouserc.json + pnpm lhci script + .gitignore lighthouse-reports/ + lighthouse-report.md template + 12 Wave-0 test placeholders
+- [ ] 06-01-PLAN.md — Wave 1: app/icon.svg (oe monogram, glyph-as-path) + app/apple-icon.png (180×180) + OVERWRITE app/favicon.ico (16/32/48 multi-size) + tests/seo/favicon.test.ts (MTA-04)
+- [ ] 06-02-PLAN.md — Wave 2: lib/og-template.tsx + 5 OG surfaces (1 root default + 3 per-route siblings + 1 dynamic [slug]) + app/sitemap.ts + app/robots.ts + Pitfall 4 cleanup (delete openGraph.images from 5 page metadata blocks) + 4 tests/seo/* (MTA-01, MTA-02, MTA-03)
+- [ ] 06-03-PLAN.md — Wave 2: 5 vitest-axe route tests + tests/a11y/keyboard.test.tsx + Test 11 in tests/home/anti-patterns.test.ts (QAL-02, QAL-03, QAL-04)
+- [ ] 06-04-PLAN.md — Wave 3: tests/launch-gate/anti-features.test.ts (19 items per RESEARCH Pattern 11) + manual pnpm lhci run + fill lighthouse-report.md (QAL-01, QAL-05)
+- [ ] 06-05-PLAN.md — Wave 4: extend PHASE_SOURCES manifest (+8 Phase 6 entries) + delete orphaned public/{file,globe,next,vercel,window}.svg + pnpm build smoke + flip 06-VALIDATION.md to phase-gate sign-off (all 9 requirements)
 **UI hint**: yes
 
 ### Phase 7: Content Pass + Launch
@@ -152,7 +159,7 @@ Plans:
 | 3. Project Detail Template | 4/4 | Complete   | 2026-05-16 |
 | 4. Home + Projects Index | 0/5 | Planned | - |
 | 5. About + Resume + Contact | 0/6 | Planned | - |
-| 6. SEO, OG, A11y & Performance Audit | 0/0 | Not started | - |
+| 6. SEO, OG, A11y & Performance Audit | 0/6 | Planned | - |
 | 7. Content Pass + Launch | 0/0 | Not started | - |
 
 ## Coverage Summary
@@ -191,4 +198,4 @@ Phase 5 is independent of Phases 2–4 and can run in parallel after Phase 1 com
 
 ---
 *Roadmap created: 2026-04-18*
-*Last updated: 2026-05-17 after Phase 5 planning*
+*Last updated: 2026-05-17 after Phase 6 planning*
