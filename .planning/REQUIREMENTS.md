@@ -76,8 +76,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Contact + socials
 
-- [ ] **CTC-01**: Footer includes working links for GitHub, email, and LinkedIn
-- [ ] **CTC-02**: Email is a `mailto:` link with a pre-filled subject appropriate to a portfolio contact
+- [x] **CTC-01**: Footer includes working links for GitHub, email, and LinkedIn
+- [x] **CTC-02**: Email is a `mailto:` link with a pre-filled subject appropriate to a portfolio contact
 - [x] **CTC-03**: Contact affordances appear in at least two places (About and footer)
 
 ### Performance + a11y gate
@@ -192,8 +192,8 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RES-04 | Phase 5 — About + Resume + Contact | Complete |
 | RES-05 | Phase 5 — About + Resume + Contact | Complete |
 | RES-06 | Phase 5 — About + Resume + Contact | Complete |
-| CTC-01 | Phase 5 — About + Resume + Contact | Pending |
-| CTC-02 | Phase 5 — About + Resume + Contact | Pending |
+| CTC-01 | Phase 5 — About + Resume + Contact | Complete |
+| CTC-02 | Phase 5 — About + Resume + Contact | Complete |
 | CTC-03 | Phase 5 — About + Resume + Contact | Complete |
 | MTA-01 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |
 | MTA-02 | Phase 6 — SEO, OG, A11y & Performance Audit | Pending |

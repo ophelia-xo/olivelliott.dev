@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 5
+current_plan: 6
 status: executing
-last_updated: "2026-05-17T14:55:19.458Z"
+last_updated: "2026-05-17T15:01:26.931Z"
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 27
-  completed_plans: 25
-  percent: 93
+  completed_plans: 26
+  percent: 96
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 05 (about-+-resume-+-contact) — EXECUTING
-Plan: 5 of 6
-Current Plan: 5
+Plan: 6 of 6
+Current Plan: 6
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 93%
+**Progress:** [██████████] 96%
 
 ```
 [███████░░░] 67%
@@ -65,6 +65,7 @@ Total Plans in Phase: 6
 | Phase 05 P01 | 4min | 2 tasks | 5 files |
 | Phase 05-about-+-resume-+-contact P02 | 7min | 3 tasks | 13 files |
 | Phase 05-about-+-resume-+-contact P03 | 5min | 3 tasks | 10 files |
+| Phase 05-about-+-resume-+-contact P04 | 2min | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -150,6 +151,9 @@ From `research/SUMMARY.md`:
 - [Phase 05-about-+-resume-+-contact]: Mailto subject locked at hi%20from%20olivelliott.dev (%20 NOT +; RFC 6068). Locked on /about ContactStack; Plan 05-04 must match in footer. (Plan 05-03)
 - [Phase 05-about-+-resume-+-contact]: GitHub URL on /about uses canonical olivelliott handle. Phase 1 footer still uses ophelia-x — Plan 05-04 should standardize. (Plan 05-03)
 - [Phase 05-about-+-resume-+-contact]: LinkedIn handle is a PLACEHOLDER in ContactStack — flagged for Phase 7 confirmation. (Plan 05-03)
+- [Phase 05-about-+-resume-+-contact]: Plan 05-04: Plain <DownloadPdfLink /> in footer — no className override needed. Default class string (p-3, font-mono, inline-flex-friendly) aligns inside the right-slot flex container. The cn()-merge escape hatch on DownloadPdfLink stays reserved for future non-flex placements.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-04: Triple lock on the CTC-02 mailto subject — positive grep (exact %20 literal exists exactly once), negative grep (Phase 1 string 'subject=olivelliott.dev' MUST NOT appear), runtime href assertion. A single mutation fails at least two tests; the three locks catch three distinct failure modes.
+- [Phase 05-about-+-resume-+-contact]: Plan 05-04: Interpunct span sits between DownloadPdfLink and view-source, NOT between icon row and DownloadPdfLink. Icon-row → text-link transition uses existing gap-6 rhythm; text-link → text-link transition needs the · interpunct (both mono-lowercase, same register).
 
 ### Open Decisions (flagged in research)
 
@@ -181,7 +185,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T14:55:00.782Z
+**Last session:** 2026-05-17T15:01:26.928Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
