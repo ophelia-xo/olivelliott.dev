@@ -92,7 +92,7 @@ function readAll(): SourceMap {
   return { raw, code }
 }
 
-describe('Phase 4 + 5 anti-pattern source-grep invariants', () => {
+describe('Phase 4 + 5 + 6 anti-pattern source-grep invariants', () => {
   it('Test 1 — HOM-04: no whileInView / IntersectionObserver / onScroll anywhere in Phase 4 + 5', () => {
     const { code } = readAll()
     for (const [rel, src] of Object.entries(code)) {
@@ -266,5 +266,48 @@ describe('Phase 4 + 5 anti-pattern source-grep invariants', () => {
       count,
       'Expected exactly 1 file (download-pdf-link.tsx) to emit href=/resume.pdf; all other usages go through <DownloadPdfLink />',
     ).toBe(1)
+  })
+
+  it('Test 11 — QAL-04: every file importing motion/react also calls useReducedMotion (or is on the static-only carve-out)', () => {
+    // Phase 6 Plan 06-03 extension. Locks the reduced-motion gate at the
+    // source level: any Phase 7 contributor adding a new motion island
+    // without a useReducedMotion() check trips this with an explicit
+    // QAL-04 violation message.
+    //
+    // Rationale: MotionConfig reducedMotion="user" (Phase 1 provider) does
+    // NOT cover opacity animations — only transform/layout. Per Motion docs:
+    // "When reduced motion is on, transform and layout animations will be
+    // disabled. Other animations, like opacity and backgroundColor, will
+    // persist." A motion component that animates opacity MUST gate via
+    // useReducedMotion() and short-circuit to a static render path; the
+    // MotionConfig setting alone is insufficient.
+    //
+    // Verified at Phase 6 audit time: only components/home/thesis-paragraph.tsx
+    // imports motion/react within PHASE_SOURCES, and it already uses
+    // useReducedMotion (Plan 04-00 SUMMARY). The test passes by construction;
+    // its value is preventing Phase 7 regression.
+    const { code } = readAll()
+    // Carve-out: files that import motion/react ONLY for <MotionConfig> or
+    // <LazyMotion> wiring (no animated elements that would need a gate).
+    // Add entries here with inline reasoning if a Phase 7 surface qualifies.
+    //
+    // Currently empty — MotionProvider (components/motion/motion-provider.tsx)
+    // is a Phase 1 file NOT in PHASE_SOURCES, so it's outside this test's
+    // scope. If a future PHASE_SOURCES entry imports motion/react for
+    // static-only use, add its relative path to this set with a code comment
+    // justifying the exclusion.
+    const STATIC_ONLY_IMPORTERS = new Set<string>([
+      // example: 'components/motion/motion-config-wrapper.tsx', // <MotionConfig> only, no m.* elements
+    ])
+    for (const [rel, src] of Object.entries(code)) {
+      const importsMotion = /from\s+['"]motion\/react['"]/.test(src)
+      if (!importsMotion) continue
+      if (STATIC_ONLY_IMPORTERS.has(rel)) continue
+      const usesGate = /\buseReducedMotion\b/.test(src)
+      expect(
+        usesGate,
+        `${rel} imports motion/react but does not call useReducedMotion() — QAL-04 violation. MotionConfig reducedMotion="user" does NOT cover opacity transitions (only transform/layout), so any motion that includes opacity MUST gate via useReducedMotion().`,
+      ).toBe(true)
+    }
   })
 })
