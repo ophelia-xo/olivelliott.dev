@@ -16,11 +16,15 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 - [x] **Private project handling** — Validated in Phase 3 (component contract) via redaction-fixture path; visible `code private` label replaces repo link, schema strips `links.repo`. Live private content lands in Phase 7.
 - [x] **Home page with hero, thesis, and project grid (HOM-01..05)** — Validated in Phase 4. Single-H1 wordmark + role frame + type-set `ThesisParagraph` (reduced-motion gated) + hero-tier cards + secondary-tier cards. No bento, no stagger-on-scroll. Thesis copy is a Phase 7 placeholder.
 - [x] **Projects index with URL-synced filter (PIX-01..04)** — Validated in Phase 4. `/projects` renders all projects with server-side `?tag=X` filter, native back-button restoration, keyboard-navigable chips. 301/301 tests green.
+- [x] **About page (ABT-01..03)** — Validated in Phase 5. `/about` with plain-spoken bio, ProjectPillRow auto-pulling from getHeroProjects(), ContactStack, ValuesList.
+- [x] **Resume HTML + PDF from single source of truth (RES-01..06)** — Validated in Phase 5. `content/resume.ts` Zod-typed source. `/resume` chromeless route with print CSS. `/public/resume.pdf` generated at build via Puppeteer postbuild — 240KB, 3 pages. LinkedIn handle / Fathom URL / Stemz URL remain documented PLACEHOLDERs for Phase 7.
+- [x] **Contact in 2+ places (CTC-01..03)** — Validated in Phase 5. Footer + /about both surface GitHub (canonical `olivelliott` handle), mailto with `hi%20from%20olivelliott.dev` subject, LinkedIn (PLACEHOLDER).
 
 ### Active
 
 - [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX in Phase 7)
 - [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work (Phase 7 content pass)
+- [ ] PLACEHOLDER resolution: LinkedIn handle, Fathom repo URL, Stemz live URL, Aktiga role title (Phase 7)
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth
 - [ ] Contact area with GitHub, email, LinkedIn
@@ -105,4 +109,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-17 after Phase 4 (home-+-projects-index) completion*
+*Last updated: 2026-05-17 after Phase 5 (about-+-resume-+-contact) completion*
