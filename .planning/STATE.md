@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-05-17T14:26:44.138Z"
+last_updated: "2026-05-17T14:34:26.296Z"
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 27
-  completed_plans: 22
-  percent: 81
+  completed_plans: 23
+  percent: 85
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 05 (about-+-resume-+-contact) — EXECUTING
-Plan: 2 of 6
-Current Plan: 2
+Plan: 3 of 6
+Current Plan: 3
 Total Plans in Phase: 6
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 5
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [████████░░] 81%
+**Progress:** [█████████░] 85%
 
 ```
 [███████░░░] 67%
@@ -62,6 +62,7 @@ Total Plans in Phase: 6
 | Phase 04-home-+-projects-index P02 | 5 min | 2 tasks | 6 files |
 | Phase 04-home-+-projects-index P04 | 85min | 3 tasks | 4 files |
 | Phase 05-about-+-resume-+-contact P00 | 4min | 4 tasks | 18 files |
+| Phase 05 P01 | 4min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -136,6 +137,9 @@ From `research/SUMMARY.md`:
 - [Phase 05-about-+-resume-+-contact]: Plan 05-00: Installed full puppeteer@25.0.2 (NOT puppeteer-core + chromium-min) per user override of CONTEXT.md. PDF is committed to git so production deploys never invoke the script — serverless 250MB Lambda limit doesn't apply. Chrome auto-downloaded to ~/.cache/puppeteer.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-00: Commented postbuild hook pattern — JSON sibling key '// postbuild' with command-string value acts as a self-documenting breadcrumb. Plan 05-05 renames the key to 'postbuild' to activate. Avoids triggering a still-throwing script body during waves 1-4.
 - [Phase 05-about-+-resume-+-contact]: Plan 05-00: Wave-0 test placeholder convention — each downstream-plan test file is created upfront with one describe + one it.skip('placeholder — implemented by Plan {NN}'). Vitest collects 16 skipped tests in suite output; the gap is visible without failing CI. Downstream plans extend each file in place.
+- [Phase 05]: Plan 05-01: ResumeSchema lives in lib/schemas.ts alongside ProjectFrontmatterSchema (no separate file) — single Zod module, both schemas co-located, type-only imports stay fs-free.
+- [Phase 05]: Plan 05-01: content/resume.ts uses Pitfall-12 dual-gate (satisfies Resume + ResumeSchema.parse(data)) — compile-time shape check + module-load runtime check. Build/import fails loudly if either contract drifts.
+- [Phase 05]: Plan 05-01: Banned-words contract trumps verbatim source. Myco bullet 'ecosystem' rewritten to 'community' (joins documented 'Passionate' → 'Active in' rewrite). UI-SPEC § Banned-words list is the authority; verbatim RESEARCH data yields when the two conflict.
 
 ### Open Decisions (flagged in research)
 
@@ -167,7 +171,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T14:26:44.133Z
+**Last session:** 2026-05-17T14:34:26.293Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
