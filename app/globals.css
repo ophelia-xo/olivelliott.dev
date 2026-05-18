@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* Tailwind v4 auto-source-scanning exclusion — prevents .planning/ docs
+ * (which contain literal `--color-...` placeholder examples in CONTEXT/UI-SPEC
+ * markdown) from triggering bogus utility-class generation that breaks the
+ * PostCSS parse. Flagged as DEFER-01 in Phase 3 SUMMARY; fixed in Phase 7
+ * after triggering a real build error during Plan 07-02 dev-preview. */
+@source not "../.planning";
+@source not "../scripts";
+
 /* Base — set the page background + default font on body */
 html {
   -webkit-font-smoothing: antialiased;
