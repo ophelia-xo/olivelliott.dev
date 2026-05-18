@@ -92,7 +92,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DPL-01**: Every push to `main` deploys to Vercel automatically
 - [ ] **DPL-02**: Site is reachable at a Vercel subdomain (custom domain deferred)
-- [ ] **DPL-03**: Vercel Analytics is enabled for basic visit tracking
+- [x] **DPL-03**: Vercel Analytics is enabled for basic visit tracking
 
 ## v2 Requirements
 
@@ -206,7 +206,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | QAL-05 | Phase 6 — SEO, OG, A11y & Performance Audit | Complete |
 | DPL-01 | Phase 1 — Foundation | Pending |
 | DPL-02 | Phase 7 — Content Pass + Launch | Pending |
-| DPL-03 | Phase 7 — Content Pass + Launch | Pending |
+| DPL-03 | Phase 7 — Content Pass + Launch | Complete |
 
 **Coverage:**
 - v1 requirements: 54 total

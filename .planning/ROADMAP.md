@@ -147,7 +147,13 @@ Plans:
   3. All hero and secondary case studies have real content drafted (no lorem ipsum, no "placeholder" copy left visible); any placeholder that remains is explicitly flagged as such.
   4. Every private-project case study (Agenda Keeper, Trade Bot, Aktiga, etc.) has passed an explicit redaction review before going live — no internal details, no proprietary claims, no NDA violations.
   5. Olive can share the URL publicly (to peers, collaborators, client leads) without caveats about unfinished sections.
-**Plans**: TBD
+**Plans**: 5 plans across 5 waves
+Plans:
+- [x] 07-00-PLAN.md — Wave 0: install Vercel Analytics + Speed Insights mounting in root layout + deploy-checklist.md scaffold + infrastructure verification
+- [ ] 07-01-PLAN.md — Wave 1: Fathom MDX (public hero-tier #2) — Problem/Approach/Outcome 800–1200 words from Phase 5 resume bullets + READMEs
+- [ ] 07-02-PLAN.md — Wave 2: Agenda Keeper MDX (private hero-tier #3) + banned-terms extension + redaction sign-off checkpoint
+- [ ] 07-03-PLAN.md — Wave 3: Phase 5 placeholder resolution — LinkedIn / Fathom URL / Stemz URL / Aktiga role in single batch across 3 surfaces
+- [ ] 07-04-PLAN.md — Wave 4: lhci (resolves Phase 6 QAL-01 deferral) + Vercel deploy + post-deploy smoke (3 checkpoint:human-action gates) + REQUIREMENTS.md close-out
 **UI hint**: yes
 
 ## Progress
@@ -160,7 +166,7 @@ Plans:
 | 4. Home + Projects Index | 0/5 | Planned | - |
 | 5. About + Resume + Contact | 0/6 | Planned | - |
 | 6. SEO, OG, A11y & Performance Audit | 5/6 | In Progress | - |
-| 7. Content Pass + Launch | 0/0 | Not started | - |
+| 7. Content Pass + Launch | 0/5 | Planned | - |
 
 ## Coverage Summary
 

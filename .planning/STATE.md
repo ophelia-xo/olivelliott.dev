@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: planning
-last_updated: "2026-05-17T22:56:22.677Z"
+current_plan: 2
+status: executing
+last_updated: "2026-05-18T14:50:21.572Z"
 progress:
   total_phases: 7
   completed_phases: 6
-  total_plans: 33
-  completed_plans: 33
-  percent: 100
+  total_plans: 38
+  completed_plans: 34
+  percent: 89
 ---
 
 # Project State: olivelliott.dev
@@ -20,19 +20,19 @@ progress:
 **Name:** olivelliott.dev (Portfolio rebuild)
 **Type:** Personal developer portfolio — Next.js App Router, statically rendered, deployed to Vercel
 **Core Value:** The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, Trade Bot, Stemz, and Aktiga contributions — in a way that communicates Olive's thesis about building for autonomy and local-first systems, and feels high-touch (typography, motion, detail) rather than templated.
-**Current Focus:** Phase 06 — seo,-og,-a11y-&-performance-audit
+**Current Focus:** Phase 07 — content-pass-+-launch
 
 ## Current Position
 
-Phase: 06 (seo,-og,-a11y-&-performance-audit) — EXECUTING
-Plan: 6 of 6
-Current Plan: Not started
-Total Plans in Phase: 6
+Phase: 07 (content-pass-+-launch) — EXECUTING
+Plan: 2 of 5
+Current Plan: 2
+Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 7
 **Plan:** 02-00 complete → next is 02-01
-**Status:** Ready to plan
-**Progress:** [██████████] 100%
+**Status:** Ready to execute
+**Progress:** [█████████░] 89%
 
 ```
 [███████░░░] 67%
@@ -73,6 +73,7 @@ Total Plans in Phase: 6
 | Phase 06-seo,-og,-a11y-&-performance-audit P03 | 11 min | 3 tasks | 19 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P04 | 5 min | 2 tasks | 2 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P05 | 4 min | 3 tasks | 7 files |
+| Phase 07-content-pass-+-launch P00 | 3 min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -180,6 +181,10 @@ From `research/SUMMARY.md`:
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Plan 06-04: QAL-01 (Lighthouse >= 90) deferred to Phase 7 launch-week by user decision. pnpm lhci needs a real Chrome + spawned production server, more reliable run interactively on Olive's local machine pre-deploy than via Claude. Infrastructure is fully ready (lighthouserc.json wired, pnpm lhci script present, Puppeteer Chromium installed). lighthouse-report.md Status marked DEFERRED with owner + acceptance criteria; REQUIREMENTS.md QAL-01 stays unchecked; Phase 6 VERIFICATION.md surfaces it as a human-verification item.
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: Phase 6 (SEO + OG + A11y + Perf audit) complete; 8 of 9 requirements met, QAL-01 Lighthouse deferred to Phase 7 launch-week per Plan 06-04 user decision.
 - [Phase 06-seo,-og,-a11y-&-performance-audit]: PHASE_SOURCES manifest extension is append-only across phases; invariants iterate over Object.entries so new entries inherit all locks automatically.
+- [Phase 07-content-pass-+-launch]: Plan 07-00: Vercel Analytics + Speed Insights mounted in root app/layout.tsx (not (site)/layout.tsx) — /resume opts out of (site)/ chrome but inherits root, so root-mount catches the chromeless route too. D-DPL-03 from 07-CONTEXT.md.
+- [Phase 07-content-pass-+-launch]: Plan 07-00: Analytics islands rendered as siblings of <Providers> (not children) — keeps telemetry lifecycle independent of MotionProvider/ThemeProvider subtree and makes intent obvious to future readers.
+- [Phase 07-content-pass-+-launch]: Plan 07-00: No 'use client' directive on app/layout.tsx — both @vercel/analytics/react and @vercel/speed-insights/next handle the client boundary internally. Adding the directive would push the entire root layout to the client and break RSC.
+- [Phase 07-content-pass-+-launch]: Plan 07-00: deploy-checklist.md subsections numbered 1-9 — Plan 07-04 checkpoint:human-action tasks reference subsections by number rather than heading text, so copy edits to titles won't break downstream references.
 
 ### Open Decisions (flagged in research)
 
@@ -211,7 +216,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-17T22:51:08.346Z
+**Last session:** 2026-05-18T14:50:21.568Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
