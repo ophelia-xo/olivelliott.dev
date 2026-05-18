@@ -26,7 +26,7 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 - [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX in Phase 7)
 - [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work (Phase 7 content pass)
 - [x] **PLACEHOLDER resolution: LinkedIn handle, Fathom repo URL, Stemz live URL, Aktiga role title** — Validated in Phase 7 Plan 07-03. All four resolved in a single atomic batch; GitHub handle canonicalization corrected from `olivelliott` → `ophelia-xo` in the same commit.
-- [ ] Lighthouse audit (QAL-01) — deferred from Phase 6 to Phase 7 launch-week (`pnpm lhci` on local Chrome, target ≥ 90 across all 4 categories)
+- [ ] Lighthouse audit (QAL-01) — deferred to v1.0 post-launch — accepted as launch-acceptable shortfall (2026-05-18, Plan 07-04 Task 1). Post-launch: run `pnpm lhci` against the live Vercel URL; if any axis < 0.90, file a gap-closure plan
 - [ ] **v1.1 styling pass** — post-launch, apply richer brand guidelines (typography refinement, custom accent variations per project, illustration / hero imagery). v1 ships deliberately minimal-editorial; v1.1 elevates the high-touch detail.
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth

@@ -2,21 +2,25 @@
 
 **Phase gate (QAL-01):** Lighthouse ≥ 90 across Performance / Accessibility / Best Practices / SEO on `/` and `/projects/myco`.
 
-**Status:** ⚠️ DEFERRED — to be run pre-launch (Phase 7)
-**Run date:** _pending — see deferral note below_
-**Build SHA:** _pending_
+**Status:** ⚠️ DEFERRED-ACCEPTED — post-launch follow-up (v1.0 launch waived QAL-01 by user decision, 2026-05-18)
+**Run date:** _pending — to run against live URL post-deploy_
+**Build SHA:** _pending — capture at post-launch run_
 **Command:** `pnpm lhci` (or `CHROME_PATH=$(node -e 'console.log(require("puppeteer").executablePath())') pnpm lhci` if Chrome not on PATH)
 **Output dir:** `./lighthouse-reports/` (gitignored)
 
-## Deferral Note (2026-05-17)
+**Notes:** Olive accepted the QAL-01 shortfall for v1.0 launch on 2026-05-18 (Plan 07-04 Task 1, `skip` resolution). The audit was originally deferred from Phase 6 to Phase 7 launch-week; at the launch-week gate Olive chose to ship without the pre-deploy lhci pass. Post-launch action: run `pnpm lhci` against the live Vercel URL after deploy; record scores in the tables below; file a gap-closure plan if any axis < 0.90.
 
-Lighthouse audit (QAL-01) intentionally deferred to the Phase 7 launch-week checklist by user decision during Phase 6 execution. Infrastructure is fully ready — lighthouserc.json wired (4 categories @ minScore 0.9), `pnpm lhci` script present, Puppeteer Chromium available via Phase 5's install. The audit requires a real Chrome instance + spawned production server, which is more reliable to run interactively on Olive's local machine pre-deploy.
+## Deferral Note (2026-05-17, updated 2026-05-18)
 
-**Owner:** Olive (manual run before first Vercel deploy in Phase 7).
+Lighthouse audit (QAL-01) was intentionally deferred to the Phase 7 launch-week checklist by user decision during Phase 6 execution. Infrastructure is fully ready — lighthouserc.json wired (4 categories @ minScore 0.9), `pnpm lhci` script present, Puppeteer Chromium available via Phase 5's install. The audit requires a real Chrome instance + spawned production server, which is more reliable to run interactively on Olive's local machine.
 
-**Acceptance:** All 8 cells below ≥ 0.90. If any axis fails, surface as a gap-closure plan before deploy (likely culprits per CONTEXT.md: hero image `priority`/`sizes` props, font-display, motion island bundle size).
+**2026-05-18 update:** At the launch-week gate (Plan 07-04 Task 1), Olive chose to skip the pre-deploy lhci run and accept QAL-01 as a post-launch follow-up. The deferral carries forward as a tracked todo in PROJECT.md § Active. REQUIREMENTS.md QAL-01 remains unchecked.
 
-**Why marked complete in REQUIREMENTS.md but `human_needed` in VERIFICATION.md:** The codebase is ready for ≥ 90 scores (all Phase 1–6 anti-pattern locks honored, no motion regressions, RSC-first architecture); only the empirical measurement is deferred.
+**Owner:** Olive (manual run against the live Vercel URL post-deploy).
+
+**Acceptance (post-launch):** All 8 cells below ≥ 0.90 when run against the live URL. If any axis fails, file a gap-closure plan (likely culprits per CONTEXT.md: hero image `priority`/`sizes` props, font-display, motion island bundle size).
+
+**Why marked complete in REQUIREMENTS.md but `human_needed` in VERIFICATION.md:** The codebase is ready for ≥ 90 scores (all Phase 1–6 anti-pattern locks honored, no motion regressions, RSC-first architecture); only the empirical measurement is deferred. NOTE: REQUIREMENTS.md QAL-01 is NOT marked complete — it remains explicitly unchecked per the 2026-05-18 deferral-accepted decision.
 
 ## Scores
 
