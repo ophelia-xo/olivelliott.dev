@@ -1,0 +1,48 @@
+---
+slug: agenda-keeper
+title: Agenda Keeper
+tagline: Real-time meeting-management SaaS for small agencies — collaborative agendas, OAuth-synced calendars, reactive backend.
+year: 2025
+tier: hero
+order: 30
+status: active
+visibility: private
+tags: [saas, typescript]
+stack: [TypeScript, Next.js, Convex, TipTap, ProseMirror]
+hero:
+  src: /images/projects/agenda-keeper/hero-placeholder.png
+  alt: Agenda Keeper placeholder — real screenshot withheld per privacy policy
+outcomes:
+  - Real-time collaborative editing on shared agendas via TipTap and ProseMirror
+  - OAuth calendar sync across Google Calendar and Outlook in one ingest layer
+  - Convex-backed reactive data layer — live updates without bespoke websocket plumbing
+  - Single source of truth for agendas, action items, and post-meeting handoffs
+  - Designed for small-agency workflow density rather than individual scheduling
+description: A meeting-management SaaS for small agencies — collaborative agendas, OAuth calendar sync, real-time reactive backend, built on TipTap and Convex.
+---
+
+## Problem
+
+Small agencies do not run on meetings the way solo workers or large enterprises do. They run on the artifacts that meetings produce. A standing client check-in is not a calendar event so much as it is an agenda accumulating over the week, a list of action items inheriting state from the last conversation, and a handoff to whoever is doing the work between sessions. The meeting itself is the thirty-minute punctuation around that ongoing document. Generic calendar tools optimize for the punctuation — block the time, send the invite, ring the bell — and treat the document as somebody else's problem.
+
+The conventional workaround is to stitch together three tools and pay the integration tax forever. A calendar app holds the time. A document app holds the agenda. A task tracker holds the action items. Each tool is excellent at its own narrow job and oblivious to the others. The agenda gets pasted into the calendar description and immediately drifts from the live document. Action items get checked off in the tracker and never make it back into next week's agenda. The agency ends up maintaining three sources of truth and reconciling them by hand, which is to say not reconciling them at all. People who join the team three months in cannot reconstruct what was decided when, by whom, or whether the follow-up actually shipped.
+
+The deeper structural issue is that collaboration on a meeting artifact is not the same shape as collaboration on a long-form document. Two people editing a quarterly plan share an intention to finalize one version of a thing. Two people editing a live meeting agenda are doing something else — annotating in real time, adding action items mid-conversation, marking decisions as the room reaches them. The latency budget is tighter, the conflict model is more forgiving, and the presence signal — knowing who is in the document right now — matters more than the diff history. Off-the-shelf document tools were not designed for this register, and the seams show within a week of trying to use them this way.
+
+## Approach
+
+Agenda Keeper is a Next.js App Router application backed by Convex, with the collaborative editing surface built on TipTap and ProseMirror. The split is deliberate. Next.js handles routing, server-rendered shells, and the marketing edges of the product. Convex handles persistence, real-time subscriptions, and the reactive data model that lets multiple clients see the same agenda update without bespoke websocket plumbing. TipTap and ProseMirror handle the editing experience itself — the rich text, the cursors, the keyboard ergonomics, the structured nodes for action items and decisions.
+
+The choice of Convex over the more conventional Supabase or Firebase paths comes down to the reactive primitives. A meeting agenda is the canonical case where every connected client needs to see every change immediately, and the conventional alternatives push that responsibility onto the application layer — write a query, subscribe to changes, reconcile with local state, handle reconnection. Convex collapses that work into the query function itself. Reads are reactive by default. The TypeScript-first developer experience matches the autonomy thesis the rest of the portfolio leans on: less ceremony between intent and shipped behavior, fewer places for the framework to ask you to write the same plumbing twice.
+
+The collaborative editing model on top of ProseMirror is shaped by what meeting agendas actually demand. A document has structured nodes — agenda items, action items, decisions, notes — and the editing rules differ across them. Multiple participants can append agenda items in parallel without conflict. Action items have an owner field that is intentionally not a free-text mention but a structured assignment, so the action item index can query across documents. Presence is surfaced in the UI: who else has the document open, where their cursor is, when somebody last edited a particular section. None of that is a novel ProseMirror contribution. What is local to this product is the decision to spend the design budget on the meeting-specific affordances rather than re-inventing the general-purpose editor underneath them.
+
+OAuth integration is the connective tissue to the rest of the agency's stack. The product ingests calendar state from Google Calendar and Outlook over OAuth, so a recurring client meeting on the calendar automatically becomes a recurring agenda surface in Agenda Keeper. The sync is one-way for now, by design — the calendar is the source of truth for when, the product is the source of truth for what — but the OAuth scopes are sufficient to evolve toward two-way sync if the workflow warrants it. The decision to read from both Google and Microsoft, rather than picking one and apologizing to the other half of the market, reflects what small agencies actually look like in practice. The tooling assumption inside an agency is usually mixed, and a product that forces a choice loses everyone whose stack does not match.
+
+## Outcome
+
+Agenda Keeper runs production-grade for the target audience. The collaborative editing surface is the differentiator and the part of the product that small-agency users notice first — agendas that update live, action items that survive the conversation, a presence layer that makes the shared document feel inhabited rather than just edited. The Convex reactive backend keeps the engineering surface small relative to what equivalent infrastructure would look like assembled by hand, which means the product team can spend its attention on the meeting-specific affordances rather than the realtime plumbing underneath them.
+
+This is a private project, and the public framing here is necessarily abstract. The deployment scale, the specific agencies running on it, the internal roadmap, and the proprietary details of how it integrates with surrounding tools all stay inside the project. What can be said publicly is the shape of the product and the shape of the engineering decisions that produced it.
+
+The connection to the broader thesis is the same one Myco and Fathom point at from different angles. Myco gives an agent durable memory that respects the locality of the user's data. Fathom gives the same agent honest accounting that respects the locality of the user's budget. Agenda Keeper gives small-agency operators a single source of truth for their meeting work that respects the locality of their own workflow — they own the agendas, the action items, and the relationships, rather than renting them from a platform that will inevitably ship a feature in the wrong direction. The autonomy principle scales down from agents to the people running small businesses, and the engineering decisions follow the same pattern: build the seams the user actually needs, keep the data where they can reach it, and let them keep working when the platform updates around them.
