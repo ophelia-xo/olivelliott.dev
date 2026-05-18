@@ -12,16 +12,18 @@ import { GithubIcon, LinkedinIcon } from './brand-icons'
  * Each icon link has a 44x44 hit box via p-3 padding around a 20px glyph.
  * Mobile (< 640px) stacks to two rows.
  *
- * GitHub handle + view-source canonicalized to olivelliott (Phase 5; per
- * STATE.md Myco repo URL decision). LinkedIn handle remains a Phase 1
- * placeholder pending Olive's confirmation (RESEARCH § Open Q 2). Mailto
- * subject locked to "hi from olivelliott.dev" per CTC-02 (Pitfall 5 — %20
- * not +; RFC 6068). DownloadPdfLink + interpunct added per RES-05.
+ * GitHub handle + view-source canonicalized to ophelia-xo (Plan 07-03
+ * corrected the prior Phase 5 mis-canonicalization from `olivelliott` →
+ * `ophelia-xo`; Olive's actual GitHub handle differs from her email
+ * local-part). LinkedIn handle confirmed in Plan 07-03 as `olivelliott`
+ * (matches email local-part). Mailto subject locked to "hi from
+ * olivelliott.dev" per CTC-02 (Pitfall 5 — %20 not +; RFC 6068).
+ * DownloadPdfLink + interpunct added per RES-05.
  */
-const GITHUB_URL = 'https://github.com/olivelliott'
+const GITHUB_URL = 'https://github.com/ophelia-xo'
 const EMAIL_URL = 'mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev'
-const LINKEDIN_URL = 'https://linkedin.com/in/olive-elliott'
-const VIEW_SOURCE_URL = 'https://github.com/olivelliott/portfolio'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/olivelliott'
+const VIEW_SOURCE_URL = 'https://github.com/ophelia-xo/portfolio'
 
 export function Footer() {
   return (

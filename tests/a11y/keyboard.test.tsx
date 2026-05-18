@@ -126,7 +126,7 @@ describe('keyboard nav (QAL-03)', () => {
       visibility: 'public' as const,
       tags: ['local-first'] as const,
       stack: [],
-      links: { repo: 'https://github.com/olivelliott/myco' },
+      links: { repo: 'https://github.com/ophelia-xo/myco' },
       hero: { src: '/images/projects/myco/hero-placeholder.png', alt: 'Myco' },
       gallery: [],
       outcomes: [],

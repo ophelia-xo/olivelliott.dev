@@ -1,12 +1,15 @@
 // tests/about/contact-stack.test.tsx
 // Plan 05-03 Task 2 — ContactStack (CTC-02, CTC-03).
-// Replaces Wave 0 placeholder. 10 tests:
+// Replaces Wave 0 placeholder. Plan 07-03 corrected the GitHub handle from
+// `olivelliott` → `ophelia-xo` (Phase 5 picked the email local-part by
+// mistake; the real GitHub handle differs).
+// 10 tests:
 //   1) <ul role="list"> with exactly 3 <li>
-//   2) first link href starts with https://github.com/olivelliott (NOT ophelia-x)
-//   3) first link textContent === 'github.com/olivelliott'
+//   2) first link href starts with https://github.com/ophelia-xo
+//   3) first link textContent === 'github.com/ophelia-xo'
 //   4) second link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev (Pitfall 5)
 //   5) second link textContent === 'olivelliott48@gmail.com'
-//   6) third link href starts with https://linkedin.com/in/
+//   6) third link href starts with https://www.linkedin.com/in/
 //   7) github + linkedin have target="_blank" + rel="noopener noreferrer"; mailto does NOT
 //   8) each <a> has py-3 (44×44 touch target)
 //   9) source-grep: no 'use client'
@@ -28,17 +31,20 @@ describe('<ContactStack>', () => {
     expect(lis.length).toBe(3)
   })
 
-  it('first link href starts with https://github.com/olivelliott (canonical handle)', () => {
+  it('first link href starts with https://github.com/ophelia-xo (canonical handle; Plan 07-03 correction)', () => {
     const { container } = render(<ContactStack />)
     const anchors = Array.from(container.querySelectorAll('li > a'))
-    expect(anchors[0]?.getAttribute('href')).toMatch(/^https:\/\/github\.com\/olivelliott/)
-    expect(anchors[0]?.getAttribute('href')).not.toMatch(/ophelia-x/)
+    expect(anchors[0]?.getAttribute('href')).toMatch(/^https:\/\/github\.com\/ophelia-xo/)
+    // Guard against Phase-5 mis-canonicalization re-introduction
+    expect(anchors[0]?.getAttribute('href')).not.toMatch(/github\.com\/olivelliott/)
+    // Guard against Phase-1 bare placeholder stem (ophelia-x without the trailing -o)
+    expect(anchors[0]?.getAttribute('href')).not.toMatch(/ophelia-x(?!o)/)
   })
 
-  it("first link textContent === 'github.com/olivelliott'", () => {
+  it("first link textContent === 'github.com/ophelia-xo'", () => {
     const { container } = render(<ContactStack />)
     const anchors = Array.from(container.querySelectorAll('li > a'))
-    expect(anchors[0]?.textContent?.trim()).toBe('github.com/olivelliott')
+    expect(anchors[0]?.textContent?.trim()).toBe('github.com/ophelia-xo')
   })
 
   it('second link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev (Pitfall 5)', () => {
@@ -55,10 +61,10 @@ describe('<ContactStack>', () => {
     expect(anchors[1]?.textContent?.trim()).toBe('olivelliott48@gmail.com')
   })
 
-  it('third link href starts with https://linkedin.com/in/', () => {
+  it('third link href starts with https://www.linkedin.com/in/olivelliott (Plan 07-03 confirmed)', () => {
     const { container } = render(<ContactStack />)
     const anchors = Array.from(container.querySelectorAll('li > a'))
-    expect(anchors[2]?.getAttribute('href')).toMatch(/^https:\/\/linkedin\.com\/in\//)
+    expect(anchors[2]?.getAttribute('href')).toBe('https://www.linkedin.com/in/olivelliott')
   })
 
   it('github + linkedin links have target="_blank" + rel="noopener noreferrer"; mailto link does NOT', () => {

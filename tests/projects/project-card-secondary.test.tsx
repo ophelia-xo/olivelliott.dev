@@ -16,7 +16,7 @@ const baseProject = {
   visibility: 'public' as const,
   tags: ['python', 'cli'] as const,
   stack: ['Python'],
-  links: { repo: 'https://github.com/olivelliott/trade-bot' },
+  links: { repo: 'https://github.com/ophelia-xo/trade-bot' },
   gallery: [],
   // Even with outcomes present, the secondary card MUST NOT render them.
   outcomes: ['shipped to prod', 'doubled throughput'],

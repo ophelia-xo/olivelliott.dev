@@ -47,7 +47,7 @@ const mycoProject = {
   visibility: 'public' as const,
   tags: ['local-first', 'typescript'] as const,
   stack: [],
-  links: { repo: 'https://github.com/olivelliott/myco' },
+  links: { repo: 'https://github.com/ophelia-xo/myco' },
   hero: { src: '/images/projects/myco/hero-placeholder.png', alt: 'a' },
   gallery: [],
   outcomes: [],

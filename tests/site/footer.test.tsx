@@ -1,14 +1,17 @@
 // tests/site/footer.test.tsx
 // Plan 05-04 Task 1 — footer canonicalization + DownloadPdfLink insertion
 // (CTC-01, CTC-02, RES-05 second surface). Replaces Wave 0 placeholder.
+// Plan 07-03 updated: GitHub handle corrected `olivelliott` → `ophelia-xo`
+// (the Phase 5 canonicalization picked the email local-part by mistake;
+// Olive's actual GitHub handle is `ophelia-xo`). LinkedIn confirmed.
 //
 // 17 tests:
 //   URL corrections (Tests 1–4)
-//     1) GitHub icon link href === https://github.com/olivelliott
-//     2) View-source link href === https://github.com/olivelliott/portfolio
+//     1) GitHub icon link href === https://github.com/ophelia-xo
+//     2) View-source link href === https://github.com/ophelia-xo/portfolio
 //     3) Email icon link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev
 //        (Pitfall 5 — %20 NOT +; RFC 6068)
-//     4) LinkedIn icon link href === https://linkedin.com/in/olive-elliott (Phase 1 PLACEHOLDER preserved)
+//     4) LinkedIn icon link href === https://www.linkedin.com/in/olivelliott (Plan 07-03 confirmed)
 //   DownloadPdfLink insertion (Tests 5–8)
 //     5) Footer contains <a href="/resume.pdf" download> (RES-05 second surface)
 //     6) DownloadPdfLink textContent contains 'download.pdf' AND '↓' (literal glyph)
@@ -22,7 +25,9 @@
 //    13) View-source link text still says 'view source'
 //   Source-grep guards (Tests 14–17 — mirrors tests/home/anti-patterns.test.ts comment-strip pattern)
 //    14) components/site/footer.tsx does NOT contain 'use client' (footer stays RSC; Pitfall 7)
-//    15) components/site/footer.tsx does NOT contain 'ophelia-x' anywhere (regression-proof)
+//    15) components/site/footer.tsx does NOT contain the old Phase-1 stem 'ophelia-x' followed by
+//        a non-`o` character (Plan 07-03 regression guard — `ophelia-xo` is correct;
+//        `ophelia-x` alone or `ophelia-x<other>` is the old mis-handle pattern)
 //    16) components/site/footer.tsx does NOT contain literal 'subject=olivelliott.dev' (Phase 1 subject)
 //    17) components/site/footer.tsx contains 'subject=hi%20from%20olivelliott.dev' exactly once
 import fs from 'node:fs'
@@ -49,19 +54,19 @@ function stripComments(src: string): string {
 describe('<Footer> — Plan 05-04 canonicalization + DownloadPdfLink (CTC-01, CTC-02, RES-05)', () => {
   // -- URL corrections ----------------------------------------------------
 
-  it('Test 1: GitHub icon link href === https://github.com/olivelliott (canonical handle; CTC-01)', () => {
+  it('Test 1: GitHub icon link href === https://github.com/ophelia-xo (canonical handle; CTC-01)', () => {
     const { container } = render(<Footer />)
     const link = container.querySelector('a[aria-label="GitHub"]')
     expect(link).not.toBeNull()
-    expect(link?.getAttribute('href')).toBe('https://github.com/olivelliott')
+    expect(link?.getAttribute('href')).toBe('https://github.com/ophelia-xo')
   })
 
-  it('Test 2: View-source link href === https://github.com/olivelliott/portfolio', () => {
+  it('Test 2: View-source link href === https://github.com/ophelia-xo/portfolio', () => {
     const { container } = render(<Footer />)
     const anchors = Array.from(container.querySelectorAll('a'))
     const viewSource = anchors.find((a) => a.textContent?.trim() === 'view source')
     expect(viewSource).toBeDefined()
-    expect(viewSource?.getAttribute('href')).toBe('https://github.com/olivelliott/portfolio')
+    expect(viewSource?.getAttribute('href')).toBe('https://github.com/ophelia-xo/portfolio')
   })
 
   it('Test 3: Email icon link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev (CTC-02; Pitfall 5)', () => {
@@ -73,11 +78,11 @@ describe('<Footer> — Plan 05-04 canonicalization + DownloadPdfLink (CTC-01, CT
     )
   })
 
-  it('Test 4: LinkedIn icon link href === https://linkedin.com/in/olive-elliott (Phase 1 PLACEHOLDER preserved)', () => {
+  it('Test 4: LinkedIn icon link href === https://www.linkedin.com/in/olivelliott (Plan 07-03 confirmed)', () => {
     const { container } = render(<Footer />)
     const link = container.querySelector('a[aria-label="LinkedIn"]')
     expect(link).not.toBeNull()
-    expect(link?.getAttribute('href')).toBe('https://linkedin.com/in/olive-elliott')
+    expect(link?.getAttribute('href')).toBe('https://www.linkedin.com/in/olivelliott')
   })
 
   // -- DownloadPdfLink insertion ------------------------------------------
@@ -187,10 +192,15 @@ describe('<Footer> — Plan 05-04 canonicalization + DownloadPdfLink (CTC-01, CT
     expect(stripped).not.toMatch(/^\s*['"]use client['"];?\s*$/m)
   })
 
-  it("Test 15: components/site/footer.tsx source does NOT contain the literal 'ophelia-x' (regression-proof)", () => {
+  it("Test 15: components/site/footer.tsx source does NOT contain the Phase-1 mis-handle stem 'ophelia-x' followed by anything other than 'o' AND no 'github.com/olivelliott' (Plan 07-03 canonicalization correction)", () => {
     const src = fs.readFileSync(SOURCE_PATH, 'utf8')
     const stripped = stripComments(src)
-    expect(stripped).not.toContain('ophelia-x')
+    // The real handle is `ophelia-xo`. The Phase-1 placeholder was `ophelia-x`.
+    // Match the bare stem or any non-`o` continuation as the regression signal.
+    expect(stripped).not.toMatch(/ophelia-x(?!o)/)
+    // The Phase-5 mis-canonicalization landed on `olivelliott` in github URLs.
+    // Plan 07-03 corrected this; guard against re-introduction.
+    expect(stripped).not.toMatch(/github\.com\/olivelliott/)
   })
 
   it("Test 16: components/site/footer.tsx source does NOT contain the Phase 1 literal 'subject=olivelliott.dev' (subject is now flipped)", () => {

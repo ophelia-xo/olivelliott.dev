@@ -17,7 +17,7 @@ describe('<ProjectHero>', () => {
       <ProjectHero
         {...COMMON}
         visibility="public"
-        repoUrl="https://github.com/olivelliott/myco"
+        repoUrl="https://github.com/ophelia-xo/myco"
         hero={{ src: '/images/projects/myco/cover.png', alt: 'Cover artwork' }}
       />
     )
@@ -32,7 +32,7 @@ describe('<ProjectHero>', () => {
       <ProjectHero
         {...COMMON}
         visibility="public"
-        repoUrl="https://github.com/olivelliott/myco"
+        repoUrl="https://github.com/ophelia-xo/myco"
         hero={{ src: '/images/projects/myco/cover.png', alt: 'Cover artwork' }}
       />
     )
@@ -46,7 +46,7 @@ describe('<ProjectHero>', () => {
       <ProjectHero
         {...COMMON}
         visibility="public"
-        repoUrl="https://github.com/olivelliott/myco"
+        repoUrl="https://github.com/ophelia-xo/myco"
         hero={{
           src: '/images/projects/myco/hero-placeholder.png',
           alt: 'Myco placeholder',

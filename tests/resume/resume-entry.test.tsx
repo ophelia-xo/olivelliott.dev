@@ -59,16 +59,16 @@ describe('<ResumeEntry>', () => {
         title="Myco"
         meta="Persistent Cognitive Layer · 2024 – Present"
         bullets={['b']}
-        link={{ href: 'https://github.com/olivelliott/myco', label: 'github.com/olivelliott/myco' }}
+        link={{ href: 'https://github.com/ophelia-xo/myco', label: 'github.com/ophelia-xo/myco' }}
       />,
     )
     const anchor = container.querySelector('a.repo-link') as HTMLAnchorElement | null
     expect(anchor).not.toBeNull()
-    expect(anchor?.getAttribute('href')).toBe('https://github.com/olivelliott/myco')
+    expect(anchor?.getAttribute('href')).toBe('https://github.com/ophelia-xo/myco')
     expect(anchor?.getAttribute('target')).toBe('_blank')
     expect(anchor?.getAttribute('rel')).toBe('noopener noreferrer')
     // textContent includes the label + ↗ glyph
-    expect(anchor?.textContent).toBe('github.com/olivelliott/myco ↗')
+    expect(anchor?.textContent).toBe('github.com/ophelia-xo/myco ↗')
   })
 
   it('Test 6 — bullets render in the same order as the input array (no sort, no filter)', () => {

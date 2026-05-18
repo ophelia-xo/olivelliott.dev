@@ -15,9 +15,9 @@ const validFixture = {
     role: 'Software Engineer',
     location: 'Asheville, NC',
     links: {
-      github: 'https://github.com/olivelliott',
+      github: 'https://github.com/ophelia-xo',
       email: 'olivelliott48@gmail.com',
-      linkedin: 'https://linkedin.com/in/olive-elliott',
+      linkedin: 'https://www.linkedin.com/in/olivelliott',
     },
   },
   summary: 'Single-paragraph summary.',

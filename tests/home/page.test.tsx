@@ -66,7 +66,7 @@ const heroProjectBase = {
   visibility: 'public' as const,
   tags: ['local-first'] as const,
   stack: ['TypeScript'],
-  links: { repo: 'https://github.com/olivelliott/myco' },
+  links: { repo: 'https://github.com/ophelia-xo/myco' },
   gallery: [],
   outcomes: ['outcome one'],
   description: 'Test fixture',

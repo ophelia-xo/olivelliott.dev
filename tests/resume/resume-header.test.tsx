@@ -28,9 +28,9 @@ const fixture = {
   role: 'Software Engineer  ·  AI Workflow Architect  ·  System Architect',
   location: 'Asheville, NC  ·  919-917-4777',
   links: {
-    github: 'https://github.com/olivelliott',
+    github: 'https://github.com/ophelia-xo',
     email: 'olivelliott48@gmail.com',
-    linkedin: 'https://linkedin.com/in/olive-elliott',
+    linkedin: 'https://www.linkedin.com/in/olivelliott',
   },
 } as const
 
@@ -95,11 +95,11 @@ describe('<ResumeHeader>', () => {
     expect(href.includes('+')).toBe(false)
   })
 
-  it('Test 7 — github link href === RESUME header github URL (https://github.com/olivelliott)', () => {
+  it('Test 7 — github link href === RESUME header github URL (https://github.com/ophelia-xo — Plan 07-03 corrected)', () => {
     const { container } = render(<ResumeHeader header={fixture} />)
     const gh = container.querySelector('a[href*="github.com"]')
     expect(gh).not.toBeNull()
-    expect(gh!.getAttribute('href')).toBe('https://github.com/olivelliott')
+    expect(gh!.getAttribute('href')).toBe('https://github.com/ophelia-xo')
   })
 
   it('Test 8 — linkedin link href passes through from props (NOT a hardcoded literal)', () => {

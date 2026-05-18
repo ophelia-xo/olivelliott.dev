@@ -117,10 +117,10 @@ describe('/resume page route', () => {
     }
   })
 
-  it("Test 13 — Myco's repo URL is rendered as an anchor (proves ResumeEntry link wiring)", () => {
+  it("Test 13 — Myco's repo URL is rendered as an anchor (proves ResumeEntry link wiring; Plan 07-03 corrected handle)", () => {
     const { container } = render(<ResumePage />)
     const anchor = container.querySelector(
-      'a[href="https://github.com/olivelliott/myco"]',
+      'a[href="https://github.com/ophelia-xo/myco"]',
     )
     expect(anchor).not.toBeNull()
   })

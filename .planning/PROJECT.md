@@ -17,16 +17,17 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 - [x] **Home page with hero, thesis, and project grid (HOM-01..05)** — Validated in Phase 4. Single-H1 wordmark + role frame + type-set `ThesisParagraph` (reduced-motion gated) + hero-tier cards + secondary-tier cards. No bento, no stagger-on-scroll. Thesis copy is a Phase 7 placeholder.
 - [x] **Projects index with URL-synced filter (PIX-01..04)** — Validated in Phase 4. `/projects` renders all projects with server-side `?tag=X` filter, native back-button restoration, keyboard-navigable chips. 301/301 tests green.
 - [x] **About page (ABT-01..03)** — Validated in Phase 5. `/about` with plain-spoken bio, ProjectPillRow auto-pulling from getHeroProjects(), ContactStack, ValuesList.
-- [x] **Resume HTML + PDF from single source of truth (RES-01..06)** — Validated in Phase 5. `content/resume.ts` Zod-typed source. `/resume` chromeless route with print CSS. `/public/resume.pdf` generated at build via Puppeteer postbuild — 240KB, 3 pages. LinkedIn handle / Fathom URL / Stemz URL remain documented PLACEHOLDERs for Phase 7.
-- [x] **Contact in 2+ places (CTC-01..03)** — Validated in Phase 5. Footer + /about both surface GitHub (canonical `olivelliott` handle), mailto with `hi%20from%20olivelliott.dev` subject, LinkedIn (PLACEHOLDER).
+- [x] **Resume HTML + PDF from single source of truth (RES-01..06)** — Validated in Phase 5. `content/resume.ts` Zod-typed source. `/resume` chromeless route with print CSS. `/public/resume.pdf` generated at build via Puppeteer postbuild — ~240KB, 3 pages. All four Phase-5 PLACEHOLDERs (LinkedIn / Fathom URL / Stemz URL / Aktiga role) resolved in Phase 7 Plan 07-03; GitHub handle corrected `olivelliott` → `ophelia-xo` in the same commit.
+- [x] **Contact in 2+ places (CTC-01..03)** — Validated in Phase 5. Footer + /about both surface GitHub (canonical `ophelia-xo` handle — Plan 07-03 corrected the Phase-5 mis-canonicalization to `olivelliott`), mailto with `hi%20from%20olivelliott.dev` subject, LinkedIn (`https://www.linkedin.com/in/olivelliott`, confirmed Plan 07-03).
 - [x] **SEO / OG / favicon / a11y / anti-features launch gate (MTA-01..04, QAL-02..05)** — Validated in Phase 6. 6 dynamic OG images via `next/og` (Node.js runtime), `app/sitemap.ts` + `app/robots.ts`, full favicon set (icon.svg / apple-icon.png / favicon.ico), `vitest-axe@1.0.0-pre.5` zero-violation tests across 5 routes, keyboard-nav source-grep, reduced-motion lock, 19-item anti-features test. 513 passed / 4 skipped, build clean.
 
 ### Active
 
 - [ ] Hero case studies: Myco (drafted), Fathom, Agenda Keeper (still need MDX in Phase 7)
 - [ ] Secondary project cards: Trade Bot, Stemz, Aktiga, plus selected older work (Phase 7 content pass)
-- [ ] PLACEHOLDER resolution: LinkedIn handle, Fathom repo URL, Stemz live URL, Aktiga role title (Phase 7)
+- [x] **PLACEHOLDER resolution: LinkedIn handle, Fathom repo URL, Stemz live URL, Aktiga role title** — Validated in Phase 7 Plan 07-03. All four resolved in a single atomic batch; GitHub handle canonicalization corrected from `olivelliott` → `ophelia-xo` in the same commit.
 - [ ] Lighthouse audit (QAL-01) — deferred from Phase 6 to Phase 7 launch-week (`pnpm lhci` on local Chrome, target ≥ 90 across all 4 categories)
+- [ ] **v1.1 styling pass** — post-launch, apply richer brand guidelines (typography refinement, custom accent variations per project, illustration / hero imagery). v1 ships deliberately minimal-editorial; v1.1 elevates the high-touch detail.
 - [ ] About page — polymath/engineer framing, current role at Aktiga, values
 - [ ] Resume page (HTML) + downloadable PDF from the same source of truth
 - [ ] Contact area with GitHub, email, LinkedIn
@@ -92,6 +93,7 @@ The site must accurately reflect current work — Myco, Fathom, Agenda Keeper, T
 | Dark theme only (no light-mode toggle in v1) | Matches reference aesthetic; one mode = less polish debt | — Pending |
 | Deploy to Vercel subdomain first | Ship fast; custom domain deferred until site is proven | — Pending |
 | /writing deferred out of v1 | No real content yet; scaffolding an empty section reads as unfinished | — Pending |
+| GitHub handle canonicalized to `ophelia-xo` (Plan 07-03) | Phase 5 (Plan 02-03 + Plan 05-04) incorrectly canonicalized the Phase-1 placeholder `ophelia-x` → `olivelliott` (inferred from email local-part). Olive's actual GitHub handle is `ophelia-xo`. Email local-part / LinkedIn handle / site domain all stay `olivelliott`; only `github.com/*` paths flip. | Validated 2026-05-18 |
 
 ## Evolution
 

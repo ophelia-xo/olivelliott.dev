@@ -17,7 +17,7 @@ const baseProject = {
   visibility: 'public' as const,
   tags: ['local-first', 'typescript'] as const,
   stack: ['TypeScript'],
-  links: { repo: 'https://github.com/olivelliott/myco' },
+  links: { repo: 'https://github.com/ophelia-xo/myco' },
   gallery: [],
   outcomes: ['outcome one', 'outcome two', 'outcome three', 'outcome four', 'outcome five'],
   description: 'Test fixture',

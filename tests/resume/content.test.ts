@@ -65,9 +65,12 @@ describe('Phase 5: RESUME contains required entries, no banned words (RES-01, RE
     expect(RESUME.header.links.email.endsWith('@gmail.com')).toBe(true)
   })
 
-  it('header github is canonical https://github.com/olivelliott (not Phase-1 ophelia-x placeholder)', () => {
-    expect(RESUME.header.links.github).toBe('https://github.com/olivelliott')
-    expect(RESUME.header.links.github).not.toMatch(/ophelia-x/)
+  it('header github is canonical https://github.com/ophelia-xo (Plan 07-03 corrected Phase-5 mis-canonicalization to olivelliott)', () => {
+    expect(RESUME.header.links.github).toBe('https://github.com/ophelia-xo')
+    // Guard against re-introduction of the Phase-5 mis-handle
+    expect(RESUME.header.links.github).not.toMatch(/github\.com\/olivelliott/)
+    // Guard against the bare Phase-1 placeholder stem (ophelia-x without -o)
+    expect(RESUME.header.links.github).not.toMatch(/ophelia-x(?!o)/)
   })
 
   it("first experience entry is at Aktiga (current role)", () => {
@@ -81,9 +84,9 @@ describe('Phase 5: RESUME contains required entries, no banned words (RES-01, RE
     },
   )
 
-  it('Myco link is the canonical repo URL', () => {
+  it('Myco link is the canonical repo URL (https://github.com/ophelia-xo/myco — Plan 07-03 corrected)', () => {
     const myco = RESUME.projects.find((p) => p.name === 'Myco')
-    expect(myco?.link).toBe('https://github.com/olivelliott/myco')
+    expect(myco?.link).toBe('https://github.com/ophelia-xo/myco')
   })
 
   it('contains no banned words across summary, bullets, skills, education', () => {

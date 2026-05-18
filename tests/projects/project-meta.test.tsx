@@ -12,11 +12,11 @@ describe('<ProjectMeta>', () => {
         year={2025}
         tags={['typescript']}
         visibility="public"
-        repoUrl="https://github.com/olivelliott/myco"
+        repoUrl="https://github.com/ophelia-xo/myco"
       />
     )
     const repoLink = Array.from(container.querySelectorAll('a')).find(
-      (a) => a.getAttribute('href') === 'https://github.com/olivelliott/myco'
+      (a) => a.getAttribute('href') === 'https://github.com/ophelia-xo/myco'
     )
     expect(repoLink).toBeDefined()
     expect(repoLink!.getAttribute('target')).toBe('_blank')

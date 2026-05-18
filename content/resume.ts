@@ -5,10 +5,14 @@
 // .planning/phases/05-about-+-resume-+-contact/05-RESEARCH.md
 // § Resume Data — Pre-Extracted (verified 2026-05-17).
 //
-// PLACEHOLDERs to resolve before Phase 7 launch (RESEARCH § Open Q 2, 3):
-//   - LinkedIn handle (currently 'olive-elliott' — confirm with Olive)
-//   - Fathom repo URL (no `link` field — confirm public URL with Olive)
-//   - Stemz live URL (no `link` field — confirm live URL with Olive)
+// Plan 07-03 resolved the four Phase 5 PLACEHOLDERs (LinkedIn handle,
+// Fathom repo URL, Stemz live URL, Aktiga role title) atomically — see
+// .planning/phases/07-content-pass-+-launch/07-03-placeholder-resolutions.md
+// for Olive's verbatim answers. Same plan corrected the GitHub canonical
+// handle from `olivelliott` → `ophelia-xo` (Phase 5 picked the wrong handle;
+// the email local-part matches but the GitHub handle differs).
+//
+// Remaining open question (NOT a PLACEHOLDER — schema-clean):
 //   - Events & services entries from .docx (Mast Farm Inn 2018, Melanie's
 //     2015–2019) omitted — confirm with Olive whether to surface for
 //     hiring-manager audience or drop for engineer-positioned distribution.
@@ -36,10 +40,9 @@ const data = {
     role: 'Software Engineer  ·  AI Workflow Architect  ·  System Architect',
     location: 'Asheville, NC  ·  919-917-4777',
     links: {
-      github: 'https://github.com/olivelliott',
+      github: 'https://github.com/ophelia-xo',
       email: 'olivelliott48@gmail.com',
-      // PLACEHOLDER: confirm with Olive — docx says "LinkedIn" but no handle.
-      linkedin: 'https://linkedin.com/in/olive-elliott',
+      linkedin: 'https://www.linkedin.com/in/olivelliott',
     },
   },
   // Banned word "Passionate" rewritten to "Active in" per UI-SPEC § Copywriting Contract.
@@ -47,7 +50,7 @@ const data = {
     'Software engineer with 3+ years of experience designing and shipping scalable, local-first products. Focused on autonomous workflows, decentralized networks, and AI-driven systems that give people freedom to pursue what matters most. Active in open-source contribution, knowledge-graph architectures, and tools that support distributed communities. Brings a polymath perspective rooted in anthropology, sustainability, and creative problem solving.',
   experience: [
     {
-      role: 'Software Engineer / System Architect / Project Lead',
+      role: 'Software Engineer',
       company: 'Aktiga',
       period: '2023 – Present',
       bullets: [
@@ -72,7 +75,7 @@ const data = {
     {
       name: 'Myco',
       tagline: 'Persistent Cognitive Layer for AI Agents',
-      link: 'https://github.com/olivelliott/myco',
+      link: 'https://github.com/ophelia-xo/myco',
       period: '2024 – Present',
       bullets: [
         'Designed a local-first agent memory system modeled on mycorrhizal networks, enabling persistent context across AI sessions',
@@ -83,7 +86,7 @@ const data = {
     {
       name: 'Fathom',
       tagline: 'Headless AI Dev-Cost Intelligence',
-      // PLACEHOLDER: confirm Fathom repo URL with Olive (public per STATE.md but URL not in docx).
+      link: 'https://github.com/ophelia-xo/fathom',
       period: '2025 – Present',
       bullets: [
         'Built a headless CLI and MCP server that tracks and analyzes AI development costs across LLM providers in real time',
@@ -115,7 +118,7 @@ const data = {
     {
       name: 'Stemz',
       tagline: 'Custom E-Commerce Platform for Music Discovery',
-      // PLACEHOLDER: confirm Stemz live URL with Olive (docx doesn't include one).
+      link: 'https://findstemz.com',
       period: '2023',
       bullets: [
         'Developed a complex custom WordPress platform for Aktiga, transforming design into a fully functional e-commerce site with two types of custom ordering systems',
