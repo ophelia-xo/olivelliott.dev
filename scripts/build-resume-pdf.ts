@@ -33,6 +33,17 @@ const OUT_DIR = path.resolve('public')
 const OUT_PATH = path.join(OUT_DIR, 'resume.pdf')
 
 export async function main(): Promise<void> {
+  // Vercel skip-guard: Vercel's Linux runtime ships without Chromium's
+  // system libraries (libnspr4.so etc.), so Puppeteer launch fails.
+  // Phase 5 deliberately committed `public/resume.pdf` to git precisely
+  // so production deploys would not need this script — the committed PDF
+  // is served as-is. Skip cleanly on Vercel; local dev/CI still runs.
+  // See Phase 7 Plan 07-04: deploy debugged 2026-05-18.
+  if (process.env.VERCEL === '1' || process.env.VERCEL === 'true') {
+    console.log('[resume-pdf] skipping on Vercel — committed PDF used as-is')
+    return
+  }
+
   await mkdir(OUT_DIR, { recursive: true })
 
   console.log(`[resume-pdf] starting next start on :${PORT}`)
