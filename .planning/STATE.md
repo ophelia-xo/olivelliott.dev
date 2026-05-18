@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: executing
-last_updated: "2026-05-18T14:50:21.572Z"
+last_updated: "2026-05-18T14:57:07.191Z"
 progress:
   total_phases: 7
   completed_phases: 6
   total_plans: 38
-  completed_plans: 34
-  percent: 89
+  completed_plans: 35
+  percent: 92
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 07 (content-pass-+-launch) — EXECUTING
-Plan: 2 of 5
-Current Plan: 2
+Plan: 3 of 5
+Current Plan: 3
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 7
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 89%
+**Progress:** [█████████░] 92%
 
 ```
 [███████░░░] 67%
@@ -74,6 +74,7 @@ Total Plans in Phase: 5
 | Phase 06-seo,-og,-a11y-&-performance-audit P04 | 5 min | 2 tasks | 2 files |
 | Phase 06-seo,-og,-a11y-&-performance-audit P05 | 4 min | 3 tasks | 7 files |
 | Phase 07-content-pass-+-launch P00 | 3 min | 2 tasks | 2 files |
+| Phase 07-content-pass-+-launch P01 | 3 min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -185,6 +186,10 @@ From `research/SUMMARY.md`:
 - [Phase 07-content-pass-+-launch]: Plan 07-00: Analytics islands rendered as siblings of <Providers> (not children) — keeps telemetry lifecycle independent of MotionProvider/ThemeProvider subtree and makes intent obvious to future readers.
 - [Phase 07-content-pass-+-launch]: Plan 07-00: No 'use client' directive on app/layout.tsx — both @vercel/analytics/react and @vercel/speed-insights/next handle the client boundary internally. Adding the directive would push the entire root layout to the client and break RSC.
 - [Phase 07-content-pass-+-launch]: Plan 07-00: deploy-checklist.md subsections numbered 1-9 — Plan 07-04 checkpoint:human-action tasks reference subsections by number rather than heading text, so copy edits to titles won't break downstream references.
+- [Phase 07-content-pass-+-launch]: Plan 07-01: links: {} (explicit empty object) chosen over omitting the links: key entirely. LinksSchema.default({}) accepts both, but explicit form is greppable from deploy checklist and names Plan 07-03 deferral via adjacent MDX comment.
+- [Phase 07-content-pass-+-launch]: Plan 07-01: Myco template shape (Problem/Approach/Outcome H2 + 800–1200 words + descriptive outcomes only) consumed unmodified for second hero case study — confirms Phase 2 Plan 02-03 lock is durable across authors and topics. Fathom landed at 1200 words (upper bound, inclusive) via meaning-preserving trim passes, not argument-cutting.
+- [Phase 07-content-pass-+-launch]: Plan 07-01: order: 20 places Fathom after Myco (order: 10) with a 10-step gap convention leaving room for future hero-tier inserts (15) without renumbering. Agenda Keeper at 30 in Plan 07-02.
+- [Phase 07-content-pass-+-launch]: Plan 07-01: Cross-project thesis bridge pattern in Outcome — one sentence per hero case study naming a sibling project and connecting both to the autonomy thesis ('Myco gave an agent durable memory… Fathom gives the same agent honest accounting'). Per PROJECT.md no /thesis page; thesis shows through pattern across projects.
 
 ### Open Decisions (flagged in research)
 
@@ -216,7 +221,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-18T14:50:21.568Z
+**Last session:** 2026-05-18T14:56:54.550Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 

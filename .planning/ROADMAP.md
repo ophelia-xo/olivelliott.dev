@@ -150,7 +150,7 @@ Plans:
 **Plans**: 5 plans across 5 waves
 Plans:
 - [x] 07-00-PLAN.md — Wave 0: install Vercel Analytics + Speed Insights mounting in root layout + deploy-checklist.md scaffold + infrastructure verification
-- [ ] 07-01-PLAN.md — Wave 1: Fathom MDX (public hero-tier #2) — Problem/Approach/Outcome 800–1200 words from Phase 5 resume bullets + READMEs
+- [x] 07-01-PLAN.md — Wave 1: Fathom MDX (public hero-tier #2) — Problem/Approach/Outcome 800–1200 words from Phase 5 resume bullets + READMEs
 - [ ] 07-02-PLAN.md — Wave 2: Agenda Keeper MDX (private hero-tier #3) + banned-terms extension + redaction sign-off checkpoint
 - [ ] 07-03-PLAN.md — Wave 3: Phase 5 placeholder resolution — LinkedIn / Fathom URL / Stemz URL / Aktiga role in single batch across 3 surfaces
 - [ ] 07-04-PLAN.md — Wave 4: lhci (resolves Phase 6 QAL-01 deferral) + Vercel deploy + post-deploy smoke (3 checkpoint:human-action gates) + REQUIREMENTS.md close-out
