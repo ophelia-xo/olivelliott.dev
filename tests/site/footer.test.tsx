@@ -8,7 +8,7 @@
 // 17 tests:
 //   URL corrections (Tests 1–4)
 //     1) GitHub icon link href === https://github.com/ophelia-xo
-//     2) View-source link href === https://github.com/ophelia-xo/portfolio
+//     2) View-source link href === https://github.com/ophelia-xo/olivelliott.dev
 //     3) Email icon link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev
 //        (Pitfall 5 — %20 NOT +; RFC 6068)
 //     4) LinkedIn icon link href === https://www.linkedin.com/in/olivelliott (Plan 07-03 confirmed)
@@ -61,12 +61,12 @@ describe('<Footer> — Plan 05-04 canonicalization + DownloadPdfLink (CTC-01, CT
     expect(link?.getAttribute('href')).toBe('https://github.com/ophelia-xo')
   })
 
-  it('Test 2: View-source link href === https://github.com/ophelia-xo/portfolio', () => {
+  it('Test 2: View-source link href === https://github.com/ophelia-xo/olivelliott.dev', () => {
     const { container } = render(<Footer />)
     const anchors = Array.from(container.querySelectorAll('a'))
     const viewSource = anchors.find((a) => a.textContent?.trim() === 'view source')
     expect(viewSource).toBeDefined()
-    expect(viewSource?.getAttribute('href')).toBe('https://github.com/ophelia-xo/portfolio')
+    expect(viewSource?.getAttribute('href')).toBe('https://github.com/ophelia-xo/olivelliott.dev')
   })
 
   it('Test 3: Email icon link href === mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev (CTC-02; Pitfall 5)', () => {

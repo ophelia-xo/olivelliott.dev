@@ -23,7 +23,7 @@ import { GithubIcon, LinkedinIcon } from './brand-icons'
 const GITHUB_URL = 'https://github.com/ophelia-xo'
 const EMAIL_URL = 'mailto:olivelliott48@gmail.com?subject=hi%20from%20olivelliott.dev'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/olivelliott'
-const VIEW_SOURCE_URL = 'https://github.com/ophelia-xo/portfolio'
+const VIEW_SOURCE_URL = 'https://github.com/ophelia-xo/olivelliott.dev'
 
 export function Footer() {
   return (
