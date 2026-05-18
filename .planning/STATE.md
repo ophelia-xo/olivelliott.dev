@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: executing
-last_updated: "2026-05-18T14:57:07.191Z"
+last_updated: "2026-05-18T18:50:48.932Z"
 progress:
   total_phases: 7
   completed_phases: 6
   total_plans: 38
-  completed_plans: 35
-  percent: 92
+  completed_plans: 36
+  percent: 95
 ---
 
 # Project State: olivelliott.dev
@@ -25,14 +25,14 @@ progress:
 ## Current Position
 
 Phase: 07 (content-pass-+-launch) — EXECUTING
-Plan: 3 of 5
-Current Plan: 3
+Plan: 4 of 5
+Current Plan: 4
 Total Plans in Phase: 5
 **Milestone:** v1.0 — Portfolio launch on Vercel subdomain
 **Phase:** 7
 **Plan:** 02-00 complete → next is 02-01
 **Status:** Ready to execute
-**Progress:** [█████████░] 92%
+**Progress:** [██████████] 95%
 
 ```
 [███████░░░] 67%
@@ -75,6 +75,7 @@ Total Plans in Phase: 5
 | Phase 06-seo,-og,-a11y-&-performance-audit P05 | 4 min | 3 tasks | 7 files |
 | Phase 07-content-pass-+-launch P00 | 3 min | 2 tasks | 2 files |
 | Phase 07-content-pass-+-launch P01 | 3 min | 1 tasks | 1 files |
+| Phase 07-content-pass-+-launch P02 | 3h 47m | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -190,6 +191,9 @@ From `research/SUMMARY.md`:
 - [Phase 07-content-pass-+-launch]: Plan 07-01: Myco template shape (Problem/Approach/Outcome H2 + 800–1200 words + descriptive outcomes only) consumed unmodified for second hero case study — confirms Phase 2 Plan 02-03 lock is durable across authors and topics. Fathom landed at 1200 words (upper bound, inclusive) via meaning-preserving trim passes, not argument-cutting.
 - [Phase 07-content-pass-+-launch]: Plan 07-01: order: 20 places Fathom after Myco (order: 10) with a 10-step gap convention leaving room for future hero-tier inserts (15) without renumbering. Agenda Keeper at 30 in Plan 07-02.
 - [Phase 07-content-pass-+-launch]: Plan 07-01: Cross-project thesis bridge pattern in Outcome — one sentence per hero case study naming a sibling project and connecting both to the autonomy thesis ('Myco gave an agent durable memory… Fathom gives the same agent honest accounting'). Per PROJECT.md no /thesis page; thesis shows through pattern across projects.
+- [Phase 07-content-pass-+-launch]: the-real-agenda-keeper banned (internal repo slug); public framing is just 'Agenda Keeper'. Banning the slug-form prevents accidental copy-paste from internal docs/commit messages without affecting the legitimate public title. (Plan 07-02)
+- [Phase 07-content-pass-+-launch]: Agenda Keeper privacy contract verified live on rendered HTML — 2× literal 'code private' label, zero anchors scoping to agenda-keeper on github/gitlab/bitbucket, zero leakage of internal repo slug. First time Phase 2 Plan 02-04 redaction scanner ran non-vacuously against real private MDX. (Plan 07-02)
+- [Phase 07-content-pass-+-launch]: DEFER-01 (Phase 3 deferred Tailwind v4 source-scan scope bug) resolved inline during 07-02 checkpoint window via @source not directives in app/globals.css excluding .planning/**/*.md and scripts/**/*.ts. Unblocked Olive's visual check at /projects/agenda-keeper. Rule 3 (blocking) auto-fix. (Plan 07-02)
 
 ### Open Decisions (flagged in research)
 
@@ -221,7 +225,7 @@ None.
 
 ## Session Continuity
 
-**Last session:** 2026-05-18T14:56:54.550Z
+**Last session:** 2026-05-18T18:50:48.928Z
 
 **Next action:** Execute Plan 02-01 (Wave 1: `lib/tags.ts` + `lib/schemas.ts` + `tests/content/schema.test.ts` + `tests/content/privacy-transform.test.ts`). `gray-matter`, `remark-frontmatter`, and `mdx-components.tsx` are now in place — Plan 02-01 is unblocked.
 
