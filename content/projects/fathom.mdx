@@ -1,0 +1,59 @@
+---
+slug: fathom
+title: Fathom
+tagline: Headless AI dev-cost intelligence — CLI plus MCP server plus Claude Code plugin, with pluggable stores and providers.
+year: 2025
+tier: hero
+order: 20
+status: active
+visibility: public
+tags: [autonomous, open-source, ai, agents, typescript, cli]
+stack: [TypeScript, Node.js, MCP]
+links: {}
+hero:
+  src: /images/projects/fathom/hero-placeholder.png
+  alt: Fathom CLI session placeholder — real screenshot lands post-launch
+outcomes:
+  - Headless CLI and MCP server, both shipped from one TypeScript codebase
+  - Pluggable store interface — swap SQLite for Postgres or DuckDB without touching call sites
+  - Pluggable LLM provider interface — Anthropic, OpenAI, and local Ollama behind one shape
+  - Claude Code plugin so cost telemetry shows up inside the agent workflow that produced it
+  - Per-session, per-provider, per-model accounting that never leaves the developer's machine
+description: A headless cost-intelligence layer for agent-driven development — CLI plus MCP server plus Claude Code plugin, with pluggable stores and providers.
+---
+
+{/* PLACEHOLDER: links.repo deliberately omitted — Plan 07-03 resolves the canonical public URL in one batch with the other Phase 5 placeholders. Do not fabricate a URL here. */}
+
+## Problem
+
+A developer running Claude Code through a normal week is, without quite realizing it, operating a small fleet of AI subprocesses. There is the main session attached to the editor. There are background agents kicked off for refactors and test runs. There are MCP tools that themselves call models — search, summarization, retrieval, structured extraction. Each of those calls has a cost. Across a day, those costs compound. Across a project, they decide whether a particular workflow is sustainable or quietly bleeding budget into a place nobody is looking.
+
+The accounting picture today is split between two unhelpful surfaces. On one end, the provider billing dashboards — Anthropic's console, OpenAI's usage page — show the right total at the wrong granularity. They tell you what you spent yesterday in aggregate. They cannot tell you that the cost came from one runaway refactor agent on one branch of one project. On the other end, the agent transcripts themselves carry token counts buried in tool responses, but no one is going to scrape those by hand at the end of a sprint, and they certainly are not going to reconcile them against a billing cycle that arrives two days later.
+
+What is missing is the in-between layer. A real-time, structured record of what each session, each agent, each tool call actually cost — kept on the same machine that ran the work, surfaced inside the workflow that incurred the spend. Without it, engineers shipping with autonomous agents are flying blind on the cost-per-task curve. They can feel that some workflows are expensive and others cheap, but they cannot point to numbers, compare strategies, or decide between two prompt designs on anything more rigorous than vibes.
+
+This matters more as work gets more autonomous. A human-in-the-loop session has a natural rate limiter — you only run as many turns as you have attention for. An autonomous agent does not. It will burn through a thousand calls in an unattended hour if the loop is wrong. Building durable autonomous infrastructure means building the feedback loops that keep it honest, and cost accounting is one of the most basic. A system that acts on your behalf is one you cannot trust if you cannot see what its actions cost.
+
+## Approach
+
+Fathom is a headless library first and a set of surfaces second. The accounting layer — capturing a call, attributing it to a session and a model, persisting the cost record, exposing queries over the history — is a TypeScript core that knows nothing about whether it is being driven by a CLI, an MCP host, or a future GUI. That separation is the whole design.
+
+On top of the core, the CLI is the primary developer surface. A developer can run it standalone to inspect what a recent session cost, list the most expensive workflows from the last week, or tail live cost data as an agent runs. The CLI was the first surface because the people most likely to need this tool already live in the terminal — there is no need to send them somewhere else to look at their own data.
+
+The MCP server is the second surface, and it is the one that makes Fathom interesting inside Claude Code specifically. Exposing the cost-query and cost-write paths over MCP means any MCP host — Claude Code, but also any future client that speaks the protocol — can ask Fathom questions through the same tool-call mechanism it uses for everything else. An agent can be told, in plain language, "summarize what this past hour of work cost, broken down by tool," and have a structured answer come back. The cost data becomes part of the agent's context, not a separate dashboard the developer has to swivel-chair into.
+
+The Claude Code plugin closes the loop. Installing the plugin wires the cost-intelligence MCP tools into a developer's daily session without any separate setup — the agent sees the tools, can call them, and the developer can ask cost questions mid-workflow rather than after the fact.
+
+Two abstractions earn their weight inside the core. The first is the store interface. Fathom ships with a default local store, but the abstraction is intentionally minimal — a small set of read and write methods over the cost record schema — so that teams with different ground truths can plug in their own backend. The second is the provider interface. Different LLM providers report token usage differently, price differently, and version their pricing on different cadences. Wrapping each provider behind a shared shape means the rest of the system never has to care which model produced a given call.
+
+The reason both abstractions matter is the same reason Myco's local-first design matters. Different developers have different non-negotiables. Some need the data to stay on their machine; some need it to land in a shared analytics warehouse. Some are all-in on one provider; some are routing between three. A system that picks one answer to those questions loses the people whose answer is different. A system that lets you pick keeps them all.
+
+## Outcome
+
+Fathom ships as an open TypeScript project — a CLI, an MCP server, and a Claude Code plugin, all surfacing the same core. A developer can install the plugin, point it at their existing Claude Code setup, and start seeing per-session cost data the same day. The store-and-provider interfaces are not theoretical; each ships with at least one concrete implementation, which is the bar for calling an abstraction real instead of speculative.
+
+What Fathom changes is the level at which cost is a first-class concern. Instead of cost being a monthly retrospective number, it becomes a per-session, per-workflow, per-prompt-design signal. A developer can ask, before merging an autonomous-agent change, what the equivalent run cost last week. They can compare two implementations of the same agent loop on their actual telemetry rather than on a guess. They can spot a regression — a prompt update that quietly tripled the average session cost — within hours of it landing instead of at the next billing cycle.
+
+The deeper connection is to the same thesis Myco started. Myco gives an agent durable memory so context compounds across sessions. Fathom gives the same agent honest accounting so the cost of that compounding is visible to the person paying for it. Both pieces point at the same goal: autonomous infrastructure that respects the user's data, budget, and attention. An agent you cannot remember with, and an agent whose costs you cannot see, are both agents you cannot fully trust to act on your behalf.
+
+Fathom is still young and actively evolving. The CLI surface is the most settled; the MCP tool set is still growing as patterns emerge for what agents actually want to ask about their own spend; the provider catalog will keep expanding as more model APIs become worth wrapping. The shape of the project is set — headless core, pluggable edges, agent-native surfaces — and the work from here is filling that shape in.
